@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import {
   GraduationCap,
   Upload,
-  FileText,
   CheckCircle2,
   Clock,
   Unlock,
@@ -12,11 +11,10 @@ import {
   AlertCircle,
   BarChart3,
   Search,
-  BookOpen,
   ChevronDown,
   Sparkles,
-  Info,
   RefreshCw,
+  Database,
 } from 'lucide-react';
 import { SubjectAnalysisItem, StudentProgressSummary, DisplaySubjectStatus } from '@/lib/analytics/matrix-analyzer';
 import { MatrixRawData } from '@/lib/scraper/uff-scraper';
@@ -183,8 +181,8 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
           </div>
 
           <div className="flex items-center space-x-3">
-            <span className="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-              <Sparkles className="w-3.5 h-3.5 mr-1" /> Scraper & Next.js Engine
+            <span className="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <Database className="w-3.5 h-3.5 mr-1" /> Matrizes Estáticas no Repo
             </span>
           </div>
         </div>
@@ -200,7 +198,7 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
                 Análise Inteligente da sua Posição no Curso
               </h2>
               <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-                Suba seu Histórico Escolar da UFF para comparar diretamente com a Matriz Curricular, entender matérias concluídas, matérias liberadas para inscrição e pendências.
+                Suba seu Histórico Escolar da UFF para comparar diretamente com a Matriz Curricular Estática do repositório, entender matérias concluídas, matérias liberadas para inscrição e pendências.
               </p>
             </div>
 
@@ -208,7 +206,7 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
               {/* Course Selection */}
               <div className="space-y-2">
                 <label className="block text-sm font-semibold text-slate-200">
-                  1. Selecione seu Curso de Graduação (UFF)
+                  1. Selecione a Matriz Curricular do seu Curso (Estática)
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {[
@@ -236,7 +234,7 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
                 </div>
               </div>
 
-              {/* Custom Matrix Scraper Toggle */}
+              {/* Custom Matrix Toggle */}
               <div className="pt-2 border-t border-slate-800/80">
                 <button
                   type="button"
@@ -244,18 +242,18 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
                   className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center space-x-1"
                 >
                   <ChevronDown className={`w-4 h-4 transform transition-transform ${useCustomMatrix ? 'rotate-180' : ''}`} />
-                  <span>Usar matriz curricular personalizada / colar HTML do site da UFF</span>
+                  <span>Substituir matriz por JSON ou HTML customizado</span>
                 </button>
 
                 {useCustomMatrix && (
                   <div className="mt-3 space-y-2">
                     <label className="block text-xs font-medium text-slate-300">
-                      Cole o HTML da tabela de Matriz Curricular (app.uff.br/graduacao/matrizcurricular):
+                      Cole o HTML ou JSON da Matriz Curricular (opcional):
                     </label>
                     <textarea
                       value={customHtml}
                       onChange={e => setCustomHtml(e.target.value)}
-                      placeholder="<table... </table> ou texto bruto com códigos TCC..."
+                      placeholder="<table... </table> ou objeto JSON com array de disciplinas..."
                       className="w-full h-24 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-300 font-mono focus:outline-none focus:border-indigo-500"
                     />
                   </div>

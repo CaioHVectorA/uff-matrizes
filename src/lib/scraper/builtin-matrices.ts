@@ -63,40 +63,94 @@ export const BUILTIN_UFF_MATRICES: Record<string, MatrixRawData> = {
     courseCode: 'TSI-SI',
     courseName: 'Sistemas de Informação',
     matrixCode: '2023.1',
-    matrixName: 'Matriz Curricular Sistemas de Informação UFF',
-    campus: 'Niterói',
+    matrixName: 'Matriz Curricular Sistemas de Informação UFF (Niterói)',
+    campus: 'Praia Vermelha - Niterói',
     degree: 'Bacharelado',
     totalHours: 2900,
     mandatoryHours: 2300,
     electiveHours: 600,
     subjects: [
+      // 1º Período
       { code: 'TCC00288', name: 'Programação de Computadores I', period: 1, workload: 60, type: 'OBRIGATORIA', prerequisites: [] },
       { code: 'GAN00021', name: 'Cálculo Diferencial e Integral I', period: 1, workload: 90, type: 'OBRIGATORIA', prerequisites: [] },
+      { code: 'TSI00100', name: 'Introdução aos Sistemas de Informação', period: 1, workload: 60, type: 'OBRIGATORIA', prerequisites: [] },
+      { code: 'GET00118', name: 'Estatística e Probabilidade I', period: 1, workload: 60, type: 'OBRIGATORIA', prerequisites: [] },
+
+      // 2º Período
       { code: 'TCC00289', name: 'Programação de Computadores II', period: 2, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00288'] },
       { code: 'TCC00290', name: 'Estrutura de Dados', period: 2, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00288'] },
+      { code: 'TCC00291', name: 'Matemática Discreta', period: 2, workload: 60, type: 'OBRIGATORIA', prerequisites: [] },
+      { code: 'TSI00101', name: 'Gestão de Tecnologia da Informação', period: 2, workload: 60, type: 'OBRIGATORIA', prerequisites: [] },
+
+      // 3º Período
       { code: 'TCC00298', name: 'Banco de Dados I', period: 3, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00290'] },
       { code: 'TCC00295', name: 'Engenharia de Software I', period: 3, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00289'] },
-      { code: 'TSI00101', name: 'Gestão de Tecnologia da Informação', period: 4, workload: 60, type: 'OBRIGATORIA', prerequisites: [] },
-      { code: 'TSI00102', name: 'Governança de TI', period: 5, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TSI00101'] },
+      { code: 'TCC00294', name: 'Organização e Arquitetura de Computadores', period: 3, workload: 60, type: 'OBRIGATORIA', prerequisites: [] },
+
+      // 4º Período
+      { code: 'TSI00102', name: 'Análise e Projeto de Sistemas', period: 4, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00295'] },
+      { code: 'TCC00299', name: 'Redes de Computadores I', period: 4, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00294'] },
+      { code: 'TSI00103', name: 'Governança e Gestão de TI', period: 4, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TSI00101'] },
+
+      // 5º Período
+      { code: 'TSI00104', name: 'Sistemas de Apoio à Decisão', period: 5, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00298'] },
+      { code: 'TSI00105', name: 'Segurança e Auditoria de Sistemas', period: 5, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00299'] },
+
+      // 6º Período
+      { code: 'TSI00106', name: 'Trabalho de Conclusão de Curso I', period: 6, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TSI00102'] },
+
+      // 7º Período
+      { code: 'TSI00107', name: 'Trabalho de Conclusão de Curso II', period: 7, workload: 120, type: 'OBRIGATORIA', prerequisites: ['TSI00106'] },
+
+      // Optativas
+      { code: 'TCC00311', name: 'Desenvolvimento Web Moderno', period: 0, workload: 60, type: 'OPTATIVA', prerequisites: ['TCC00289'] },
+      { code: 'TSI00110', name: 'Empreendedorismo em TI', period: 0, workload: 60, type: 'OPTATIVA', prerequisites: [] },
     ],
   },
   'engenharia-de-software': {
     courseCode: 'TES-ES',
     courseName: 'Engenharia de Software',
     matrixCode: '2023.1',
-    matrixName: 'Matriz Curricular Engenharia de Software UFF',
-    campus: 'Rio Das Ostras',
+    matrixName: 'Matriz Curricular Engenharia de Software UFF (Rio das Ostras)',
+    campus: 'Rio das Ostras',
     degree: 'Bacharelado',
     totalHours: 3200,
     mandatoryHours: 2500,
     electiveHours: 700,
     subjects: [
+      // 1º Período
       { code: 'TCC00288', name: 'Programação de Computadores I', period: 1, workload: 60, type: 'OBRIGATORIA', prerequisites: [] },
       { code: 'GAN00021', name: 'Cálculo I', period: 1, workload: 90, type: 'OBRIGATORIA', prerequisites: [] },
       { code: 'TES00101', name: 'Introdução à Engenharia de Software', period: 1, workload: 60, type: 'OBRIGATORIA', prerequisites: [] },
+      { code: 'GET00118', name: 'Estatística Aplicada', period: 1, workload: 60, type: 'OBRIGATORIA', prerequisites: [] },
+
+      // 2º Período
       { code: 'TCC00289', name: 'Programação de Computadores II', period: 2, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00288'] },
-      { code: 'TES00102', name: 'Arquitetura de Software', period: 4, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00289'] },
-      { code: 'TES00103', name: 'Testes e Qualidade de Software', period: 5, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TES00102'] },
+      { code: 'TCC00290', name: 'Estrutura de Dados', period: 2, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00288'] },
+      { code: 'TCC00291', name: 'Matemática Discreta', period: 2, workload: 60, type: 'OBRIGATORIA', prerequisites: [] },
+
+      // 3º Período
+      { code: 'TES00102', name: 'Requisitos de Software', period: 3, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TES00101'] },
+      { code: 'TCC00298', name: 'Banco de Dados', period: 3, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00290'] },
+      { code: 'TCC00293', name: 'Análise de Algoritmos', period: 3, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00290'] },
+
+      // 4º Período
+      { code: 'TES00103', name: 'Arquitetura de Software', period: 4, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TES00102'] },
+      { code: 'TES00104', name: 'Testes e Qualidade de Software', period: 4, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TCC00289'] },
+
+      // 5º Período
+      { code: 'TES00105', name: 'Gerência de Projetos de Software', period: 5, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TES00103'] },
+      { code: 'TES00106', name: 'Manutenção e Evolução de Software', period: 5, workload: 60, type: 'OBRIGATORIA', prerequisites: ['TES00103'] },
+
+      // 6º Período
+      { code: 'TES00107', name: 'Projeto Integrado I', period: 6, workload: 90, type: 'OBRIGATORIA', prerequisites: ['TES00104', 'TES00105'] },
+
+      // 7º Período
+      { code: 'TES00108', name: 'Projeto Integrado II', period: 7, workload: 120, type: 'OBRIGATORIA', prerequisites: ['TES00107'] },
+
+      // Optativas
+      { code: 'TCC00311', name: 'Desenvolvimento Web Moderno', period: 0, workload: 60, type: 'OPTATIVA', prerequisites: ['TCC00289'] },
+      { code: 'TES00110', name: 'Sistemas Embarcados', period: 0, workload: 60, type: 'OPTATIVA', prerequisites: [] },
     ],
   },
 };
