@@ -1,0 +1,22 @@
+{
+  "courseCode": "TCD-CD",
+  "courseName": "Ciência de Dados",
+  "matrixCode": "2023.1",
+  "matrixName": "Matriz Curricular Ciência de Dados UFF (Niterói)",
+  "campus": "Praia Vermelha - Niterói",
+  "degree": "Bacharelado",
+  "totalHours": 3000,
+  "mandatoryHours": 2400,
+  "electiveHours": 600,
+  "subjects": [
+    { "code": "TCC00288", "name": "Programação de Computadores I", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "GAN00021", "name": "Cálculo Diferencial e Integral I", "period": 1, "workload": 90, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "GAN00007", "name": "Álgebra Linear I", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "GET00118", "name": "Estatística e Probabilidade I", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "TCC00289", "name": "Programação de Computadores II", "period": 2, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TCC00288"] },
+    { "code": "TCC00290", "name": "Estrutura de Dados", "period": 2, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TCC00288"] },
+    { "code": "TCC00298", "name": "Banco de Dados I", "period": 3, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TCC00290"] },
+    { "code": "TCD00101", "name": "Aprendizado de Máquina I", "period": 4, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["GET00118", "TCC00290"] },
+    { "code": "TCD00102", "name": "Visualização e Mineração de Dados", "period": 5, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TCD00101"] }
+  ]
+}
