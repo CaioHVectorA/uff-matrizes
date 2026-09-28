@@ -1,0 +1,14 @@
+
+> tmp-app@0.1.0 dev
+> next dev
+
+▲ Next.js 16.3.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+- Environments: .env
+✓ Ready in 551ms
+✓ Running next.config.ts took 43ms
+
+ HEAD / 200 in 2.8s (next.js: 2.6s, application-code: 229ms)
+ GET / 200 in 72ms (next.js: 12ms, application-code: 59ms)
+ POST /api/analyze 200 in 1108ms (next.js: 1062ms, application-code: 46ms)

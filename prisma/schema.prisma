@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Course {
+  id          String         @id @default(cuid())
+  code        String         @unique
+  name        String
+  campus      String?
+  degree      String?        // Bacharelado, Licenciatura, etc.
+  matrices    CourseMatrix[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
+
+model CourseMatrix {
+  id              String      @id @default(cuid())
+  courseId        String
+  course          Course      @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  matrixCode      String      // e.g., "2023.1", "1.00.01.001"
+  name            String
+  totalHours      Int         @default(0)
+  mandatoryHours  Int         @default(0)
+  electiveHours   Int         @default(0)
+  subjects        Subject[]
+  analyses        Analysis[]
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+}
+
+model Subject {
+  id            String       @id @default(cuid())
+  matrixId      String
+  matrix        CourseMatrix @relation(fields: [matrixId], references: [id], onDelete: Cascade)
+  code          String       // e.g., "TCC00325"
+  name          String
+  period        Int          // 1, 2, ..., or 0 for Optativas
+  workload      Int          // Hours (e.g. 60)
+  type          String       // "OBRIGATORIA", "OPTATIVA", "ELETIVA"
+  prerequisites String       // JSON string of prerequisite codes, e.g. "[\"TCC00288\"]"
+  corequisites  String?      // JSON string of corequisite codes
+  department    String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  @@index([matrixId, code])
+}
+
+model StudentTranscript {
+  id            String     @id @default(cuid())
+  studentName   String?
+  registration  String?    // Matrícula
+  courseName    String?
+  cr            Float?     // Coefficient of Rendimento (CR)
+  recordsJson   String     // JSON array of parsed transcript records
+  analyses      Analysis[]
+  createdAt     DateTime   @default(now())
+}
+
+model Analysis {
+  id             String            @id @default(cuid())
+  transcriptId   String
+  transcript     StudentTranscript @relation(fields: [transcriptId], references: [id], onDelete: Cascade)
+  matrixId       String
+  matrix         CourseMatrix      @relation(fields: [matrixId], references: [id], onDelete: Cascade)
+  summaryJson    String            // Stored analysis result stats & position details
+  createdAt      DateTime          @default(now())
+}
