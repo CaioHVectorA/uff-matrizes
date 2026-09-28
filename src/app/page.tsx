@@ -182,7 +182,7 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
 
           <div className="flex items-center space-x-3">
             <span className="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              <Database className="w-3.5 h-3.5 mr-1" /> Matrizes Estáticas no Repo
+              <Database className="w-3.5 h-3.5 mr-1" /> Matrizes Estáticas em JSON
             </span>
           </div>
         </div>
@@ -206,15 +206,17 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
               {/* Course Selection */}
               <div className="space-y-2">
                 <label className="block text-sm font-semibold text-slate-200">
-                  1. Selecione a Matriz Curricular do seu Curso (Estática no Repo)
+                  1. Selecione a Matriz Curricular do seu Curso (Estática)
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                   {[
                     { id: 'ciencia-da-computacao', label: 'Ciência da Computação', campus: 'Niterói' },
                     { id: 'sistemas-de-informacao', label: 'Sistemas de Informação', campus: 'Niterói' },
                     { id: 'engenharia-de-software', label: 'Engenharia de Software', campus: 'Rio das Ostras' },
+                    { id: 'engenharia-eletrica', label: 'Engenharia Elétrica', campus: 'Niterói' },
                     { id: 'engenharia-de-telecomunicacoes', label: 'Eng. Telecomunicações', campus: 'Niterói' },
                     { id: 'ciencia-de-dados', label: 'Ciência de Dados', campus: 'Niterói' },
+                    { id: 'engenharia-de-producao', label: 'Engenharia de Produção', campus: 'Niterói' },
                   ].map(course => (
                     <button
                       key={course.id}
