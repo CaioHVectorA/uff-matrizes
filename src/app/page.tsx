@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   GraduationCap,
   Upload,
@@ -11,12 +11,17 @@ import {
   AlertCircle,
   BarChart3,
   Search,
-  ChevronDown,
   Sparkles,
   RefreshCw,
-  Database,
+  FileText,
+  Trash2,
 } from 'lucide-react';
-import { SubjectAnalysisItem, StudentProgressSummary, DisplaySubjectStatus } from '@/lib/analytics/matrix-analyzer';
+import { SubjectAnalysisItem, StudentProgressSummary, DisplaySubjectStatus, analyzeStudentProgress } from '@/lib/analytics/matrix-analyzer';
+import { extractTextFromPdfFile } from '@/lib/parser/pdf-reader';
+import { parseMatrixText } from '@/lib/parser/matrix-parser';
+import { parseTranscriptText } from '@/lib/parser/transcript-parser';
+import { saveAppStateToStorage, loadAppStateFromStorage, clearAppStateFromStorage } from '@/lib/storage/app-storage';
+import { SAMPLE_MATRIX_TEXT, SAMPLE_TRANSCRIPT_TEXT } from '@/lib/data/sample-data';
 import { MatrixRawData } from '@/lib/scraper/uff-scraper';
 
 const STATUS_CONFIG: Record<
@@ -66,11 +71,14 @@ const STATUS_CONFIG: Record<
 };
 
 export default function Home() {
-  const [selectedCourse, setSelectedCourse] = useState('ciencia-da-computacao');
-  const [transcriptText, setTranscriptText] = useState('');
-  const [file, setFile] = useState<File | null>(null);
-  const [customHtml, setCustomHtml] = useState('');
-  const [useCustomMatrix, setUseCustomMatrix] = useState(false);
+  // File state
+  const [matrixFile, setMatrixFile] = useState<File | null>(null);
+  const [transcriptFile, setTranscriptFile] = useState<File | null>(null);
+
+  // Manual or fallback raw texts
+  const [rawMatrixText, setRawMatrixText] = useState<string>('');
+  const [rawTranscriptText, setRawTranscriptText] = useState<string>('');
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -85,10 +93,36 @@ export default function Home() {
   const [statusFilter, setStatusFilter] = useState<string>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFile(e.target.files[0]);
+  // Auto-restore state from localStorage on load
+  useEffect(() => {
+    const saved = loadAppStateFromStorage();
+    if (saved && saved.analysisResult && saved.matrixData) {
+      setAnalysisResult({
+        summary: saved.analysisResult,
+        matrix: saved.matrixData,
+      });
+      if (saved.rawMatrixText) setRawMatrixText(saved.rawMatrixText);
+      if (saved.rawTranscriptText) setRawTranscriptText(saved.rawTranscriptText);
     }
+  }, []);
+
+  const handleMatrixFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setMatrixFile(e.target.files[0]);
+    }
+  };
+
+  const handleTranscriptFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setTranscriptFile(e.target.files[0]);
+    }
+  };
+
+  const fillSampleData = () => {
+    setRawMatrixText(SAMPLE_MATRIX_TEXT);
+    setRawTranscriptText(SAMPLE_TRANSCRIPT_TEXT);
+    setMatrixFile(null);
+    setTranscriptFile(null);
   };
 
   const handleAnalyze = async (e: React.FormEvent) => {
@@ -97,33 +131,48 @@ export default function Home() {
     setError(null);
 
     try {
-      const formData = new FormData();
-      if (file) {
-        formData.append('file', file);
-      }
-      if (transcriptText) {
-        formData.append('text', transcriptText);
-      }
-      formData.append('course', selectedCourse);
+      let matrixTextToUse = rawMatrixText;
+      let transcriptTextToUse = rawTranscriptText;
 
-      if (useCustomMatrix && customHtml) {
-        formData.append('customMatrix', customHtml);
+      if (matrixFile) {
+        matrixTextToUse = await extractTextFromPdfFile(matrixFile);
       }
 
-      const res = await fetch('/api/analyze', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await res.json();
-
-      if (!res.ok || !data.success) {
-        throw new Error(data.error || 'Erro ao analisar o histórico escolar.');
+      if (transcriptFile) {
+        transcriptTextToUse = await extractTextFromPdfFile(transcriptFile);
       }
 
-      setAnalysisResult({
-        summary: data.analysis,
-        matrix: data.matrix,
+      if (!matrixTextToUse.trim()) {
+        throw new Error('Por favor, selecione o arquivo PDF da Matriz Curricular.');
+      }
+
+      if (!transcriptTextToUse.trim()) {
+        throw new Error('Por favor, selecione o arquivo PDF do Histórico Escolar.');
+      }
+
+      // Parse Matrix and Transcript 100% on Client
+      const parsedMatrix = parseMatrixText(matrixTextToUse);
+      const parsedTranscript = parseTranscriptText(transcriptTextToUse);
+
+      if (!parsedMatrix.subjects || parsedMatrix.subjects.length === 0) {
+        throw new Error('Não foi possível reconhecer as disciplinas no PDF da Matriz Curricular.');
+      }
+
+      // Calculate progress analytics
+      const summary = analyzeStudentProgress(parsedMatrix, parsedTranscript);
+
+      const resultObj = { summary, matrix: parsedMatrix };
+      setAnalysisResult(resultObj);
+
+      // Save to localStorage
+      saveAppStateToStorage({
+        rawMatrixText: matrixTextToUse,
+        rawTranscriptText: transcriptTextToUse,
+        matrixFileName: matrixFile ? matrixFile.name : 'Exemplo Matriz.pdf',
+        transcriptFileName: transcriptFile ? transcriptFile.name : 'Exemplo Histórico.pdf',
+        matrixData: parsedMatrix,
+        transcriptData: parsedTranscript,
+        analysisResult: summary,
       });
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : String(err);
@@ -133,32 +182,13 @@ export default function Home() {
     }
   };
 
-  const fillSampleTranscript = () => {
-    setTranscriptText(`UNIVERSIDADE FEDERAL FLUMINENSE
-HISTÓRICO ESCOLAR
-Nome: Gabriel Santos
-Matrícula: 122083042
-Curso: Ciência da Computação
-CR: 8.4
-
-TCC00288 PROGRAMAÇÃO DE COMPUTADORES I 60 9.0 2022/1 Aprovado
-GAN00021 CÁLCULO DIFERENCIAL E INTEGRAL I 90 8.5 2022/1 Aprovado por Média
-GAN00007 ÁLGEBRA LINEAR I 60 7.5 2022/1 Aprovado
-TCC00287 FUNDAMENTOS DE CIÊNCIA DA COMPUTAÇÃO 60 8.0 2022/1 Aprovado
-GET00118 ESTATÍSTICA E PROBABILIDADE I 60 7.0 2022/1 Aprovado
-
-TCC00289 PROGRAMAÇÃO DE COMPUTADORES II 60 8.8 2022/2 Aprovado
-TCC00290 ESTRUTURA DE DADOS 60 8.2 2022/2 Aprovado
-GAN00022 CÁLCULO DIFERENCIAL E INTEGRAL II 90 6.5 2022/2 Aprovado
-TCC00291 MATEMÁTICA DISCRETA 60 7.5 2022/2 Aprovado
-TCC00292 CIRCUITOS LÓGICOS 60 8.0 2022/2 Aprovado
-
-TCC00293 ANÁLISE DE ALGORITMOS 60 -- 2023/1 Inscrito
-TCC00294 ORGANIZAÇÃO E ARQUITETURA DE COMPUTADORES 60 -- 2023/1 Inscrito
-TCC00295 ENGENHARIA DE SOFTWARE I 60 -- 2023/1 Inscrito
-TCC00296 LINGUAGENS DE PROGRAMAÇÃO 60 -- 2023/1 Inscrito
-GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
-`);
+  const handleClear = () => {
+    clearAppStateFromStorage();
+    setAnalysisResult(null);
+    setMatrixFile(null);
+    setTranscriptFile(null);
+    setRawMatrixText('');
+    setRawTranscriptText('');
   };
 
   return (
@@ -172,17 +202,17 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
             </div>
             <div>
               <h1 className="font-bold text-lg leading-tight tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
-                UFF Matriz & Histórico
+                UFF Mapeador Acadêmico
               </h1>
               <p className="text-xs text-slate-400">
-                Visualizador e Mapeador de Posição Acadêmica
+                Análise com base em Matriz + Histórico (100% Client-Side)
               </p>
             </div>
           </div>
 
           <div className="flex items-center space-x-3">
             <span className="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              <Database className="w-3.5 h-3.5 mr-1" /> Matrizes Estáticas em JSON
+              <FileText className="w-3.5 h-3.5 mr-1" /> Salvo no LocalStorage
             </span>
           </div>
         </div>
@@ -191,122 +221,84 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {!analysisResult ? (
-          /* Input Upload Form View */
+          /* Side-by-side PDF Upload View */
           <div className="max-w-4xl mx-auto space-y-6">
             <div className="text-center space-y-3">
               <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-white via-indigo-100 to-indigo-300 bg-clip-text text-transparent">
-                Análise Inteligente da sua Posição no Curso
+                Mapeamento Inteligente do seu Curso
               </h2>
               <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-                Suba seu Histórico Escolar da UFF para comparar diretamente com a Matriz Curricular Estática do repositório, entender matérias concluídas, matérias liberadas para inscrição e pendências.
+                Envie os arquivos PDF da <strong>Matriz Curricular</strong> do seu curso e do seu <strong>Histórico Escolar</strong> para identificar disciplinas concluídas, pendências e matérias liberadas para inscrição.
               </p>
+
+              <button
+                type="button"
+                onClick={fillSampleData}
+                className="inline-flex items-center px-3.5 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/20 text-xs font-medium transition-colors cursor-pointer mt-2"
+              >
+                <Sparkles className="w-3.5 h-3.5 mr-1.5 text-indigo-400" />
+                <span>Carregar Exemplo de Teste (Engenharia Elétrica)</span>
+              </button>
             </div>
 
             <form onSubmit={handleAnalyze} className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl backdrop-blur-sm">
-              {/* Course Selection */}
-              <div className="space-y-2">
-                <label className="block text-sm font-semibold text-slate-200">
-                  1. Selecione a Matriz Curricular do seu Curso (Estática)
-                </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                  {[
-                    { id: 'ciencia-da-computacao', label: 'Ciência da Computação', campus: 'Niterói' },
-                    { id: 'sistemas-de-informacao', label: 'Sistemas de Informação', campus: 'Niterói' },
-                    { id: 'engenharia-de-software', label: 'Engenharia de Software', campus: 'Rio das Ostras' },
-                    { id: 'engenharia-eletrica', label: 'Engenharia Elétrica', campus: 'Niterói' },
-                    { id: 'engenharia-de-telecomunicacoes', label: 'Eng. Telecomunicações', campus: 'Niterói' },
-                    { id: 'ciencia-de-dados', label: 'Ciência de Dados', campus: 'Niterói' },
-                    { id: 'engenharia-de-producao', label: 'Engenharia de Produção', campus: 'Niterói' },
-                  ].map(course => (
-                    <button
-                      key={course.id}
-                      type="button"
-                      onClick={() => {
-                        setSelectedCourse(course.id);
-                        setUseCustomMatrix(false);
-                      }}
-                      className={`p-4 rounded-xl border text-left transition-all relative ${
-                        selectedCourse === course.id && !useCustomMatrix
-                          ? 'border-indigo-500 bg-indigo-500/10 text-white shadow-lg shadow-indigo-500/10'
-                          : 'border-slate-800 bg-slate-950/50 text-slate-400 hover:border-slate-700 hover:text-slate-200'
-                      }`}
-                    >
-                      <div className="font-medium text-sm">{course.label}</div>
-                      <div className="text-xs text-slate-500 mt-1">{course.campus}</div>
-                    </button>
-                  ))}
-                </div>
-              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* PDF Input 1: Matriz Curricular */}
+                <div className="space-y-3">
+                  <label className="block text-sm font-semibold text-slate-200">
+                    1. PDF da Matriz Curricular
+                  </label>
 
-              {/* Custom Matrix Toggle */}
-              <div className="pt-2 border-t border-slate-800/80">
-                <button
-                  type="button"
-                  onClick={() => setUseCustomMatrix(!useCustomMatrix)}
-                  className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center space-x-1"
-                >
-                  <ChevronDown className={`w-4 h-4 transform transition-transform ${useCustomMatrix ? 'rotate-180' : ''}`} />
-                  <span>Substituir matriz por JSON ou HTML customizado</span>
-                </button>
-
-                {useCustomMatrix && (
-                  <div className="mt-3 space-y-2">
-                    <label className="block text-xs font-medium text-slate-300">
-                      Cole o HTML ou JSON da Matriz Curricular (opcional):
-                    </label>
-                    <textarea
-                      value={customHtml}
-                      onChange={e => setCustomHtml(e.target.value)}
-                      placeholder="<table... </table> ou objeto JSON com array de disciplinas..."
-                      className="w-full h-24 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-300 font-mono focus:outline-none focus:border-indigo-500"
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Upload PDF or Paste Text */}
-              <div className="space-y-4 pt-2 border-t border-slate-800/80">
-                <label className="block text-sm font-semibold text-slate-200">
-                  2. Suba seu Histórico Escolar (PDF ou Texto)
-                </label>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* PDF Upload Box */}
-                  <div className="border-2 border-dashed border-slate-800 hover:border-indigo-500/50 rounded-xl p-6 text-center bg-slate-950/40 transition-colors relative flex flex-col items-center justify-center min-h-[160px]">
+                  <div className="border-2 border-dashed border-slate-800 hover:border-indigo-500/50 rounded-xl p-6 text-center bg-slate-950/40 transition-colors relative flex flex-col items-center justify-center min-h-[180px]">
                     <Upload className="w-8 h-8 text-indigo-400 mb-2" />
                     <span className="text-xs font-medium text-slate-300">
-                      {file ? file.name : 'Clique para enviar PDF do Histórico UFF'}
+                      {matrixFile ? matrixFile.name : 'Clique para selecionar PDF da Matriz'}
                     </span>
                     <span className="text-[11px] text-slate-500 mt-1">
-                      (Suporta formato original emitido pelo idUFF / SIGA)
+                      (Documento de Matriz do idUFF / SIGA)
                     </span>
                     <input
                       type="file"
-                      accept=".pdf,text/plain"
-                      onChange={handleFileChange}
+                      accept=".pdf,.txt"
+                      onChange={handleMatrixFileChange}
                       className="absolute inset-0 opacity-0 cursor-pointer"
                     />
                   </div>
 
-                  {/* Text Fallback Box */}
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs text-slate-400">Ou cole o texto do Histórico:</span>
-                      <button
-                        type="button"
-                        onClick={fillSampleTranscript}
-                        className="text-[11px] text-indigo-400 hover:underline flex items-center"
-                      >
-                        <Sparkles className="w-3 h-3 mr-1" /> Usar exemplo de teste
-                      </button>
+                  {rawMatrixText && !matrixFile && (
+                    <div className="text-[11px] text-emerald-400 font-mono bg-emerald-950/30 p-2 rounded-lg border border-emerald-500/20">
+                      ✓ Texto de Matriz pré-carregado
                     </div>
-                    <textarea
-                      value={transcriptText}
-                      onChange={e => setTranscriptText(e.target.value)}
-                      placeholder="Cole aqui as linhas com códigos (ex: TCC00288 PROGRAMAÇÃO I 60 9.0 Aprovado)..."
-                      className="w-full h-28 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-300 font-mono focus:outline-none focus:border-indigo-500"
+                  )}
+                </div>
+
+                {/* PDF Input 2: Histórico Escolar */}
+                <div className="space-y-3">
+                  <label className="block text-sm font-semibold text-slate-200">
+                    2. PDF do Histórico Escolar
+                  </label>
+
+                  <div className="border-2 border-dashed border-slate-800 hover:border-indigo-500/50 rounded-xl p-6 text-center bg-slate-950/40 transition-colors relative flex flex-col items-center justify-center min-h-[180px]">
+                    <Upload className="w-8 h-8 text-sky-400 mb-2" />
+                    <span className="text-xs font-medium text-slate-300">
+                      {transcriptFile ? transcriptFile.name : 'Clique para selecionar PDF do Histórico'}
+                    </span>
+                    <span className="text-[11px] text-slate-500 mt-1">
+                      (Documento de Histórico do idUFF / SIGA)
+                    </span>
+                    <input
+                      type="file"
+                      accept=".pdf,.txt"
+                      onChange={handleTranscriptFileChange}
+                      className="absolute inset-0 opacity-0 cursor-pointer"
                     />
                   </div>
+
+                  {rawTranscriptText && !transcriptFile && (
+                    <div className="text-[11px] text-emerald-400 font-mono bg-emerald-950/30 p-2 rounded-lg border border-emerald-500/20">
+                      ✓ Texto de Histórico pré-carregado
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -326,19 +318,19 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
                 {loading ? (
                   <>
                     <RefreshCw className="w-4 h-4 animate-spin" />
-                    <span>Processando e mapeando matriz...</span>
+                    <span>Lendo PDFs e Mapeando Disciplinas...</span>
                   </>
                 ) : (
                   <>
                     <BarChart3 className="w-4 h-4" />
-                    <span>Gerar Mapeamento & Visualizar Matriz</span>
+                    <span>Analisar e Mapear Posição Acadêmica</span>
                   </>
                 )}
               </button>
             </form>
           </div>
         ) : (
-          /* Dashboard & Matrix Visualizer View */
+          /* Dashboard & Interactive Matrix Grid View */
           <div className="space-y-8 animate-fadeIn">
             {/* Top Action Bar */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
@@ -354,20 +346,22 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
                   )}
                 </div>
                 <p className="text-xs text-slate-400 mt-1">
-                  Curso: <span className="text-slate-200 font-medium">{analysisResult.summary.courseName}</span> | Matriz: <span className="text-slate-200 font-medium">{analysisResult.matrix.matrixCode}</span>
+                  Curso: <span className="text-slate-200 font-medium">{analysisResult.summary.courseName}</span> | Currículo: <span className="text-slate-200 font-medium">{analysisResult.matrix.courseCode}</span>
                 </p>
               </div>
 
-              <button
-                onClick={() => setAnalysisResult(null)}
-                className="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white text-xs font-medium transition-colors flex items-center space-x-2"
-              >
-                <RefreshCw className="w-3.5 h-3.5" />
-                <span>Analisar Outro Histórico</span>
-              </button>
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={handleClear}
+                  className="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white text-xs font-medium transition-colors flex items-center space-x-2"
+                >
+                  <Trash2 className="w-3.5 h-3.5 text-rose-400" />
+                  <span>Substituir Arquivos PDF</span>
+                </button>
+              </div>
             </div>
 
-            {/* Summary KPI Cards */}
+            {/* KPI Cards */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 space-y-1">
                 <span className="text-xs text-slate-400 font-medium">Progresso Total</span>
@@ -396,7 +390,7 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
               </div>
 
               <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 space-y-1">
-                <span className="text-xs text-slate-400 font-medium">Período Estimado</span>
+                <span className="text-xs text-slate-400 font-medium">Etapa Recomendada</span>
                 <div className="text-2xl font-bold text-indigo-400">
                   {analysisResult.summary.estimatedCurrentPeriod}º Período
                 </div>
@@ -422,7 +416,7 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
                 <div className="flex items-center space-x-2">
                   <Sparkles className="w-5 h-5 text-amber-400" />
                   <h3 className="font-semibold text-sm text-slate-100">
-                    Recomendação de Inscrição para o Próximo Semestre
+                    Sugestão para Inscrição no Próximo Semestre
                   </h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
@@ -435,7 +429,7 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
                       <div>
                         <div className="font-mono text-xs font-bold text-amber-300">{sub.code}</div>
                         <div className="text-xs font-medium text-slate-200 line-clamp-1">{sub.name}</div>
-                        <div className="text-[10px] text-slate-400 mt-0.5">{sub.period}º Período • {sub.workload}h</div>
+                        <div className="text-[10px] text-slate-400 mt-0.5">{sub.period === 0 ? 'Optativa' : `${sub.period}º Período`} • {sub.workload}h</div>
                       </div>
                       <Unlock className="w-4 h-4 text-amber-400 shrink-0 ml-2" />
                     </div>
@@ -482,7 +476,7 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
               </div>
             </div>
 
-            {/* Interactive Matrix Grid (Per Semester) */}
+            {/* Interactive Matrix Grid (Per Period) */}
             <div className="space-y-6">
               {analysisResult.summary.periodGroups.map(group => {
                 const filteredSubjects = group.subjects.filter(sub => {
@@ -559,7 +553,7 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
           <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-5 shadow-2xl relative">
             <button
               onClick={() => setSelectedSubject(null)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white text-xs font-mono p-1 rounded-lg hover:bg-slate-800"
+              className="absolute top-4 right-4 text-slate-400 hover:text-white text-xs font-mono p-1 rounded-lg hover:bg-slate-800 cursor-pointer"
             >
               ✕
             </button>
@@ -622,7 +616,7 @@ GAN00023 CÁLCULO NUMÉRICO 60 7.0 2023/1 Aprovado
 
             <button
               onClick={() => setSelectedSubject(null)}
-              className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors"
+              className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition-colors cursor-pointer"
             >
               Fechar
             </button>
