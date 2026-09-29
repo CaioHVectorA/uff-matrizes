@@ -1,0 +1,28 @@
+{
+  "courseCode": "TEE-EE",
+  "courseName": "Engenharia Elétrica",
+  "matrixCode": "2023.1",
+  "matrixName": "Matriz Curricular Engenharia Elétrica UFF (Niterói)",
+  "campus": "Praia Vermelha - Niterói",
+  "degree": "Bacharelado",
+  "totalHours": 3700,
+  "mandatoryHours": 3000,
+  "electiveHours": 700,
+  "subjects": [
+    { "code": "GAN00021", "name": "Cálculo Diferencial e Integral I", "period": 1, "workload": 90, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "GAN00007", "name": "Álgebra Linear I", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "GFI00161", "name": "Física Experimental I", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "TCC00288", "name": "Programação de Computadores I", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "TEE00101", "name": "Introdução à Engenharia Elétrica", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "GAN00022", "name": "Cálculo Diferencial e Integral II", "period": 2, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["GAN00021"] },
+    { "code": "GFI00162", "name": "Física Geral e Experimental II", "period": 2, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["GFI00161"] },
+    { "code": "TEE00102", "name": "Circuitos Elétricos I", "period": 2, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["GAN00021"] },
+    { "code": "TEE00103", "name": "Circuitos Elétricos II", "period": 3, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["TEE00102"] },
+    { "code": "TEE00104", "name": "Eletrônica Geral I", "period": 3, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["TEE00102"] },
+    { "code": "TEE00105", "name": "Eletromagnetismo Aplicado", "period": 4, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["GFI00162", "GAN00022"] },
+    { "code": "TEE00106", "name": "Sistemas de Potência I", "period": 5, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["TEE00103"] },
+    { "code": "TEE00107", "name": "Controle e Automação I", "period": 6, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["TEE00103"] },
+    { "code": "TEE00108", "name": "Projeto Final de Curso em Engenharia Elétrica I", "period": 7, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["TEE00106"] },
+    { "code": "TEE00109", "name": "Projeto Final de Curso em Engenharia Elétrica II", "period": 8, "workload": 120, "type": "OBRIGATORIA", "prerequisites": ["TEE00108"] }
+  ]
+}

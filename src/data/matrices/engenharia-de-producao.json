@@ -1,0 +1,20 @@
+{
+  "courseCode": "TEP-EP",
+  "courseName": "Engenharia de Produção",
+  "matrixCode": "2023.1",
+  "matrixName": "Matriz Curricular Engenharia de Produção UFF (Niterói)",
+  "campus": "Praia Vermelha - Niterói",
+  "degree": "Bacharelado",
+  "totalHours": 3600,
+  "mandatoryHours": 2900,
+  "electiveHours": 700,
+  "subjects": [
+    { "code": "GAN00021", "name": "Cálculo Diferencial e Integral I", "period": 1, "workload": 90, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "GAN00007", "name": "Álgebra Linear I", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "TEP00101", "name": "Introdução à Engenharia de Produção", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "GET00118", "name": "Estatística e Probabilidade I", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "TEP00102", "name": "Pesquisa Operacional I", "period": 3, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["GAN00007"] },
+    { "code": "TEP00103", "name": "Gestão da Produção e Operações", "period": 4, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TEP00101"] },
+    { "code": "TEP00104", "name": "Gestão Qualidade", "period": 5, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["GET00118"] }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "courseCode": "TES-ES",
+  "courseName": "Engenharia de Software",
+  "matrixCode": "2023.1",
+  "matrixName": "Matriz Curricular Engenharia de Software UFF (Rio das Ostras)",
+  "campus": "Rio das Ostras",
+  "degree": "Bacharelado",
+  "totalHours": 3200,
+  "mandatoryHours": 2500,
+  "electiveHours": 700,
+  "subjects": [
+    { "code": "TCC00288", "name": "Programação de Computadores I", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "GAN00021", "name": "Cálculo I", "period": 1, "workload": 90, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "TES00101", "name": "Introdução à Engenharia de Software", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "GET00118", "name": "Estatística Aplicada", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "TCC00289", "name": "Programação de Computadores II", "period": 2, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TCC00288"] },
+    { "code": "TCC00290", "name": "Estrutura de Dados", "period": 2, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TCC00288"] },
+    { "code": "TCC00291", "name": "Matemática Discreta", "period": 2, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "TES00102", "name": "Requisitos de Software", "period": 3, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TES00101"] },
+    { "code": "TCC00298", "name": "Banco de Dados", "period": 3, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TCC00290"] },
+    { "code": "TCC00293", "name": "Análise de Algoritmos", "period": 3, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TCC00290"] },
+    { "code": "TES00103", "name": "Arquitetura de Software", "period": 4, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TES00102"] },
+    { "code": "TES00104", "name": "Testes e Qualidade de Software", "period": 4, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TCC00289"] },
+    { "code": "TES00105", "name": "Gerência de Projetos de Software", "period": 5, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TES00103"] },
+    { "code": "TES00106", "name": "Manutenção e Evolução de Software", "period": 5, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TES00103"] },
+    { "code": "TES00107", "name": "Projeto Integrado I", "period": 6, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["TES00104", "TES00105"] },
+    { "code": "TES00108", "name": "Projeto Integrado II", "period": 7, "workload": 120, "type": "OBRIGATORIA", "prerequisites": ["TES00107"] },
+    { "code": "TCC00311", "name": "Desenvolvimento Web Moderno", "period": 0, "workload": 60, "type": "OPTATIVA", "prerequisites": ["TCC00289"] },
+    { "code": "TES00110", "name": "Sistemas Embarcados", "period": 0, "workload": 60, "type": "OPTATIVA", "prerequisites": [] }
+  ]
+}

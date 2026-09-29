@@ -1,0 +1,20 @@
+{
+  "courseCode": "TET-ET",
+  "courseName": "Engenharia de Telecomunicações",
+  "matrixCode": "2023.1",
+  "matrixName": "Matriz Curricular Engenharia de Telecomunicações UFF (Niterói)",
+  "campus": "Praia Vermelha - Niterói",
+  "degree": "Bacharelado",
+  "totalHours": 3600,
+  "mandatoryHours": 2900,
+  "electiveHours": 700,
+  "subjects": [
+    { "code": "TCC00288", "name": "Programação de Computadores I", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "GAN00021", "name": "Cálculo Diferencial e Integral I", "period": 1, "workload": 90, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "TET00101", "name": "Introdução à Engenharia de Telecomunicações", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "GAN00022", "name": "Cálculo Diferencial e Integral II", "period": 2, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["GAN00021"] },
+    { "code": "TET00102", "name": "Sinais e Sistemas", "period": 3, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["GAN00022"] },
+    { "code": "TCC00299", "name": "Redes de Computadores I", "period": 4, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
+    { "code": "TET00103", "name": "Sistemas de Comunicação Digital", "period": 5, "workload": 60, "type": "OBRIGATORIA", "prerequisites": ["TET00102"] }
+  ]
+}
