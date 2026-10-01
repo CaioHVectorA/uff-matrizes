@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   X,
   CheckCircle2,
@@ -13,15 +13,25 @@ import {
   Award,
   GraduationCap,
   Calendar,
-  Layers
+  Layers,
+  ArrowLeftRight,
+  Sparkles,
+  Trash2,
+  Check
 } from 'lucide-react';
-import { SubjectAnalysisItem, DisplaySubjectStatus } from '@/lib/analytics/matrix-analyzer';
+import {
+  SubjectAnalysisItem,
+  DisplaySubjectStatus,
+} from '@/lib/analytics/matrix-analyzer';
+import { TranscriptRecord } from '@/lib/parser/transcript-parser';
 
 interface SubjectDetailModalProps {
   subject: SubjectAnalysisItem | null;
   onClose: () => void;
   allSubjectsMap: Map<string, SubjectAnalysisItem>;
   onSelectRelated: (subject: SubjectAnalysisItem) => void;
+  availableTranscriptRecords?: TranscriptRecord[];
+  onSetEquivalence?: (matrixCode: string, transcriptCode: string | null) => void;
 }
 
 export default function SubjectDetailModal({
@@ -29,8 +39,31 @@ export default function SubjectDetailModal({
   onClose,
   allSubjectsMap,
   onSelectRelated,
+  availableTranscriptRecords = [],
+  onSetEquivalence,
 }: SubjectDetailModalProps) {
+  const [selectedEquivCode, setSelectedEquivCode] = useState<string>('');
+  const [isEquivSaved, setIsEquivSaved] = useState(false);
+
   if (!subject) return null;
+
+  // Filter transcript records eligible to be mapped (exclude already directly matching current code)
+  const eligibleTranscriptRecords = availableTranscriptRecords.filter(
+    r => r.code.toUpperCase().trim() !== subject.code.toUpperCase().trim()
+  );
+
+  const handleApplyEquivalence = () => {
+    if (!selectedEquivCode || !onSetEquivalence) return;
+    onSetEquivalence(subject.code, selectedEquivCode);
+    setIsEquivSaved(true);
+    setTimeout(() => setIsEquivSaved(false), 2000);
+  };
+
+  const handleRemoveEquivalence = () => {
+    if (!onSetEquivalence) return;
+    onSetEquivalence(subject.code, null);
+    setSelectedEquivCode('');
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200">
@@ -66,6 +99,12 @@ export default function SubjectDetailModal({
               {subject.emphasis && (
                 <span className="text-xs font-semibold px-2 py-0.5 rounded-lg bg-indigo-950/80 text-indigo-300 border border-indigo-500/30">
                   Trilha / Ênfase: {subject.emphasis}
+                </span>
+              )}
+              {subject.isEquivalent && (
+                <span className="text-xs font-bold px-2 py-0.5 rounded-lg bg-teal-500/20 text-teal-300 border border-teal-500/40 flex items-center gap-1">
+                  <ArrowLeftRight className="w-3 h-3" />
+                  Equivalência Ativa
                 </span>
               )}
             </div>
@@ -112,7 +151,9 @@ export default function SubjectDetailModal({
                 </span>
                 <span className="text-base font-bold text-slate-100">
                   {subject.status === 'COMPLETED'
-                    ? 'Disciplina Concluída'
+                    ? subject.isEquivalent
+                      ? 'Concluída por Equivalência'
+                      : 'Disciplina Concluída'
                     : subject.status === 'IN_PROGRESS'
                     ? 'Em Andamento / Cursando'
                     : subject.status === 'UNLOCKED'
@@ -136,13 +177,99 @@ export default function SubjectDetailModal({
               )}
               {subject.periodSemester && (
                 <div className="text-right">
-                  <span className="text-xs text-slate-400 block">Semestre Cursado</span>
+                  <span className="text-xs text-slate-400 block">Semestre</span>
                   <span className="text-sm font-mono font-medium text-slate-200">
                     {subject.periodSemester}
                   </span>
                 </div>
               )}
             </div>
+          </div>
+
+          {/* Equivalence Management Card */}
+          <div className="p-4 rounded-xl bg-slate-950/60 border border-teal-500/30">
+            <div className="flex items-center justify-between gap-2 mb-3">
+              <h4 className="text-xs font-bold text-teal-300 uppercase tracking-wider flex items-center gap-1.5">
+                <ArrowLeftRight className="w-4 h-4 text-teal-400" />
+                Sistema de Equivalências (Abatimento)
+              </h4>
+              {subject.isEquivalent && (
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 border border-teal-500/30 uppercase">
+                  {subject.equivalenceInfo?.isAutoMatched ? 'Auto UFF' : 'Manual'}
+                </span>
+              )}
+            </div>
+
+            {subject.isEquivalent && subject.equivalenceInfo ? (
+              <div className="space-y-3">
+                <div className="p-3 bg-teal-950/30 rounded-lg border border-teal-500/30 text-xs flex items-center justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-1.5 font-semibold text-teal-200">
+                      <Sparkles className="w-3.5 h-3.5 text-teal-400 shrink-0" />
+                      <span>Equivalente cursada:</span>
+                      <span className="font-mono bg-teal-900/60 px-1.5 py-0.2 rounded text-teal-100">
+                        {subject.equivalenceInfo.equivalentCode}
+                      </span>
+                    </div>
+                    <p className="text-slate-300 text-xs mt-1">
+                      {subject.equivalenceInfo.equivalentName}
+                    </p>
+                    <p className="text-slate-400 text-[11px] mt-0.5">
+                      Nota: <strong className="text-teal-300">{subject.equivalenceInfo.gradeRaw || subject.equivalenceInfo.grade}</strong> | Semestre: {subject.equivalenceInfo.periodSemester || 'N/A'}
+                    </p>
+                  </div>
+
+                  {onSetEquivalence && (
+                    <button
+                      onClick={handleRemoveEquivalence}
+                      className="px-3 py-1.5 bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30 rounded-lg text-xs font-medium flex items-center gap-1 transition-colors shrink-0"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                      Remover
+                    </button>
+                  )}
+                </div>
+                <p className="text-[11px] text-slate-400">
+                  Esta disciplina foi abatida pela matéria equivalente cursada no histórico, satisfazendo os pré-requisitos seguintes no fluxo.
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                <p className="text-xs text-slate-300">
+                  Cursou esta matéria com outro código ou departamento (ex: Mecânica dos Corpos Rígidos em vez de Mecânica Geral, ou Cálculo transferido)? Vincule abaixo:
+                </p>
+
+                {onSetEquivalence && eligibleTranscriptRecords.length > 0 ? (
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                    <select
+                      value={selectedEquivCode}
+                      onChange={e => setSelectedEquivCode(e.target.value)}
+                      className="flex-1 bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-lg p-2.5 focus:ring-1 focus:ring-teal-500 focus:outline-none"
+                    >
+                      <option value="">-- Selecione uma matéria concluída do seu histórico --</option>
+                      {eligibleTranscriptRecords.map(r => (
+                        <option key={r.code} value={r.code}>
+                          {r.code} - {r.name} (Nota: {r.gradeRaw || r.grade})
+                        </option>
+                      ))}
+                    </select>
+
+                    <button
+                      onClick={handleApplyEquivalence}
+                      disabled={!selectedEquivCode}
+                      className="px-4 py-2.5 bg-teal-600 hover:bg-teal-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-xs rounded-lg flex items-center justify-center gap-1.5 transition-colors shrink-0"
+                    >
+                      {isEquivSaved ? <Check className="w-4 h-4 text-white" /> : <ArrowLeftRight className="w-4 h-4" />}
+                      {isEquivSaved ? 'Vinculado!' : 'Abater por Equivalência'}
+                    </button>
+                  </div>
+                ) : (
+                  <p className="text-[11px] text-slate-400 italic">
+                    Nenhuma outra disciplina aprovada disponível no histórico para vincular.
+                  </p>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Workload Breakdown */}
@@ -232,6 +359,11 @@ export default function SubjectDetailModal({
                           <span className="text-xs text-slate-300 ml-2">
                             {prereqSubject?.name || 'Disciplina'}
                           </span>
+                          {prereqSubject?.isEquivalent && (
+                            <span className="ml-2 text-[10px] text-teal-400 bg-teal-950/80 px-1.5 py-0.5 rounded border border-teal-500/30">
+                              ⇄ Equivalente ({prereqSubject.equivalenceInfo?.equivalentCode})
+                            </span>
+                          )}
                         </div>
                       </div>
 

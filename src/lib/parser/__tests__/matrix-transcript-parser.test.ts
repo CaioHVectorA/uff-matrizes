@@ -29,12 +29,12 @@ test('parseMatrixText parses UFF Engenharia Elétrica matrix text correctly', ()
   assert.ok(calc2?.prerequisites.includes('GMA00154'), 'Cálculo 2 should have GMA00154');
 });
 
-test('parseTranscriptText parses Caio Henrique transcript text correctly', () => {
+test('parseTranscriptText parses demonstration transcript text correctly', () => {
   const transcript = parseTranscriptText(SAMPLE_TRANSCRIPT_TEXT);
 
-  assert.strictEqual(transcript.studentName, 'CAIO HENRIQUE OLIVEIRA BATISTA');
-  assert.strictEqual(transcript.registration, '124038028');
-  assert.strictEqual(transcript.cpf, '16635415742');
+  assert.strictEqual(transcript.studentName, 'ESTUDANTE DEMONSTRAÇÃO');
+  assert.strictEqual(transcript.registration, '120000000');
+  assert.strictEqual(transcript.cpf, '000.000.000-00');
   assert.strictEqual(transcript.cr, 7.0);
   assert.strictEqual(transcript.completedHours, 1273);
   assert.ok(transcript.records.length >= 20, `Should parse all transcript records, got ${transcript.records.length}`);
@@ -57,8 +57,8 @@ test('analyzeStudentProgress accurately identifies completed, unlocked, and bloc
   const transcript = parseTranscriptText(SAMPLE_TRANSCRIPT_TEXT);
   const analysis = analyzeStudentProgress(matrix, transcript);
 
-  assert.strictEqual(analysis.studentName, 'CAIO HENRIQUE OLIVEIRA BATISTA');
-  assert.strictEqual(analysis.registration, '124038028');
+  assert.strictEqual(analysis.studentName, 'ESTUDANTE DEMONSTRAÇÃO');
+  assert.strictEqual(analysis.registration, '120000000');
   assert.strictEqual(analysis.cr, 7.0);
 
   assert.ok(analysis.completedSubjectsCount > 0, 'Should have completed subjects');
@@ -83,3 +83,30 @@ test('analyzeStudentProgress accurately identifies completed, unlocked, and bloc
   assert.strictEqual(calc3?.status, 'UNLOCKED');
 });
 
+test('analyzeStudentProgress correctly applies subject equivalences and unlocks downstream prerequisites', () => {
+  const matrix = parseMatrixText(SAMPLE_MATRIX_TEXT);
+  const transcript = parseTranscriptText(SAMPLE_TRANSCRIPT_TEXT);
+
+  // Analyze with default UFF equivalences (TEC00204 is in transcript, GFI00141 is in matrix)
+  const analysis = analyzeStudentProgress(matrix, transcript);
+  const allSubjects = analysis.periodGroups.flatMap(g => g.subjects);
+
+  // 1. Mecânica Geral V (GFI00141) should be COMPLETED by equivalence with TEC00204 (Mecânica dos Corpos Rígidos)
+  const mecGeral = allSubjects.find(s => s.code === 'GFI00141');
+  assert.ok(mecGeral, 'GFI00141 should exist in analyzed matrix');
+  assert.strictEqual(mecGeral?.status, 'COMPLETED', 'GFI00141 should be COMPLETED due to equivalence with TEC00204');
+  assert.strictEqual(mecGeral?.isEquivalent, true);
+  assert.strictEqual(mecGeral?.equivalenceInfo?.equivalentCode, 'TEC00204');
+  assert.strictEqual(mecGeral?.grade, 6.1);
+
+  // 2. Downstream subject: Resistência dos Materiais (TEM00177) has GFI00141 as prerequisite.
+  // Since GFI00141 is satisfied by equivalence, TEM00177 should be UNLOCKED!
+  const resMat = allSubjects.find(s => s.code === 'TEM00177');
+  assert.ok(resMat, 'TEM00177 should exist');
+  assert.strictEqual(resMat?.status, 'UNLOCKED', 'TEM00177 should be UNLOCKED because its prerequisite GFI00141 was satisfied by equivalence');
+
+  // 3. TEC00204 should NOT be duplicated as an orphan in Period 0
+  const period0Subjects = analysis.periodGroups.find(g => g.period === 0)?.subjects || [];
+  const orphanTec = period0Subjects.find(s => s.code === 'TEC00204');
+  assert.strictEqual(orphanTec, undefined, 'TEC00204 should not be duplicated in Period 0 since it was consumed by GFI00141 equivalence');
+});

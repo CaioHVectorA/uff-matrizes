@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import {
   GraduationCap,
   Sparkles,
@@ -8,7 +8,8 @@ import {
   Table as TableIcon,
   Search,
   RefreshCw,
-  AlertTriangle
+  AlertTriangle,
+  ArrowLeftRight
 } from 'lucide-react';
 import {
   SubjectAnalysisItem,
@@ -17,7 +18,7 @@ import {
 } from '@/lib/analytics/matrix-analyzer';
 import { extractTextFromPdfFile } from '@/lib/parser/pdf-reader';
 import { parseMatrixText } from '@/lib/parser/matrix-parser';
-import { parseTranscriptText } from '@/lib/parser/transcript-parser';
+import { parseTranscriptText, ParsedTranscript } from '@/lib/parser/transcript-parser';
 import {
   saveAppStateToStorage,
   loadAppStateFromStorage,
@@ -36,6 +37,13 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Raw and parsed persistent states
+  const [currentMatrixData, setCurrentMatrixData] = useState<MatrixRawData | null>(null);
+  const [currentTranscriptData, setCurrentTranscriptData] = useState<ParsedTranscript | null>(null);
+  const [rawMatrixTextCache, setRawMatrixTextCache] = useState<string>('');
+  const [rawTranscriptTextCache, setRawTranscriptTextCache] = useState<string>('');
+  const [customEquivalences, setCustomEquivalences] = useState<Record<string, string>>({});
+
   // Analysis result state
   const [analysisResult, setAnalysisResult] = useState<{
     summary: StudentProgressSummary;
@@ -51,30 +59,28 @@ export default function Home() {
   const [selectedEmphasis, setSelectedEmphasis] = useState<string>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Auto-restore state from localStorage on initial load or load default sample
+  // Restore state from localStorage on initial load (if previously uploaded by user)
   useEffect(() => {
     const saved = loadAppStateFromStorage();
-    if (saved && saved.analysisResult && saved.matrixData) {
+    if (saved && saved.matrixData && saved.transcriptData) {
+      const eqMap = saved.customEquivalences || {};
+      setCustomEquivalences(eqMap);
+      setCurrentMatrixData(saved.matrixData);
+      setCurrentTranscriptData(saved.transcriptData);
+      setRawMatrixTextCache(saved.rawMatrixText || '');
+      setRawTranscriptTextCache(saved.rawTranscriptText || '');
+
+      const summary = analyzeStudentProgress(saved.matrixData, saved.transcriptData, eqMap);
+      setAnalysisResult({
+        summary,
+        matrix: saved.matrixData,
+      });
+    } else if (saved && saved.analysisResult && saved.matrixData) {
       setAnalysisResult({
         summary: saved.analysisResult,
         matrix: saved.matrixData,
       });
-    } else {
-      // Auto-load Engenharia Elétrica & Caio sample data so the canvas is immediately active!
-      try {
-        const matrix = parseMatrixText(SAMPLE_MATRIX_TEXT);
-        const transcript = parseTranscriptText(SAMPLE_TRANSCRIPT_TEXT);
-        const summary = analyzeStudentProgress(matrix, transcript);
-        setAnalysisResult({ summary, matrix });
-        saveAppStateToStorage({
-          analysisResult: summary,
-          matrixData: matrix,
-          rawMatrixText: SAMPLE_MATRIX_TEXT,
-          rawTranscriptText: SAMPLE_TRANSCRIPT_TEXT,
-        });
-      } catch (err) {
-        console.error('Failed to auto-load sample data:', err);
-      }
+      setCurrentMatrixData(saved.matrixData);
     }
   }, []);
 
@@ -104,7 +110,7 @@ export default function Home() {
         throw new Error('Por favor, envie o Histórico Escolar ou a Matriz Curricular (PDF ou Texto).');
       }
 
-      // If matrix text is missing, fallback to default Engenharia Elétrica
+      // If matrix text is missing, fallback to default matrix
       if (!finalMatrixText.trim()) {
         finalMatrixText = SAMPLE_MATRIX_TEXT;
       }
@@ -121,7 +127,12 @@ export default function Home() {
         throw new Error('Não foi possível identificar disciplinas na Matriz Curricular. Verifique se o arquivo enviado é uma Matriz válida do IdUFF.');
       }
 
-      const summary = analyzeStudentProgress(matrixData, transcriptData);
+      const summary = analyzeStudentProgress(matrixData, transcriptData, customEquivalences);
+
+      setCurrentMatrixData(matrixData);
+      setCurrentTranscriptData(transcriptData);
+      setRawMatrixTextCache(finalMatrixText);
+      setRawTranscriptTextCache(finalTranscriptText);
 
       setAnalysisResult({
         summary,
@@ -136,6 +147,8 @@ export default function Home() {
       saveAppStateToStorage({
         analysisResult: summary,
         matrixData,
+        transcriptData,
+        customEquivalences,
         rawMatrixText: finalMatrixText,
         rawTranscriptText: finalTranscriptText,
       });
@@ -147,10 +160,63 @@ export default function Home() {
     }
   };
 
+  // Handle Equivalence Assignment or Removal
+  const handleSetEquivalence = useCallback((matrixCode: string, transcriptCode: string | null) => {
+    const upperMatrix = matrixCode.toUpperCase().trim();
+    const newEquivalences = { ...customEquivalences };
+
+    if (!transcriptCode) {
+      delete newEquivalences[upperMatrix];
+    } else {
+      newEquivalences[upperMatrix] = transcriptCode.toUpperCase().trim();
+    }
+
+    setCustomEquivalences(newEquivalences);
+
+    if (currentMatrixData && currentTranscriptData) {
+      const updatedSummary = analyzeStudentProgress(
+        currentMatrixData,
+        currentTranscriptData,
+        newEquivalences
+      );
+
+      setAnalysisResult({
+        summary: updatedSummary,
+        matrix: currentMatrixData,
+      });
+
+      // Update selectedSubject in modal if currently open
+      if (selectedSubject) {
+        const allUpdated = updatedSummary.periodGroups.flatMap(g => g.subjects);
+        const updatedSelected = allUpdated.find(
+          s => s.code.toUpperCase().trim() === selectedSubject.code.toUpperCase().trim()
+        );
+        if (updatedSelected) {
+          setSelectedSubject(updatedSelected);
+        }
+      }
+
+      // Persist updated equivalences to localStorage
+      saveAppStateToStorage({
+        analysisResult: updatedSummary,
+        matrixData: currentMatrixData,
+        transcriptData: currentTranscriptData,
+        customEquivalences: newEquivalences,
+        rawMatrixText: rawMatrixTextCache,
+        rawTranscriptText: rawTranscriptTextCache,
+      });
+    }
+  }, [customEquivalences, currentMatrixData, currentTranscriptData, selectedSubject, rawMatrixTextCache, rawTranscriptTextCache]);
+
   const handleClearData = () => {
     clearAppStateFromStorage();
     setAnalysisResult(null);
     setSelectedSubject(null);
+    setCurrentMatrixData(null);
+    setCurrentTranscriptData(null);
+    setRawMatrixTextCache('');
+    setRawTranscriptTextCache('');
+    setCustomEquivalences({});
     setError(null);
   };
 
@@ -160,7 +226,7 @@ export default function Home() {
     if (!analysisResult) return map;
     for (const group of analysisResult.summary.periodGroups) {
       for (const subj of group.subjects) {
-        map.set(subj.code.toUpperCase(), subj);
+        map.set(subj.code.toUpperCase().trim(), subj);
       }
     }
     return map;
@@ -185,7 +251,7 @@ export default function Home() {
                 </span>
               </div>
               <p className="text-[11px] text-slate-400">
-                Fluxograma Interativo em Canvas & Acompanhamento de Ênfases
+                Fluxograma Interativo em Canvas, Pré-requisitos & Equivalências
               </p>
             </div>
           </div>
@@ -290,7 +356,7 @@ export default function Home() {
                   </h3>
                   <p className="text-xs text-slate-400">
                     {activeView === 'flowchart'
-                      ? 'Navegue pelo mapa de dependências, visualize o fluxo de desbloqueio, ênfases e clique em qualquer nó para inspecionar pré-requisitos.'
+                      ? 'Navegue pelo mapa de dependências, visualize o fluxo de desbloqueio, ênfases e clique em qualquer nó para inspecionar ou vincular equivalências.'
                       : 'Lista detalhada de matérias organizadas por semestre letivo.'}
                   </p>
                 </div>
@@ -321,18 +387,19 @@ export default function Home() {
         )}
       </main>
 
-
       {/* Subject Detail Inspection Modal */}
       <SubjectDetailModal
         subject={selectedSubject}
         onClose={() => setSelectedSubject(null)}
         allSubjectsMap={allSubjectsMap}
         onSelectRelated={subj => setSelectedSubject(subj)}
+        availableTranscriptRecords={analysisResult?.summary.availableCompletedTranscriptRecords}
+        onSetEquivalence={handleSetEquivalence}
       />
 
       {/* Footer */}
       <footer className="mt-auto py-6 border-t border-slate-900 text-center text-xs text-slate-500">
-        <p>UFF Matrizes & Histórico Escolar • Compatível com IdUFF / PROGRAD UFF</p>
+        <p>UFF Matrizes & Histórico Escolar • 100% Client-Side • Compatível com IdUFF / PROGRAD UFF</p>
       </footer>
     </div>
   );

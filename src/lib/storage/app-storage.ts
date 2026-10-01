@@ -12,6 +12,7 @@ export interface StoredAppState {
   matrixData?: MatrixRawData;
   transcriptData?: ParsedTranscript;
   analysisResult?: StudentProgressSummary;
+  customEquivalences?: Record<string, string>;
   updatedAt?: string;
 }
 

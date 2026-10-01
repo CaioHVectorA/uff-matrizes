@@ -12,7 +12,8 @@ import {
   Lock,
   AlertCircle,
   Info,
-  Layers
+  Layers,
+  ArrowLeftRight
 } from 'lucide-react';
 import {
   SubjectAnalysisItem,
@@ -653,11 +654,20 @@ export default function FlowchartCanvas({
                           {subject.name}
                         </h4>
 
-                        {/* Emphasis pill if available */}
+                        {/* Emphasis or Equivalence pill if available */}
                         {subject.emphasis && (
                           <div className="mb-2">
                             <span className="text-[9px] font-semibold text-indigo-300 bg-indigo-950/80 border border-indigo-500/20 px-1.5 py-0.5 rounded">
                               Trilha: {subject.emphasis}
+                            </span>
+                          </div>
+                        )}
+
+                        {subject.isEquivalent && (
+                          <div className="mb-1.5 flex items-center gap-1">
+                            <span className="text-[9px] font-bold text-teal-300 bg-teal-950/90 border border-teal-500/40 px-1.5 py-0.5 rounded flex items-center gap-1">
+                              <ArrowLeftRight className="w-2.5 h-2.5 text-teal-400" />
+                              Eq: {subject.equivalenceInfo?.equivalentCode}
                             </span>
                           </div>
                         )}
@@ -719,6 +729,12 @@ export default function FlowchartCanvas({
               <span className="text-slate-300">{cfg.label}</span>
             </div>
           ))}
+          <div className="flex items-center gap-1.5 pl-2 border-l border-slate-700">
+            <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/40 flex items-center gap-1">
+              <ArrowLeftRight className="w-2.5 h-2.5" />
+              Equivalência
+            </span>
+          </div>
         </div>
 
         <div className="text-slate-400 text-[11px] flex items-center gap-3">

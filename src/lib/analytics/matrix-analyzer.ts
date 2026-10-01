@@ -9,6 +9,15 @@ export interface FlowchartEdge {
   type: 'PREREQUISITE' | 'COREQUISITE';
 }
 
+export interface SubjectEquivalenceInfo {
+  equivalentCode: string;
+  equivalentName: string;
+  grade?: number;
+  gradeRaw?: string;
+  periodSemester?: string;
+  isAutoMatched?: boolean;
+}
+
 export interface SubjectAnalysisItem {
   code: string;
   name: string;
@@ -28,6 +37,8 @@ export interface SubjectAnalysisItem {
   isChPreReqMissing: boolean;
   unlocksNext: string[]; // Codes of subjects that depend on this one
   emphasis?: string; // e.g. "Sistemas de Potência"
+  isEquivalent?: boolean;
+  equivalenceInfo?: SubjectEquivalenceInfo;
 }
 
 export interface MatrixPeriodGroup {
@@ -36,6 +47,16 @@ export interface MatrixPeriodGroup {
   subjects: SubjectAnalysisItem[];
   completedHours: number;
   totalHours: number;
+}
+
+export interface ActiveEquivalenceEntry {
+  matrixCode: string;
+  matrixName: string;
+  transcriptCode: string;
+  transcriptName: string;
+  grade?: number;
+  gradeRaw?: string;
+  isAutoMatched?: boolean;
 }
 
 export interface StudentProgressSummary {
@@ -89,15 +110,50 @@ export interface StudentProgressSummary {
   // Graph and Groups
   edges: FlowchartEdge[];
   periodGroups: MatrixPeriodGroup[];
+
+  // Equivalences
+  activeEquivalences: ActiveEquivalenceEntry[];
+  availableCompletedTranscriptRecords: TranscriptRecord[];
 }
 
+/**
+ * Built-in dictionary of well-known UFF subject equivalences (especially Engineering / Exact Sciences).
+ * Keys are uppercase Matrix codes; values are lists of equivalent subject codes.
+ */
+export const DEFAULT_UFF_EQUIVALENCES: Record<string, string[]> = {
+  // Mecânica Geral V <-> Mecânica dos Corpos Rígidos (TEC00204 / TEC00037 / etc.)
+  'GFI00141': ['TEC00204', 'TEC00037', 'TEC00180', 'TEM00007'],
+  'TEC00204': ['GFI00141'],
+  // Cálculo
+  'GMA00154': ['GMA00108', 'GMA00019', 'GMA00043'], // Cálculo 1 <-> Cálculo I-A / Cálculo I
+  'GAN00140': ['GAN00021', 'GAN00007', 'GAN00147'], // Álgebra Linear <-> Álgebra Linear I
+  'GMA00155': ['GMA00109', 'GMA00020', 'GMA00044'], // Cálculo 2 <-> Cálculo II-A
+  'GMA00156': ['GMA00110', 'GMA00021', 'GMA00045'], // Cálculo 3 <-> Cálculo III-A
+  'GMA00158': ['GMA00111', 'GMA00022', 'GMA00046'], // Cálculo 4 <-> Cálculo IV-A
+  // Física
+  'GFI00158': ['GFI00118', 'GFI00120', 'GFI00131'], // Física I <-> Física Teórica e Experimental I
+  'GFI00159': ['GFI00119', 'GFI00121', 'GFI00132'], // Física II <-> Física Teórica e Experimental II
+  'GFI00160': ['GFI00122', 'GFI00133'],             // Física III <-> Física Teórica e Experimental III
+  // Química
+  'GQI00048': ['GQI00029', 'GQI00018', 'GQI00030'], // Química Geral
+  // Computação
+  'TCC00326': ['TCC00308', 'TCC00175', 'TCC00173'], // Prog. Computadores
+  'TCC00319': ['TCC00305', 'TCC00174'],             // Estrutura de Dados
+  // Estatística
+  'GET00177': ['GET00116', 'GET00121', 'GET00179'], // Estatística Básica
+  // Termodinâmica & Resistência dos Materiais
+  'TEM00275': ['TEM00102', 'TEM00175'],
+  'TEM00177': ['TEM00112', 'TEM00176'],
+};
 
 /**
- * Aligns student transcript records with a curriculum matrix and computes progress analytics and dependency graph.
+ * Aligns student transcript records with a curriculum matrix, applies subject equivalences,
+ * and computes progress analytics and dependency graph.
  */
 export function analyzeStudentProgress(
   matrix: MatrixRawData,
-  transcript: ParsedTranscript
+  transcript: ParsedTranscript,
+  customEquivalences?: Record<string, string> // matrixCode -> transcriptCode
 ): StudentProgressSummary {
   const completedCodes = new Set<string>();
   const inProgressCodes = new Set<string>();
@@ -105,7 +161,7 @@ export function analyzeStudentProgress(
 
   // Map student records
   for (const record of transcript.records) {
-    const upperCode = record.code.toUpperCase();
+    const upperCode = record.code.toUpperCase().trim();
     recordMap.set(upperCode, record);
 
     if (record.status === 'APROVADO' || record.status === 'DISPENSA') {
@@ -115,7 +171,118 @@ export function analyzeStudentProgress(
     }
   }
 
-  // Calculate current completed hours first for CHPre-Req check
+  // All completed records available for manual equivalence selection
+  const availableCompletedTranscriptRecords: TranscriptRecord[] = transcript.records.filter(
+    r => r.status === 'APROVADO' || r.status === 'DISPENSA'
+  );
+
+  // Set of matrix codes
+  const matrixCodes = new Set(matrix.subjects.map(s => s.code.toUpperCase().trim()));
+
+  // Process Subject Equivalences
+  const activeEquivalences: ActiveEquivalenceEntry[] = [];
+  const matrixToEquivalence = new Map<string, SubjectEquivalenceInfo>();
+  const consumedTranscriptCodes = new Set<string>();
+
+  // 1. Process custom user-defined equivalences first
+  if (customEquivalences) {
+    for (const [mCode, tCode] of Object.entries(customEquivalences)) {
+      const upperM = mCode.toUpperCase().trim();
+      const upperT = tCode.toUpperCase().trim();
+
+      if (upperM && upperT && upperM !== upperT) {
+        const tRecord = recordMap.get(upperT);
+        const mSubject = matrix.subjects.find(s => s.code.toUpperCase().trim() === upperM);
+
+        if (tRecord) {
+          const isCompleted = tRecord.status === 'APROVADO' || tRecord.status === 'DISPENSA';
+          const isInProg = tRecord.status === 'EM_ANDAMENTO';
+
+          if (isCompleted) {
+            completedCodes.add(upperM);
+          } else if (isInProg) {
+            inProgressCodes.add(upperM);
+          }
+
+          consumedTranscriptCodes.add(upperT);
+
+          const eqInfo: SubjectEquivalenceInfo = {
+            equivalentCode: tRecord.code,
+            equivalentName: tRecord.name,
+            grade: tRecord.grade,
+            gradeRaw: tRecord.gradeRaw,
+            periodSemester: tRecord.periodSemester,
+            isAutoMatched: false,
+          };
+          matrixToEquivalence.set(upperM, eqInfo);
+
+          activeEquivalences.push({
+            matrixCode: upperM,
+            matrixName: mSubject?.name || upperM,
+            transcriptCode: tRecord.code,
+            transcriptName: tRecord.name,
+            grade: tRecord.grade,
+            gradeRaw: tRecord.gradeRaw,
+            isAutoMatched: false,
+          });
+        }
+      }
+    }
+  }
+
+  // 2. Process automatic known UFF equivalences for remaining uncompleted matrix subjects
+  for (const subject of matrix.subjects) {
+    const upperM = subject.code.toUpperCase().trim();
+
+    // If matrix subject is not directly completed and has no custom equivalence
+    if (!completedCodes.has(upperM) && !inProgressCodes.has(upperM) && !matrixToEquivalence.has(upperM)) {
+      const possibleEquivalents = DEFAULT_UFF_EQUIVALENCES[upperM] || [];
+
+      for (const candidateCode of possibleEquivalents) {
+        const upperCand = candidateCode.toUpperCase().trim();
+        const tRecord = recordMap.get(upperCand);
+
+        if (tRecord && !consumedTranscriptCodes.has(upperCand)) {
+          const isCompleted = tRecord.status === 'APROVADO' || tRecord.status === 'DISPENSA';
+          const isInProg = tRecord.status === 'EM_ANDAMENTO';
+
+          if (isCompleted || isInProg) {
+            if (isCompleted) {
+              completedCodes.add(upperM);
+            } else {
+              inProgressCodes.add(upperM);
+            }
+
+            consumedTranscriptCodes.add(upperCand);
+
+            const eqInfo: SubjectEquivalenceInfo = {
+              equivalentCode: tRecord.code,
+              equivalentName: tRecord.name,
+              grade: tRecord.grade,
+              gradeRaw: tRecord.gradeRaw,
+              periodSemester: tRecord.periodSemester,
+              isAutoMatched: true,
+            };
+            matrixToEquivalence.set(upperM, eqInfo);
+
+            activeEquivalences.push({
+              matrixCode: upperM,
+              matrixName: subject.name,
+              transcriptCode: tRecord.code,
+              transcriptName: tRecord.name,
+              grade: tRecord.grade,
+              gradeRaw: tRecord.gradeRaw,
+              isAutoMatched: true,
+            });
+
+            break; // Matched first available candidate
+          }
+        }
+      }
+    }
+  }
+
+  // Calculate current completed hours for CHPre-Req check
   let currentCompletedHours = 0;
   for (const record of transcript.records) {
     if (record.status === 'APROVADO' || record.status === 'DISPENSA') {
@@ -131,19 +298,19 @@ export function analyzeStudentProgress(
   const edges: FlowchartEdge[] = [];
 
   for (const subject of matrix.subjects) {
-    const toCode = subject.code.toUpperCase();
+    const toCode = subject.code.toUpperCase().trim();
     const prereqs = subject.prerequisites || [];
     const coreqs = subject.corequisites || [];
 
     for (const pCode of prereqs) {
-      const pUpper = pCode.toUpperCase();
+      const pUpper = pCode.toUpperCase().trim();
       if (!unlocksNextMap.has(pUpper)) unlocksNextMap.set(pUpper, []);
       unlocksNextMap.get(pUpper)!.push(toCode);
       edges.push({ from: pUpper, to: toCode, type: 'PREREQUISITE' });
     }
 
     for (const cCode of coreqs) {
-      const cUpper = cCode.toUpperCase();
+      const cUpper = cCode.toUpperCase().trim();
       if (!unlocksNextMap.has(cUpper)) unlocksNextMap.set(cUpper, []);
       unlocksNextMap.get(cUpper)!.push(toCode);
       edges.push({ from: cUpper, to: toCode, type: 'COREQUISITE' });
@@ -153,22 +320,24 @@ export function analyzeStudentProgress(
   // Check 9th period complete status
   const periods1to9MandatoryCodes = matrix.subjects
     .filter(s => s.period >= 1 && s.period <= 9 && s.type === 'OBRIGATORIA')
-    .map(s => s.code.toUpperCase());
+    .map(s => s.code.toUpperCase().trim());
   const isPeriod9Complete = periods1to9MandatoryCodes.every(c => completedCodes.has(c));
 
   const analyzedSubjects: SubjectAnalysisItem[] = [];
 
   // Analyze each matrix subject
   for (const subject of matrix.subjects) {
-    const code = subject.code.toUpperCase();
-    const record = recordMap.get(code);
+    const code = subject.code.toUpperCase().trim();
+    const directRecord = recordMap.get(code);
+    const eqInfo = matrixToEquivalence.get(code);
+
     const prereqs = subject.prerequisites || [];
     const coreqs = subject.corequisites || [];
 
     // Find missing prerequisites
-    const missingPrerequisites = prereqs.filter(pCode => !completedCodes.has(pCode.toUpperCase()));
+    const missingPrerequisites = prereqs.filter(pCode => !completedCodes.has(pCode.toUpperCase().trim()));
     const missingCorequisites = coreqs.filter(
-      cCode => !completedCodes.has(cCode.toUpperCase()) && !inProgressCodes.has(cCode.toUpperCase())
+      cCode => !completedCodes.has(cCode.toUpperCase().trim()) && !inProgressCodes.has(cCode.toUpperCase().trim())
     );
 
     // Check CHPre-Req condition
@@ -199,6 +368,10 @@ export function analyzeStudentProgress(
       status = 'BLOCKED';
     }
 
+    const grade = eqInfo ? eqInfo.grade : directRecord?.grade;
+    const gradeRaw = eqInfo ? eqInfo.gradeRaw : directRecord?.gradeRaw;
+    const periodSemester = eqInfo ? eqInfo.periodSemester : directRecord?.periodSemester;
+
     analyzedSubjects.push({
       code: subject.code,
       name: subject.name,
@@ -210,22 +383,28 @@ export function analyzeStudentProgress(
       chPreReq: subject.chPreReq,
       specialPrereq: subject.specialPrereq,
       status,
-      grade: record?.grade,
-      gradeRaw: record?.gradeRaw,
-      periodSemester: record?.periodSemester,
+      grade,
+      gradeRaw,
+      periodSemester,
       missingPrerequisites,
       missingCorequisites,
       isChPreReqMissing,
       unlocksNext: unlocksNextMap.get(code) || [],
       emphasis: subject.emphasis,
+      isEquivalent: !!eqInfo,
+      equivalenceInfo: eqInfo,
     });
   }
 
   // Account for extra completed subjects from transcript that might not be in the matrix
-  const matrixCodes = new Set(matrix.subjects.map(s => s.code.toUpperCase()));
+  // (excluding those that have been consumed as equivalences)
   for (const record of transcript.records) {
-    const upperCode = record.code.toUpperCase();
-    if (!matrixCodes.has(upperCode) && (record.status === 'APROVADO' || record.status === 'DISPENSA')) {
+    const upperCode = record.code.toUpperCase().trim();
+    if (
+      !matrixCodes.has(upperCode) &&
+      !consumedTranscriptCodes.has(upperCode) &&
+      (record.status === 'APROVADO' || record.status === 'DISPENSA')
+    ) {
       analyzedSubjects.push({
         code: record.code,
         name: record.name,
@@ -242,6 +421,7 @@ export function analyzeStudentProgress(
         missingCorequisites: [],
         isChPreReqMissing: false,
         unlocksNext: [],
+        isEquivalent: false,
       });
     }
   }
@@ -403,7 +583,8 @@ export function analyzeStudentProgress(
     nextRecommendedSubjects,
     edges,
     periodGroups,
+
+    activeEquivalences,
+    availableCompletedTranscriptRecords,
   };
 }
-
-

@@ -9,7 +9,8 @@ import {
   AlertCircle,
   ChevronDown,
   Layers,
-  ArrowRight
+  ArrowRight,
+  ArrowLeftRight
 } from 'lucide-react';
 import {
   SubjectAnalysisItem,
@@ -133,9 +134,18 @@ export default function TableView({
                         </div>
                       </div>
 
-                      <h4 className="font-semibold text-xs text-slate-200 line-clamp-2 mb-3">
+                      <h4 className="font-semibold text-xs text-slate-200 line-clamp-2 mb-2">
                         {subject.name}
                       </h4>
+
+                      {subject.isEquivalent && (
+                        <div className="mb-2">
+                          <span className="text-[10px] font-bold text-teal-300 bg-teal-950/80 border border-teal-500/30 px-1.5 py-0.5 rounded flex items-center gap-1 w-fit">
+                            <ArrowLeftRight className="w-2.5 h-2.5" />
+                            Eq: {subject.equivalenceInfo?.equivalentCode}
+                          </span>
+                        </div>
+                      )}
                     </div>
 
                     <div className="pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-xs">
