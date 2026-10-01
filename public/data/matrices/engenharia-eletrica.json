@@ -1,28 +1,1197 @@
 {
-  "courseCode": "TEE-EE",
-  "courseName": "Engenharia Elétrica",
-  "matrixCode": "2023.1",
-  "matrixName": "Matriz Curricular Engenharia Elétrica UFF (Niterói)",
-  "campus": "Praia Vermelha - Niterói",
-  "degree": "Bacharelado",
-  "totalHours": 3700,
-  "mandatoryHours": 3000,
-  "electiveHours": 700,
+  "courseCode": "38.01.003 Versão: 1 Turno: Integral",
+  "courseName": "ENGENHARIA ELÉTRICA",
+  "matrixCode": "1",
+  "matrixName": "Matriz Curricular ENGENHARIA ELÉTRICA",
+  "totalHours": 3979,
+  "mandatoryHours": 3069,
+  "electiveHours": 120,
+  "hoursBreakdown": {
+    "mandatory": 3069,
+    "choice": 510,
+    "elective": 120,
+    "complementary": 280,
+    "total": 3979
+  },
   "subjects": [
-    { "code": "GAN00021", "name": "Cálculo Diferencial e Integral I", "period": 1, "workload": 90, "type": "OBRIGATORIA", "prerequisites": [] },
-    { "code": "GAN00007", "name": "Álgebra Linear I", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
-    { "code": "GFI00161", "name": "Física Experimental I", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
-    { "code": "TCC00288", "name": "Programação de Computadores I", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
-    { "code": "TEE00101", "name": "Introdução à Engenharia Elétrica", "period": 1, "workload": 60, "type": "OBRIGATORIA", "prerequisites": [] },
-    { "code": "GAN00022", "name": "Cálculo Diferencial e Integral II", "period": 2, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["GAN00021"] },
-    { "code": "GFI00162", "name": "Física Geral e Experimental II", "period": 2, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["GFI00161"] },
-    { "code": "TEE00102", "name": "Circuitos Elétricos I", "period": 2, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["GAN00021"] },
-    { "code": "TEE00103", "name": "Circuitos Elétricos II", "period": 3, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["TEE00102"] },
-    { "code": "TEE00104", "name": "Eletrônica Geral I", "period": 3, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["TEE00102"] },
-    { "code": "TEE00105", "name": "Eletromagnetismo Aplicado", "period": 4, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["GFI00162", "GAN00022"] },
-    { "code": "TEE00106", "name": "Sistemas de Potência I", "period": 5, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["TEE00103"] },
-    { "code": "TEE00107", "name": "Controle e Automação I", "period": 6, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["TEE00103"] },
-    { "code": "TEE00108", "name": "Projeto Final de Curso em Engenharia Elétrica I", "period": 7, "workload": 90, "type": "OBRIGATORIA", "prerequisites": ["TEE00106"] },
-    { "code": "TEE00109", "name": "Projeto Final de Curso em Engenharia Elétrica II", "period": 8, "workload": 120, "type": "OBRIGATORIA", "prerequisites": ["TEE00108"] }
+    {
+      "code": "GGM00137",
+      "name": "FUNDAMENTOS DE CÁLCULO",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GMA00154",
+      "name": "CÁLCULO 1",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GGM00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQI00048",
+      "name": "QUÍMICA GERAL TECNOLÓGICA",
+      "period": 1,
+      "workload": 75,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 15,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00188",
+      "name": "LABORATÓRIO DE",
+      "period": 1,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00189",
+      "name": "CONCEPÇÃ",
+      "period": 1,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00219",
+      "name": "METODOLOGIA CIENTÍFICA",
+      "period": 1,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "GAN00140",
+      "name": "ÁLGEBRA LINEAR",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GGM00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFI00158",
+      "name": "FÍSICA I",
+      "period": 2,
+      "workload": 68,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GMA00154"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFI00161",
+      "name": "FÍSICA",
+      "period": 2,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00158"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GMA00155",
+      "name": "CÁLCULO 2",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GMA00154",
+        "GAN00140"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TDT00076",
+      "name": "FUNDAMENTOS DE DESENHO TÉCNICO II",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GGM00137",
+        "TEE00189"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 23,
+      "practicalHours": 37,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEC00241",
+      "name": "INTRODUÇÃ À CIÊNCIA DOS MATERIAIS",
+      "period": 2,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GQI00048"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GET00177",
+      "name": "ESTATÍSTICA BÁSICA",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GAN00140",
+        "GMA00155"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFI00159",
+      "name": "FÍSICA II",
+      "period": 3,
+      "workload": 68,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00158"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFI00162",
+      "name": "FÍSICA",
+      "period": 3,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00161",
+        "GFI00159"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GMA00156",
+      "name": "CÁLCULO 3",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GAN00140",
+        "GMA00155"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GMA00158",
+      "name": "CÁLCULO 4",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GAN00140",
+        "GMA00155"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TCC00326",
+      "name": "PROGRAMAÇÃ DE COMPUTADORES",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEE00189"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00190",
+      "name": "CIRCUITOS",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GAN00140",
+        "GMA00155",
+        "GFI00159"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "GFI00160",
+      "name": "FÍSICA III",
+      "period": 4,
+      "workload": 68,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00158"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFI00163",
+      "name": "FÍSICA",
+      "period": 4,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00160"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "TCC00319",
+      "name": "ESTRUTURAS DE DADOS",
+      "period": 4,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TCC00326"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TCC00325",
+      "name": "MÉTODOS NUMÉRICOS",
+      "period": 4,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GET00177",
+        "TCC00326"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00143",
+      "name": "SINAIS",
+      "period": 4,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GET00177",
+        "GMA00158",
+        "TEE00192"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00192",
+      "name": "CIRCUITOS",
+      "period": 4,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00159",
+        "GMA00158",
+        "TEE00190"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00193",
+      "name": "LABORATÓRIO DE CIRCUITOS",
+      "period": 4,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00162",
+        "TEE00192"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 20
+    },
+    {
+      "code": "GFI00141",
+      "name": "MECANICA GERAL V",
+      "period": 5,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00158"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFI00220",
+      "name": "ELETROMAGNETISMO I",
+      "period": 5,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00159",
+        "GMA00156"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEC00238",
+      "name": "FENOMENOS DE TRANSPORTE",
+      "period": 5,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00160"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00195",
+      "name": "ELETRÔNICA",
+      "period": 5,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEC00241",
+        "TEE00143",
+        "TEE00192"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00196",
+      "name": "ANÁLISE DE SISTEMAS",
+      "period": 5,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TCC00325",
+        "TEE00192"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00197",
+      "name": "SISTEMAS DE CONTROLE I",
+      "period": 5,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEE00143"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEM00275",
+      "name": "TERMODINÂMICA I",
+      "period": 5,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00160"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TET00353",
+      "name": "CIRCUITOS DIGITAIS 1",
+      "period": 5,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "chPreReq": 600,
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00120",
+      "name": "CONVERSÃ",
+      "period": 6,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00220",
+        "TEE00196"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00127",
+      "name": "ELETRÔNICA DE POTÊNCIA",
+      "period": 6,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEE00195",
+        "TEE00197"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00198",
+      "name": "INSTALAÇÕES",
+      "period": 6,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TDT00076",
+        "TEC00241",
+        "TEE00192"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00199",
+      "name": "SISTEMAS DE COMPUTAÇÃ",
+      "period": 6,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TCC00319",
+        "TET00353"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 45,
+      "practicalHours": 15,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00200",
+      "name": "INSTRUMENTAÇÃ",
+      "period": 6,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEE00195",
+        "TEE00197",
+        "TET00353"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 50,
+      "practicalHours": 10,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00201",
+      "name": "ANÁLISE DE SISTEMAS",
+      "period": 6,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEE00196"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEM00177",
+      "name": "RESISTENCIA DOS MATERIAIS",
+      "period": 6,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00141"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00118",
+      "name": "EFICIÊNCIA",
+      "period": 7,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEE00198"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00148",
+      "name": "SUBESTAÇÕES DE",
+      "period": 7,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEE00198"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00202",
+      "name": "INTRODUÇÃ AOS SISTEMAS DE",
+      "period": 7,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEC00238",
+        "TEE00120"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00203",
+      "name": "MÁQUINAS",
+      "period": 7,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEE00120"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00204",
+      "name": "LABORATÓRIO DE MÁQUINAS",
+      "period": 7,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEE00203"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00205",
+      "name": "INSTALAÇÕES",
+      "period": 7,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEE00198"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00218",
+      "name": "LABORATÓRIO DE",
+      "period": 7,
+      "workload": 45,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEE00200"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 45,
+      "extensionHours": 20
+    },
+    {
+      "code": "TET00274",
+      "name": "INTRODUÇÃ ÀS REDES DE COMPUTADORES I",
+      "period": 7,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEE00199"
+      ],
+      "corequisites": [],
+      "chPreReq": 2500,
+      "theoreticalHours": 50,
+      "practicalHours": 10,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00119",
+      "name": "GERAÇÃ DE",
+      "period": 8,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEC00238",
+        "TEM00275",
+        "TEE00203"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00146",
+      "name": "EQUIPAMENTOS",
+      "period": 8,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00148",
+        "TEE00202"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00149",
+      "name": "TRANSMISSÃ DE",
+      "period": 8,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GFI00220",
+        "TEE00201"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00150",
+      "name": "EFICIÊNCIA",
+      "period": 8,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00118"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00155",
+      "name": "SISTEMAS",
+      "period": 8,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00148"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00186",
+      "name": "DISPOSITIVOS",
+      "period": 8,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00195",
+        "TEE00199",
+        "TET00274"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 44,
+      "practicalHours": 16,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00206",
+      "name": "PROJETO INTEGRADOR DE MÁQUINAS",
+      "period": 8,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEE00127",
+        "TEE00203",
+        "TEE00204"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 20
+    },
+    {
+      "code": "TEE00207",
+      "name": "ANÁLISE DE SISTEMAS",
+      "period": 8,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00197",
+        "TEE00201",
+        "TEE00203"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00208",
+      "name": "MICROCONTROLADORES",
+      "period": 8,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00199"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 45,
+      "practicalHours": 15,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00209",
+      "name": "SISTEMAS DE CONTROLE II",
+      "period": 8,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00197"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TER00108",
+      "name": "ENGENHARIA",
+      "period": 8,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 52,
+      "practicalHours": 8,
+      "extensionHours": 0
+    },
+    {
+      "code": "TGE00015",
+      "name": "ESTÁGIO CURRICULAR",
+      "period": 8,
+      "workload": 165,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "chPreReq": 2714,
+      "theoreticalHours": 0,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00145",
+      "name": "DISTRIBUIÇÃ DE",
+      "period": 9,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00202"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00147",
+      "name": "PROTEÇÃ DE SISTEMAS",
+      "period": 9,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00202",
+        "TEE00146"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00210",
+      "name": "SISTEMAS DE",
+      "period": 9,
+      "workload": 30,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00127",
+        "TEE00202"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00211",
+      "name": "LABORATÓRIO DE SISTEMAS DE",
+      "period": 9,
+      "workload": 30,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00201"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00212",
+      "name": "LABORATÓRIO DE",
+      "period": 9,
+      "workload": 30,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00206"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00213",
+      "name": "INSTALAÇÕES",
+      "period": 9,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00205"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00214",
+      "name": "AUTOMAÇÃ INDUSTRIAL",
+      "period": 9,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00200",
+        "TET00274"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00215",
+      "name": "LABORATÓRIO DE INSTRUMENTAÇÃ",
+      "period": 9,
+      "workload": 30,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00200"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00216",
+      "name": "PROCESSAMENTO DIGITAL DE SINAIS",
+      "period": 9,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00200"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEE00217",
+      "name": "GESTÃ DA MANUTENÇÃ",
+      "period": 9,
+      "workload": 30,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "chPreReq": 2500,
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEP00109",
+      "name": "ECONOMIA APLICADA À",
+      "period": 9,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TGE00003",
+      "name": "PROJETO FINAL DE",
+      "period": 9,
+      "workload": 30,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00189",
+        "TEE00219"
+      ],
+      "corequisites": [],
+      "chPreReq": 2500,
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TGE00004",
+      "name": "PROJETO FINAL DE",
+      "period": 9,
+      "workload": 30,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00189",
+        "TEE00219"
+      ],
+      "corequisites": [],
+      "chPreReq": 2500,
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TGE00005",
+      "name": "PROJETO FINAL DE",
+      "period": 9,
+      "workload": 30,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "TEE00189",
+        "TEE00219"
+      ],
+      "corequisites": [],
+      "chPreReq": 2500,
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TEP00108",
+      "name": "ADMINISTRAÇÃ APLICADA À",
+      "period": 10,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "TEP00109"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GGM00159",
+      "name": "GEOMETRIA DESCRITIVA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GLC00292",
+      "name": "LIBRAS I",
+      "period": 0,
+      "workload": 30,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 10,
+      "practicalHours": 20,
+      "extensionHours": 30
+    },
+    {
+      "code": "SEN00149",
+      "name": "ECONOMIA DA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TCC00328",
+      "name": "PROGRAMAÇÃ",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "TCC00319"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 34,
+      "practicalHours": 34,
+      "extensionHours": 0
+    },
+    {
+      "code": "TGE00007",
+      "name": "ATIVIDADES COMPLEMENTARES I",
+      "period": 0,
+      "workload": 40,
+      "type": "COMPLEMENTAR",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 40,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TGE00008",
+      "name": "ATIVIDADES COMPLEMENTARES II",
+      "period": 0,
+      "workload": 40,
+      "type": "COMPLEMENTAR",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 40,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "TGE00009",
+      "name": "ATIVIDADES COMPLEMENTARES III",
+      "period": 0,
+      "workload": 40,
+      "type": "COMPLEMENTAR",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 40,
+      "extensionHours": 0
+    }
   ]
 }

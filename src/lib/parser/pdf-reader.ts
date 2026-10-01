@@ -5,6 +5,17 @@ if (typeof window !== 'undefined' && !pdfjsLib.GlobalWorkerOptions.workerSrc) {
   pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
 }
 
+interface TextItemWithPos {
+  str: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+/**
+ * Extracts text from a PDF file preserving line structure based on geometric coordinates.
+ */
 export async function extractTextFromPdfFile(file: File): Promise<string> {
   if (file.type === 'text/plain' || file.name.endsWith('.txt')) {
     return await file.text();
@@ -16,18 +27,66 @@ export async function extractTextFromPdfFile(file: File): Promise<string> {
     const pdfDoc = await loadingTask.promise;
 
     let fullText = '';
-    for (let i = 1; i <= pdfDoc.numPages; i++) {
-      const page = await pdfDoc.getPage(i);
+
+    for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+      const page = await pdfDoc.getPage(pageNum);
       const textContent = await page.getTextContent();
-      const pageText = textContent.items
-        .map((item: unknown) => {
-          if (item && typeof item === 'object' && 'str' in item) {
-            return (item as { str: string }).str;
-          }
-          return '';
-        })
-        .join(' ');
-      fullText += pageText + '\n';
+
+      const items: TextItemWithPos[] = [];
+
+      for (const item of textContent.items) {
+        if (item && typeof item === 'object' && 'str' in item && 'transform' in item) {
+          const tItem = item as { str: string; transform: number[]; width?: number; height?: number };
+          const str = tItem.str;
+          if (!str && str !== ' ') continue;
+
+          // transform is [scaleX, skewY, skewX, scaleY, posX, posY]
+          const x = tItem.transform[4];
+          const y = tItem.transform[5];
+          items.push({
+            str,
+            x,
+            y,
+            width: tItem.width || 0,
+            height: tItem.height || 0,
+          });
+        }
+      }
+
+      // Sort items: Top to Bottom (Y descending), then Left to Right (X ascending)
+      // Note: PDF coordinate system (0,0) is bottom-left
+      items.sort((a, b) => {
+        const yDiff = b.y - a.y;
+        if (Math.abs(yDiff) > 3.5) {
+          return yDiff;
+        }
+        return a.x - b.x;
+      });
+
+      // Group into lines by similar Y coordinate
+      const lines: string[] = [];
+      let currentLineItems: TextItemWithPos[] = [];
+      let currentY: number | null = null;
+
+      for (const item of items) {
+        if (currentY === null || Math.abs(currentY - item.y) <= 3.5) {
+          currentLineItems.push(item);
+          if (currentY === null) currentY = item.y;
+        } else {
+          // Sort items in current line by X
+          currentLineItems.sort((a, b) => a.x - b.x);
+          lines.push(currentLineItems.map(i => i.str).join(' ').trim());
+          currentLineItems = [item];
+          currentY = item.y;
+        }
+      }
+
+      if (currentLineItems.length > 0) {
+        currentLineItems.sort((a, b) => a.x - b.x);
+        lines.push(currentLineItems.map(i => i.str).join(' ').trim());
+      }
+
+      fullText += lines.filter(l => l.length > 0).join('\n') + '\n\n';
     }
 
     return fullText;
@@ -36,3 +95,4 @@ export async function extractTextFromPdfFile(file: File): Promise<string> {
     return await file.text();
   }
 }
+

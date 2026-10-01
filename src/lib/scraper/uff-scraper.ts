@@ -1,12 +1,29 @@
 export interface SubjectRawData {
   code: string;
   name: string;
-  period: number; // 1, 2, ..., 0 for Electives/Optativas
+  period: number; // 1, 2, ..., 0 for Electives/Optativas/Complementares
   workload: number; // hours (e.g. 60)
-  type: 'OBRIGATORIA' | 'OPTATIVA' | 'ELETIVA';
+  type: 'OBRIGATORIA' | 'OPTATIVA' | 'ELETIVA' | 'COMPLEMENTAR' | 'ESCOLHA' | 'OPTATIVA_ENFASE';
   prerequisites: string[]; // Subject codes required
   corequisites?: string[];
+  chPreReq?: number; // Minimum hours required before taking (e.g., 600, 2500)
+  specialPrereq?: string; // Special condition (e.g. "9º período completo")
+  theoreticalHours?: number; // CHT
+  practicalHours?: number; // CHP
+  internshipHours?: number; // CHEs
+  extensionHours?: number; // CHEx
   department?: string;
+  emphasis?: string; // e.g. "Sistemas de Potência", "Eletrônica", etc.
+}
+
+export interface MatrixHoursBreakdown {
+  mandatory: number; // OB
+  choice?: number; // E (obrigatória de escolha)
+  elective?: number; // EL / O
+  emphasis?: number; // ON (optativa de ênfase)
+  freeChoice?: number; // OL (obrigatória livre)
+  complementary?: number; // AC
+  total: number;
 }
 
 export interface MatrixRawData {
@@ -15,12 +32,19 @@ export interface MatrixRawData {
   matrixCode: string;
   matrixName: string;
   campus?: string;
-  degree?: string;
+  degree?: string; // Titulação (ex: Bacharel em Engenharia Elétrica)
+  qualification?: string; // Habilitação
+  emphasis?: string; // Ênfase
+  trainingLine?: string; // Linha de Formação
+  availableEmphases?: string[]; // Detected emphases/tracks in course
   totalHours: number;
   mandatoryHours: number;
   electiveHours: number;
+  hoursBreakdown?: MatrixHoursBreakdown;
   subjects: SubjectRawData[];
 }
+
+
 
 /**
  * Parses prerequisite strings from UFF matrix HTML / text (e.g., "TCC00288, TCC00289" or "Sem Pré-requisito" or "TCC00288 (OU TCC00200)")

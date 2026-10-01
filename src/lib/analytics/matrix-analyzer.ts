@@ -3,21 +3,35 @@ import { ParsedTranscript, TranscriptRecord } from '../parser/transcript-parser'
 
 export type DisplaySubjectStatus = 'COMPLETED' | 'IN_PROGRESS' | 'UNLOCKED' | 'BLOCKED' | 'PENDING';
 
+export interface FlowchartEdge {
+  from: string; // Prerequisite subject code
+  to: string; // Dependent subject code
+  type: 'PREREQUISITE' | 'COREQUISITE';
+}
+
 export interface SubjectAnalysisItem {
   code: string;
   name: string;
   period: number;
   workload: number;
-  type: 'OBRIGATORIA' | 'OPTATIVA' | 'ELETIVA';
+  type: 'OBRIGATORIA' | 'OPTATIVA' | 'ELETIVA' | 'COMPLEMENTAR' | 'ESCOLHA' | 'OPTATIVA_ENFASE';
   prerequisites: string[];
+  corequisites: string[];
+  chPreReq?: number;
+  specialPrereq?: string;
   status: DisplaySubjectStatus;
   grade?: number;
+  gradeRaw?: string;
   periodSemester?: string;
   missingPrerequisites: string[];
+  missingCorequisites: string[];
+  isChPreReqMissing: boolean;
+  unlocksNext: string[]; // Codes of subjects that depend on this one
+  emphasis?: string; // e.g. "Sistemas de Potência"
 }
 
 export interface MatrixPeriodGroup {
-  period: number; // 0 for Electives/Optativas, 1..N for semesters
+  period: number; // 0 for Electives/Optativas/AC, 1..N for semesters
   title: string;
   subjects: SubjectAnalysisItem[];
   completedHours: number;
@@ -27,7 +41,15 @@ export interface MatrixPeriodGroup {
 export interface StudentProgressSummary {
   studentName?: string;
   registration?: string;
+  cpf?: string;
   courseName?: string;
+  curriculumCode?: string;
+  admissionPeriod?: string;
+  degree?: string;
+  qualification?: string;
+  emphasis?: string;
+  trainingLine?: string;
+  availableEmphases?: string[];
   cr?: number;
 
   // Hours tracking
@@ -35,14 +57,23 @@ export interface StudentProgressSummary {
   totalCompletedHours: number;
   mandatoryCompletedHours: number;
   mandatoryTotalHours: number;
+  choiceCompletedHours: number;
+  choiceTotalHours: number;
   electiveCompletedHours: number;
   electiveTotalHours: number;
+  emphasisCompletedHours: number;
+  emphasisTotalHours: number;
+  complementaryCompletedHours: number;
+  complementaryTotalHours: number;
   inProgressHours: number;
 
   // Percentages
   overallCompletionPercentage: number;
   mandatoryCompletionPercentage: number;
+  choiceCompletionPercentage: number;
   electiveCompletionPercentage: number;
+  emphasisCompletionPercentage: number;
+  complementaryCompletionPercentage: number;
 
   // Subject counts
   completedSubjectsCount: number;
@@ -55,12 +86,14 @@ export interface StudentProgressSummary {
   estimatedCurrentPeriod: number; // e.g. 3º Período
   nextRecommendedSubjects: SubjectAnalysisItem[];
 
-  // Grouped periods for rendering UI
+  // Graph and Groups
+  edges: FlowchartEdge[];
   periodGroups: MatrixPeriodGroup[];
 }
 
+
 /**
- * Aligns student transcript records with a curriculum matrix and computes progress analytics.
+ * Aligns student transcript records with a curriculum matrix and computes progress analytics and dependency graph.
  */
 export function analyzeStudentProgress(
   matrix: MatrixRawData,
@@ -82,6 +115,47 @@ export function analyzeStudentProgress(
     }
   }
 
+  // Calculate current completed hours first for CHPre-Req check
+  let currentCompletedHours = 0;
+  for (const record of transcript.records) {
+    if (record.status === 'APROVADO' || record.status === 'DISPENSA') {
+      currentCompletedHours += record.workload || 60;
+    }
+  }
+  if (transcript.completedHours && transcript.completedHours > currentCompletedHours) {
+    currentCompletedHours = transcript.completedHours;
+  }
+
+  // Build reverse map of downstream dependencies (unlocksNext)
+  const unlocksNextMap = new Map<string, string[]>();
+  const edges: FlowchartEdge[] = [];
+
+  for (const subject of matrix.subjects) {
+    const toCode = subject.code.toUpperCase();
+    const prereqs = subject.prerequisites || [];
+    const coreqs = subject.corequisites || [];
+
+    for (const pCode of prereqs) {
+      const pUpper = pCode.toUpperCase();
+      if (!unlocksNextMap.has(pUpper)) unlocksNextMap.set(pUpper, []);
+      unlocksNextMap.get(pUpper)!.push(toCode);
+      edges.push({ from: pUpper, to: toCode, type: 'PREREQUISITE' });
+    }
+
+    for (const cCode of coreqs) {
+      const cUpper = cCode.toUpperCase();
+      if (!unlocksNextMap.has(cUpper)) unlocksNextMap.set(cUpper, []);
+      unlocksNextMap.get(cUpper)!.push(toCode);
+      edges.push({ from: cUpper, to: toCode, type: 'COREQUISITE' });
+    }
+  }
+
+  // Check 9th period complete status
+  const periods1to9MandatoryCodes = matrix.subjects
+    .filter(s => s.period >= 1 && s.period <= 9 && s.type === 'OBRIGATORIA')
+    .map(s => s.code.toUpperCase());
+  const isPeriod9Complete = periods1to9MandatoryCodes.every(c => completedCodes.has(c));
+
   const analyzedSubjects: SubjectAnalysisItem[] = [];
 
   // Analyze each matrix subject
@@ -89,9 +163,25 @@ export function analyzeStudentProgress(
     const code = subject.code.toUpperCase();
     const record = recordMap.get(code);
     const prereqs = subject.prerequisites || [];
+    const coreqs = subject.corequisites || [];
 
     // Find missing prerequisites
     const missingPrerequisites = prereqs.filter(pCode => !completedCodes.has(pCode.toUpperCase()));
+    const missingCorequisites = coreqs.filter(
+      cCode => !completedCodes.has(cCode.toUpperCase()) && !inProgressCodes.has(cCode.toUpperCase())
+    );
+
+    // Check CHPre-Req condition
+    let isChPreReqMissing = false;
+    if (subject.chPreReq && currentCompletedHours < subject.chPreReq) {
+      isChPreReqMissing = true;
+    }
+
+    // Check special prereq (e.g. 9º período completo)
+    let isSpecialMissing = false;
+    if (subject.specialPrereq && subject.specialPrereq.includes('9º período') && !isPeriod9Complete) {
+      isSpecialMissing = true;
+    }
 
     let status: DisplaySubjectStatus = 'PENDING';
 
@@ -99,7 +189,11 @@ export function analyzeStudentProgress(
       status = 'COMPLETED';
     } else if (inProgressCodes.has(code)) {
       status = 'IN_PROGRESS';
-    } else if (missingPrerequisites.length === 0) {
+    } else if (
+      missingPrerequisites.length === 0 &&
+      !isChPreReqMissing &&
+      !isSpecialMissing
+    ) {
       status = 'UNLOCKED';
     } else {
       status = 'BLOCKED';
@@ -112,14 +206,22 @@ export function analyzeStudentProgress(
       workload: subject.workload,
       type: subject.type,
       prerequisites: subject.prerequisites,
+      corequisites: subject.corequisites || [],
+      chPreReq: subject.chPreReq,
+      specialPrereq: subject.specialPrereq,
       status,
       grade: record?.grade,
+      gradeRaw: record?.gradeRaw,
       periodSemester: record?.periodSemester,
       missingPrerequisites,
+      missingCorequisites,
+      isChPreReqMissing,
+      unlocksNext: unlocksNextMap.get(code) || [],
+      emphasis: subject.emphasis,
     });
   }
 
-  // Account for extra completed electives from transcript that might not be in mandatory matrix
+  // Account for extra completed subjects from transcript that might not be in the matrix
   const matrixCodes = new Set(matrix.subjects.map(s => s.code.toUpperCase()));
   for (const record of transcript.records) {
     const upperCode = record.code.toUpperCase();
@@ -127,14 +229,19 @@ export function analyzeStudentProgress(
       analyzedSubjects.push({
         code: record.code,
         name: record.name,
-        period: 0, // Elective group
+        period: 0, // Elective/Optativa group
         workload: record.workload || 60,
-        type: 'OPTATIVA',
+        type: record.code.startsWith('TGE') && record.name.includes('COMPLEMENTAR') ? 'COMPLEMENTAR' : 'OPTATIVA',
         prerequisites: [],
+        corequisites: [],
         status: 'COMPLETED',
         grade: record.grade,
+        gradeRaw: record.gradeRaw,
         periodSemester: record.periodSemester,
         missingPrerequisites: [],
+        missingCorequisites: [],
+        isChPreReqMissing: false,
+        unlocksNext: [],
       });
     }
   }
@@ -162,7 +269,7 @@ export function analyzeStudentProgress(
     const totalHours = subjects.reduce((acc, s) => acc + s.workload, 0);
 
     let title = `${period}º Período`;
-    if (period === 0) title = 'Optativas / Eletivas';
+    if (period === 0) title = 'Optativas / Eletivas / AC';
 
     periodGroups.push({
       period,
@@ -173,10 +280,13 @@ export function analyzeStudentProgress(
     });
   }
 
-  // Calculate stats
+  // Calculate detailed stats
   let completedHours = 0;
   let mandatoryCompletedHours = 0;
+  let choiceCompletedHours = 0;
   let electiveCompletedHours = 0;
+  let emphasisCompletedHours = 0;
+  let complementaryCompletedHours = 0;
   let inProgressHours = 0;
 
   let completedSubjectsCount = 0;
@@ -191,6 +301,12 @@ export function analyzeStudentProgress(
       completedSubjectsCount++;
       if (item.type === 'OBRIGATORIA') {
         mandatoryCompletedHours += item.workload;
+      } else if (item.type === 'ESCOLHA') {
+        choiceCompletedHours += item.workload;
+      } else if (item.type === 'OPTATIVA_ENFASE') {
+        emphasisCompletedHours += item.workload;
+      } else if (item.type === 'COMPLEMENTAR') {
+        complementaryCompletedHours += item.workload;
       } else {
         electiveCompletedHours += item.workload;
       }
@@ -206,13 +322,19 @@ export function analyzeStudentProgress(
     }
   }
 
-  const mandatoryTotalHours = matrix.mandatoryHours || 2400;
-  const electiveTotalHours = matrix.electiveHours || 600;
-  const totalMatrixHours = matrix.totalHours || (mandatoryTotalHours + electiveTotalHours);
+  const mandatoryTotalHours = matrix.hoursBreakdown?.mandatory || matrix.mandatoryHours || 3069;
+  const choiceTotalHours = matrix.hoursBreakdown?.choice || 510;
+  const electiveTotalHours = matrix.hoursBreakdown?.elective || matrix.electiveHours || 120;
+  const emphasisTotalHours = matrix.hoursBreakdown?.emphasis || 0;
+  const complementaryTotalHours = matrix.hoursBreakdown?.complementary || 280;
+  const totalMatrixHours = matrix.totalHours || (mandatoryTotalHours + choiceTotalHours + electiveTotalHours + complementaryTotalHours);
 
   const overallCompletionPercentage = Math.min(100, Math.round((completedHours / totalMatrixHours) * 100));
   const mandatoryCompletionPercentage = Math.min(100, Math.round((mandatoryCompletedHours / mandatoryTotalHours) * 100));
-  const electiveCompletionPercentage = Math.min(100, Math.round((electiveCompletedHours / electiveTotalHours) * 100));
+  const choiceCompletionPercentage = Math.min(100, Math.round((choiceCompletedHours / Math.max(1, choiceTotalHours)) * 100));
+  const electiveCompletionPercentage = Math.min(100, Math.round((electiveCompletedHours / Math.max(1, electiveTotalHours)) * 100));
+  const emphasisCompletionPercentage = emphasisTotalHours > 0 ? Math.min(100, Math.round((emphasisCompletedHours / emphasisTotalHours) * 100)) : 0;
+  const complementaryCompletionPercentage = Math.min(100, Math.round((complementaryCompletedHours / Math.max(1, complementaryTotalHours)) * 100));
 
   // Determine estimated current period/stage (lowest period with incomplete mandatory subjects)
   let estimatedCurrentPeriod = 1;
@@ -228,28 +350,48 @@ export function analyzeStudentProgress(
     }
   }
 
-  // Recommended next subjects (UNLOCKED mandatory subjects sorted by lowest period first)
+  // Recommended next subjects (UNLOCKED mandatory/choice subjects sorted by lowest period, then number of downstream dependencies)
   const nextRecommendedSubjects = analyzedSubjects
-    .filter(s => s.status === 'UNLOCKED' && s.type === 'OBRIGATORIA')
-    .sort((a, b) => a.period - b.period);
+    .filter(s => s.status === 'UNLOCKED' && (s.type === 'OBRIGATORIA' || s.type === 'ESCOLHA'))
+    .sort((a, b) => {
+      if (a.period !== b.period) return a.period - b.period;
+      return (b.unlocksNext.length || 0) - (a.unlocksNext.length || 0);
+    });
 
   return {
     studentName: transcript.studentName,
     registration: transcript.registration,
+    cpf: transcript.cpf,
     courseName: transcript.courseName || matrix.courseName,
+    curriculumCode: transcript.curriculumCode || matrix.courseCode,
+    admissionPeriod: transcript.admissionPeriod,
+    degree: matrix.degree,
+    qualification: transcript.qualification || matrix.qualification,
+    emphasis: transcript.emphasis || matrix.emphasis,
+    trainingLine: transcript.trainingLine || matrix.trainingLine,
+    availableEmphases: matrix.availableEmphases,
     cr: transcript.cr,
 
     totalMatrixHours,
     totalCompletedHours: completedHours,
     mandatoryCompletedHours,
     mandatoryTotalHours,
+    choiceCompletedHours,
+    choiceTotalHours,
     electiveCompletedHours,
     electiveTotalHours,
+    emphasisCompletedHours,
+    emphasisTotalHours,
+    complementaryCompletedHours,
+    complementaryTotalHours,
     inProgressHours,
 
     overallCompletionPercentage,
     mandatoryCompletionPercentage,
+    choiceCompletionPercentage,
     electiveCompletionPercentage,
+    emphasisCompletionPercentage,
+    complementaryCompletionPercentage,
 
     completedSubjectsCount,
     inProgressSubjectsCount,
@@ -259,6 +401,9 @@ export function analyzeStudentProgress(
 
     estimatedCurrentPeriod,
     nextRecommendedSubjects,
+    edges,
     periodGroups,
   };
 }
+
+
