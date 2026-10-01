@@ -32,6 +32,7 @@ import SubjectDetailModal from '@/components/SubjectDetailModal';
 import ProgressDashboard from '@/components/ProgressDashboard';
 import UploadSection from '@/components/UploadSection';
 import TableView from '@/components/TableView';
+import EquivalenceConfirmModal from '@/components/EquivalenceConfirmModal';
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -58,6 +59,7 @@ export default function Home() {
   const [statusFilter, setStatusFilter] = useState<string>('ALL');
   const [selectedEmphasis, setSelectedEmphasis] = useState<string>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isEquivalenceModalOpen, setIsEquivalenceModalOpen] = useState(false);
 
   // Restore state from localStorage on initial load (if previously uploaded by user)
   useEffect(() => {
@@ -152,6 +154,11 @@ export default function Home() {
         rawMatrixText: finalMatrixText,
         rawTranscriptText: finalTranscriptText,
       });
+
+      // Automatically popup the Equivalence Confirmation Modal if candidates were detected
+      if (summary.detectedEquivalenceCandidates && summary.detectedEquivalenceCandidates.length > 0) {
+        setIsEquivalenceModalOpen(true);
+      }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
       setError(msg);
@@ -160,7 +167,35 @@ export default function Home() {
     }
   };
 
-  // Handle Equivalence Assignment or Removal
+  // Handle Multi-candidate Equivalence Confirmation
+  const handleConfirmCandidateEquivalences = useCallback((selectedMappings: Record<string, string>) => {
+    setCustomEquivalences(selectedMappings);
+
+    if (currentMatrixData && currentTranscriptData) {
+      const updatedSummary = analyzeStudentProgress(
+        currentMatrixData,
+        currentTranscriptData,
+        selectedMappings
+      );
+
+      setAnalysisResult({
+        summary: updatedSummary,
+        matrix: currentMatrixData,
+      });
+
+      // Persist updated equivalences to localStorage
+      saveAppStateToStorage({
+        analysisResult: updatedSummary,
+        matrixData: currentMatrixData,
+        transcriptData: currentTranscriptData,
+        customEquivalences: selectedMappings,
+        rawMatrixText: rawMatrixTextCache,
+        rawTranscriptText: rawTranscriptTextCache,
+      });
+    }
+  }, [currentMatrixData, currentTranscriptData, rawMatrixTextCache, rawTranscriptTextCache]);
+
+  // Handle Single Subject Equivalence Assignment or Removal
   const handleSetEquivalence = useCallback((matrixCode: string, transcriptCode: string | null) => {
     const upperMatrix = matrixCode.toUpperCase().trim();
     const newEquivalences = { ...customEquivalences };
@@ -217,6 +252,7 @@ export default function Home() {
     setRawMatrixTextCache('');
     setRawTranscriptTextCache('');
     setCustomEquivalences({});
+    setIsEquivalenceModalOpen(false);
     setError(null);
   };
 
@@ -335,6 +371,7 @@ export default function Home() {
               setStatusFilter={setStatusFilter}
               selectedEmphasis={selectedEmphasis}
               onSelectEmphasis={setSelectedEmphasis}
+              onOpenEquivalenceModal={() => setIsEquivalenceModalOpen(true)}
             />
 
             {/* Main Interactive Flowchart Canvas or Table View */}
@@ -387,7 +424,7 @@ export default function Home() {
         )}
       </main>
 
-      {/* Subject Detail Inspection Modal */}
+      {/* Single Subject Detail Inspection Modal */}
       <SubjectDetailModal
         subject={selectedSubject}
         onClose={() => setSelectedSubject(null)}
@@ -396,6 +433,17 @@ export default function Home() {
         availableTranscriptRecords={analysisResult?.summary.availableCompletedTranscriptRecords}
         onSetEquivalence={handleSetEquivalence}
       />
+
+      {/* Batch Equivalence Confirmation Popup Modal */}
+      {analysisResult && (
+        <EquivalenceConfirmModal
+          isOpen={isEquivalenceModalOpen}
+          onClose={() => setIsEquivalenceModalOpen(false)}
+          candidates={analysisResult.summary.detectedEquivalenceCandidates || []}
+          onConfirm={handleConfirmCandidateEquivalences}
+          currentEquivalences={customEquivalences}
+        />
+      )}
 
       {/* Footer */}
       <footer className="mt-auto py-6 border-t border-slate-900 text-center text-xs text-slate-500">

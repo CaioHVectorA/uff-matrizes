@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert';
 import { parseMatrixText } from '../matrix-parser';
 import { parseTranscriptText } from '../transcript-parser';
-import { analyzeStudentProgress } from '../../analytics/matrix-analyzer';
+import { analyzeStudentProgress, detectEquivalenceCandidates } from '../../analytics/matrix-analyzer';
 import { SAMPLE_MATRIX_TEXT, SAMPLE_TRANSCRIPT_TEXT } from '../../data/sample-data';
 
 test('parseMatrixText parses UFF Engenharia Elétrica matrix text correctly', () => {
@@ -109,4 +109,17 @@ test('analyzeStudentProgress correctly applies subject equivalences and unlocks 
   const period0Subjects = analysis.periodGroups.find(g => g.period === 0)?.subjects || [];
   const orphanTec = period0Subjects.find(s => s.code === 'TEC00204');
   assert.strictEqual(orphanTec, undefined, 'TEC00204 should not be duplicated in Period 0 since it was consumed by GFI00141 equivalence');
+});
+
+test('detectEquivalenceCandidates discovers potential equivalences with score and unlocks information', () => {
+  const matrix = parseMatrixText(SAMPLE_MATRIX_TEXT);
+  const transcript = parseTranscriptText(SAMPLE_TRANSCRIPT_TEXT);
+
+  const candidates = detectEquivalenceCandidates(matrix, transcript);
+  assert.ok(candidates.length > 0, 'Should detect at least 1 candidate equivalence');
+
+  const mecCandidate = candidates.find(c => c.matrixCode === 'GFI00141' && c.transcriptCode === 'TEC00204');
+  assert.ok(mecCandidate, 'Should find GFI00141 <-> TEC00204 candidate');
+  assert.strictEqual(mecCandidate?.matchScore, 98);
+  assert.ok(mecCandidate?.unlocksCount && mecCandidate.unlocksCount > 0, 'Should identify downstream unlocks');
 });

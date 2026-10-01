@@ -12,7 +12,8 @@ import {
   Sparkles,
   ArrowRight,
   Layers,
-  BookOpen
+  BookOpen,
+  ArrowLeftRight
 } from 'lucide-react';
 import { StudentProgressSummary, SubjectAnalysisItem } from '@/lib/analytics/matrix-analyzer';
 
@@ -23,6 +24,7 @@ interface ProgressDashboardProps {
   setStatusFilter: (status: string) => void;
   selectedEmphasis?: string;
   onSelectEmphasis?: (emphasis: string) => void;
+  onOpenEquivalenceModal?: () => void;
 }
 
 export default function ProgressDashboard({
@@ -32,7 +34,11 @@ export default function ProgressDashboard({
   setStatusFilter,
   selectedEmphasis = 'ALL',
   onSelectEmphasis,
+  onOpenEquivalenceModal,
 }: ProgressDashboardProps) {
+  const activeEquivCount = summary.activeEquivalences?.length || 0;
+  const detectedCandCount = summary.detectedEquivalenceCandidates?.length || 0;
+
   return (
     <div className="space-y-6">
       {/* Top Academic Identity & Overall Progress Banner */}
@@ -89,8 +95,8 @@ export default function ProgressDashboard({
             </div>
           </div>
 
-          {/* CR & Estimated Semester Badges */}
-          <div className="flex items-center gap-3 self-start lg:self-center">
+          {/* CR & Estimated Semester Badges & Equivalence Shortcut */}
+          <div className="flex items-center gap-3 self-start lg:self-center flex-wrap">
             {summary.cr !== undefined && (
               <div className="px-4 py-2.5 bg-indigo-500/10 border border-indigo-500/30 rounded-2xl text-center">
                 <span className="text-[10px] font-bold text-indigo-300 uppercase tracking-wider block">
@@ -110,83 +116,174 @@ export default function ProgressDashboard({
                 {summary.estimatedCurrentPeriod}º
               </span>
             </div>
+
+            {onOpenEquivalenceModal && (detectedCandCount > 0 || activeEquivCount > 0) && (
+              <button
+                type="button"
+                onClick={onOpenEquivalenceModal}
+                className="px-4 py-2.5 bg-teal-500/10 hover:bg-teal-500/20 border border-teal-500/40 text-teal-300 rounded-2xl text-center transition-all hover:scale-105 flex flex-col items-center justify-center cursor-pointer shadow-md shadow-teal-950/40"
+              >
+                <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-teal-300">
+                  <ArrowLeftRight className="w-3.5 h-3.5 text-teal-400" />
+                  <span>Equivalências</span>
+                </div>
+                <span className="text-xs font-bold font-mono text-teal-200 mt-0.5">
+                  {activeEquivCount > 0 ? `${activeEquivCount} Ativa(s)` : `${detectedCandCount} Sugestão(ões)`}
+                </span>
+              </button>
+            )}
           </div>
         </div>
 
-        {/* Overall Hours Progress Bar */}
-        <div className="mt-6 pt-6 border-t border-slate-800/80">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-semibold text-slate-300 flex items-center gap-2">
+        {/* Global Progress Bar */}
+        <div className="mt-6 pt-5 border-t border-slate-800/80">
+          <div className="flex items-center justify-between text-xs mb-2">
+            <span className="font-semibold text-slate-300 flex items-center gap-1.5">
               <Sparkles className="w-4 h-4 text-indigo-400" />
-              Progresso Geral do Curso
+              Integralização Curricular Geral
             </span>
-            <span className="text-xs font-mono font-bold text-slate-200">
-              {summary.totalCompletedHours} / {summary.totalMatrixHours} horas ({summary.overallCompletionPercentage}%)
+            <span className="font-mono font-bold text-indigo-400 text-sm">
+              {summary.overallCompletionPercentage}% ({summary.totalCompletedHours}h de {summary.totalMatrixHours}h)
             </span>
           </div>
 
-          <div className="w-full h-3 bg-slate-950 rounded-full overflow-hidden p-0.5 border border-slate-800">
+          <div className="w-full h-3 bg-slate-800/80 rounded-full overflow-hidden p-0.5 border border-slate-700/50">
             <div
-              className="h-full bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-400 rounded-full transition-all duration-700 shadow-[0_0_12px_rgba(99,102,241,0.5)]"
-              style={{ width: `${summary.overallCompletionPercentage}%` }}
+              className="h-full bg-gradient-to-r from-indigo-500 via-indigo-400 to-emerald-400 rounded-full transition-all duration-1000 shadow-sm"
+              style={{ width: `${Math.min(100, summary.overallCompletionPercentage)}%` }}
             />
-          </div>
-
-          {/* Hours Breakdown Categories */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
-            <div className="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800/60">
-              <span className="text-[10px] font-semibold text-slate-400 block mb-0.5">Obrigatórias (OB)</span>
-              <div className="flex items-baseline justify-between">
-                <span className="text-sm font-bold font-mono text-slate-200">
-                  {summary.mandatoryCompletedHours}/{summary.mandatoryTotalHours}h
-                </span>
-                <span className="text-[11px] font-mono text-indigo-400 font-bold">
-                  {summary.mandatoryCompletionPercentage}%
-                </span>
-              </div>
-            </div>
-
-            <div className="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800/60">
-              <span className="text-[10px] font-semibold text-slate-400 block mb-0.5">Obrig. Escolha (E)</span>
-              <div className="flex items-baseline justify-between">
-                <span className="text-sm font-bold font-mono text-slate-200">
-                  {summary.choiceCompletedHours}/{summary.choiceTotalHours}h
-                </span>
-                <span className="text-[11px] font-mono text-purple-400 font-bold">
-                  {summary.choiceCompletionPercentage}%
-                </span>
-              </div>
-            </div>
-
-            <div className="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800/60">
-              <span className="text-[10px] font-semibold text-slate-400 block mb-0.5">Optativas (O)</span>
-              <div className="flex items-baseline justify-between">
-                <span className="text-sm font-bold font-mono text-slate-200">
-                  {summary.electiveCompletedHours}/{summary.electiveTotalHours}h
-                </span>
-                <span className="text-[11px] font-mono text-cyan-400 font-bold">
-                  {summary.electiveCompletionPercentage}%
-                </span>
-              </div>
-            </div>
-
-            <div className="p-2.5 bg-slate-950/60 rounded-xl border border-slate-800/60">
-              <span className="text-[10px] font-semibold text-slate-400 block mb-0.5">Ativ. Complementares (AC)</span>
-              <div className="flex items-baseline justify-between">
-                <span className="text-sm font-bold font-mono text-slate-200">
-                  {summary.complementaryCompletedHours}/{summary.complementaryTotalHours}h
-                </span>
-                <span className="text-[11px] font-mono text-emerald-400 font-bold">
-                  {summary.complementaryCompletionPercentage}%
-                </span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
 
+      {/* Track / Emphasis Filter selector if available */}
+      {summary.availableEmphases && summary.availableEmphases.length > 0 && onSelectEmphasis && (
+        <div className="p-4 bg-slate-900/80 border border-indigo-500/20 rounded-2xl flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <Layers className="w-4 h-4 text-indigo-400" />
+            <span className="text-xs font-bold text-slate-200 uppercase tracking-wider">
+              Trilhas & Ênfases do Curso:
+            </span>
+          </div>
 
-      {/* Interactive Status Filter Buttons */}
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              onClick={() => onSelectEmphasis('ALL')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                selectedEmphasis === 'ALL'
+                  ? 'bg-indigo-600 text-white shadow-md'
+                  : 'bg-slate-800 text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              Todas as Trilhas ({summary.availableEmphases.length})
+            </button>
+            {summary.availableEmphases.map(emp => (
+              <button
+                key={emp}
+                onClick={() => onSelectEmphasis(emp)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                  selectedEmphasis === emp
+                    ? 'bg-indigo-600 text-white shadow-md'
+                    : 'bg-slate-800 text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                {emp}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Workload Breakdown Cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
+        {/* Mandatory */}
+        <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <span className="text-[11px] font-semibold text-slate-400 block mb-1">Obrigatórias</span>
+          <span className="text-lg font-bold font-mono text-slate-100">
+            {summary.mandatoryCompletedHours}h
+            <span className="text-xs text-slate-500 font-normal"> / {summary.mandatoryTotalHours}h</span>
+          </span>
+          <div className="w-full h-1.5 bg-slate-800 rounded-full mt-2 overflow-hidden">
+            <div
+              className="h-full bg-indigo-500 rounded-full"
+              style={{ width: `${summary.mandatoryCompletionPercentage}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Choice (Obrigatórias de Escolha) */}
+        <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <span className="text-[11px] font-semibold text-slate-400 block mb-1">Escolha</span>
+          <span className="text-lg font-bold font-mono text-slate-100">
+            {summary.choiceCompletedHours}h
+            <span className="text-xs text-slate-500 font-normal"> / {summary.choiceTotalHours}h</span>
+          </span>
+          <div className="w-full h-1.5 bg-slate-800 rounded-full mt-2 overflow-hidden">
+            <div
+              className="h-full bg-purple-500 rounded-full"
+              style={{ width: `${summary.choiceCompletionPercentage}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Electives / Optativas */}
+        <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <span className="text-[11px] font-semibold text-slate-400 block mb-1">Optativas</span>
+          <span className="text-lg font-bold font-mono text-slate-100">
+            {summary.electiveCompletedHours}h
+            <span className="text-xs text-slate-500 font-normal"> / {summary.electiveTotalHours}h</span>
+          </span>
+          <div className="w-full h-1.5 bg-slate-800 rounded-full mt-2 overflow-hidden">
+            <div
+              className="h-full bg-cyan-500 rounded-full"
+              style={{ width: `${summary.electiveCompletionPercentage}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Emphasis */}
+        <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <span className="text-[11px] font-semibold text-slate-400 block mb-1">Opt. de Ênfase</span>
+          <span className="text-lg font-bold font-mono text-slate-100">
+            {summary.emphasisCompletedHours}h
+            <span className="text-xs text-slate-500 font-normal"> / {summary.emphasisTotalHours || 0}h</span>
+          </span>
+          <div className="w-full h-1.5 bg-slate-800 rounded-full mt-2 overflow-hidden">
+            <div
+              className="h-full bg-amber-500 rounded-full"
+              style={{ width: `${summary.emphasisCompletionPercentage}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Complementary Activities (AC) */}
+        <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <span className="text-[11px] font-semibold text-slate-400 block mb-1">Ativ. Compl. (AC)</span>
+          <span className="text-lg font-bold font-mono text-slate-100">
+            {summary.complementaryCompletedHours}h
+            <span className="text-xs text-slate-500 font-normal"> / {summary.complementaryTotalHours}h</span>
+          </span>
+          <div className="w-full h-1.5 bg-slate-800 rounded-full mt-2 overflow-hidden">
+            <div
+              className="h-full bg-emerald-500 rounded-full"
+              style={{ width: `${summary.complementaryCompletionPercentage}%` }}
+            />
+          </div>
+        </div>
+
+        {/* In Progress Hours */}
+        <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <span className="text-[11px] font-semibold text-slate-400 block mb-1">Em Andamento</span>
+          <span className="text-lg font-bold font-mono text-sky-400">
+            {summary.inProgressHours}h
+          </span>
+          <span className="text-[10px] text-slate-500 block mt-2">
+            {summary.inProgressSubjectsCount} disciplinas cursando
+          </span>
+        </div>
+      </div>
+
+      {/* Interactive Status Filter Tabs */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
         <button
           onClick={() => setStatusFilter('ALL')}
@@ -196,9 +293,12 @@ export default function ProgressDashboard({
               : 'bg-slate-900/70 border-slate-800/80 text-slate-300 hover:bg-slate-800/80'
           }`}
         >
-          <span className="text-xs font-semibold text-slate-400">Total de Matérias</span>
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-indigo-400">
+            <BookOpen className="w-4 h-4" />
+            <span>Todas as Matérias</span>
+          </div>
           <span className="text-xl font-bold font-mono mt-1 text-slate-100">
-            {summary.completedSubjectsCount + summary.inProgressSubjectsCount + summary.unlockedSubjectsCount + summary.blockedSubjectsCount}
+            {summary.completedSubjectsCount + summary.inProgressSubjectsCount + summary.unlockedSubjectsCount + summary.blockedSubjectsCount + summary.pendingSubjectsCount}
           </span>
         </button>
 

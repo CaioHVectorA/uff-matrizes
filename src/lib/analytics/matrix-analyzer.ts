@@ -59,6 +59,23 @@ export interface ActiveEquivalenceEntry {
   isAutoMatched?: boolean;
 }
 
+export interface DetectedEquivalenceCandidate {
+  matrixCode: string;
+  matrixName: string;
+  matrixPeriod: number;
+  matrixWorkload: number;
+  transcriptCode: string;
+  transcriptName: string;
+  transcriptWorkload: number;
+  transcriptGradeRaw?: string;
+  transcriptGrade?: number;
+  transcriptPeriodSemester?: string;
+  matchScore: number; // 0 to 100
+  matchReason: string;
+  unlocksCount: number;
+  unlocksNames: string[];
+}
+
 export interface StudentProgressSummary {
   studentName?: string;
   registration?: string;
@@ -114,6 +131,7 @@ export interface StudentProgressSummary {
   // Equivalences
   activeEquivalences: ActiveEquivalenceEntry[];
   availableCompletedTranscriptRecords: TranscriptRecord[];
+  detectedEquivalenceCandidates: DetectedEquivalenceCandidate[];
 }
 
 /**
@@ -145,6 +163,181 @@ export const DEFAULT_UFF_EQUIVALENCES: Record<string, string[]> = {
   'TEM00275': ['TEM00102', 'TEM00175'],
   'TEM00177': ['TEM00112', 'TEM00176'],
 };
+
+/**
+ * Universal name normalizer for subject token comparison across all UFF courses.
+ */
+export function normalizeSubjectName(name: string): string[] {
+  if (!name) return [];
+
+  let clean = name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // remove accents
+    .toUpperCase();
+
+  // Convert Roman numerals to digits
+  clean = clean
+    .replace(/\bXII\b/g, '12')
+    .replace(/\bXI\b/g, '11')
+    .replace(/\bVIII\b/g, '8')
+    .replace(/\bVII\b/g, '7')
+    .replace(/\bVI\b/g, '6')
+    .replace(/\bIV\b/g, '4')
+    .replace(/\bV\b/g, '5')
+    .replace(/\bIX\b/g, '9')
+    .replace(/\bIII\b/g, '3')
+    .replace(/\bII\b/g, '2')
+    .replace(/\bI\b/g, '1')
+    .replace(/\bX\b/g, '10');
+
+  // Replace punctuation/symbols with spaces
+  clean = clean.replace(/[^A-Z0-9\s]/g, ' ');
+
+  // Stopwords in Portuguese
+  const stopwords = new Set([
+    'DE', 'DO', 'DA', 'DOS', 'DAS', 'E', 'EM', 'PARA', 'COM', 'A', 'O', 'AS', 'OS',
+    'TEORICA', 'TEORICO', 'EXPERIMENTAL', 'PRATICA', 'PRATICO', 'GERAL', 'BASICA', 'BASICO',
+    'APLICADA', 'APLICADO', 'FUNDAMENTOS', 'INTRODUCAO', 'LABORATORIO', 'CURSO'
+  ]);
+
+  const tokens = clean
+    .split(/\s+/)
+    .map(t => t.trim())
+    .filter(t => t.length > 1 && !stopwords.has(t));
+
+  return tokens;
+}
+
+/**
+ * Universal token overlap / similarity calculation.
+ */
+export function computeNameSimilarity(nameA: string, nameB: string): number {
+  const tokensA = new Set(normalizeSubjectName(nameA));
+  const tokensB = new Set(normalizeSubjectName(nameB));
+
+  if (tokensA.size === 0 || tokensB.size === 0) return 0;
+
+  let intersection = 0;
+  for (const token of tokensA) {
+    if (tokensB.has(token)) {
+      intersection += 1.0;
+    } else {
+      // Partial prefix matching (e.g. MECANIC vs MECANICA, COMPUT vs COMPUTACAO, DIREIT vs DIREITO)
+      for (const tokenB of tokensB) {
+        if (token.length >= 4 && tokenB.length >= 4) {
+          if (token.startsWith(tokenB.slice(0, 4)) || tokenB.startsWith(token.slice(0, 4))) {
+            intersection += 0.8;
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  const union = tokensA.size + tokensB.size - intersection;
+  return union > 0 ? intersection / union : 0;
+}
+
+/**
+ * Universal candidate equivalence detector for ANY course.
+ */
+export function detectEquivalenceCandidates(
+  matrix: MatrixRawData,
+  transcript: ParsedTranscript,
+  customEquivalences?: Record<string, string>
+): DetectedEquivalenceCandidate[] {
+  const candidates: DetectedEquivalenceCandidate[] = [];
+  const matrixCodes = new Set(matrix.subjects.map(s => s.code.toUpperCase().trim()));
+
+  const completedTranscriptRecords = transcript.records.filter(
+    r => r.status === 'APROVADO' || r.status === 'DISPENSA'
+  );
+
+  // Directly completed matrix codes
+  const directlyCompleted = new Set(
+    completedTranscriptRecords.map(r => r.code.toUpperCase().trim()).filter(c => matrixCodes.has(c))
+  );
+
+  // Transcript records that are NOT directly completing a matrix subject code
+  const unmatchedTranscriptRecords = completedTranscriptRecords.filter(
+    r => !directlyCompleted.has(r.code.toUpperCase().trim())
+  );
+
+  // Downstream dependents map
+  const unlocksMap = new Map<string, string[]>();
+  for (const s of matrix.subjects) {
+    for (const p of s.prerequisites || []) {
+      const pUpper = p.toUpperCase().trim();
+      if (!unlocksMap.has(pUpper)) unlocksMap.set(pUpper, []);
+      unlocksMap.get(pUpper)!.push(s.name);
+    }
+  }
+
+  for (const mSubject of matrix.subjects) {
+    const mCode = mSubject.code.toUpperCase().trim();
+    if (directlyCompleted.has(mCode)) continue;
+
+    for (const tRecord of unmatchedTranscriptRecords) {
+      const tCode = tRecord.code.toUpperCase().trim();
+      if (mCode === tCode) continue;
+
+      // 1. Check known UFF equivalence table
+      const knownEquivs = DEFAULT_UFF_EQUIVALENCES[mCode] || [];
+      const isKnown = knownEquivs.map(c => c.toUpperCase().trim()).includes(tCode);
+
+      if (isKnown) {
+        const unlocks = unlocksMap.get(mCode) || [];
+        candidates.push({
+          matrixCode: mSubject.code,
+          matrixName: mSubject.name,
+          matrixPeriod: mSubject.period,
+          matrixWorkload: mSubject.workload,
+          transcriptCode: tRecord.code,
+          transcriptName: tRecord.name,
+          transcriptWorkload: tRecord.workload || 60,
+          transcriptGradeRaw: tRecord.gradeRaw,
+          transcriptGrade: tRecord.grade,
+          transcriptPeriodSemester: tRecord.periodSemester,
+          matchScore: 98,
+          matchReason: 'Equivalência Conhecida da UFF',
+          unlocksCount: unlocks.length,
+          unlocksNames: unlocks,
+        });
+        continue;
+      }
+
+      // 2. Check Name & Token Similarity
+      const similarity = computeNameSimilarity(mSubject.name, tRecord.name);
+      const isChAcceptable =
+        (tRecord.workload || 60) >= mSubject.workload * 0.7 ||
+        Math.abs((tRecord.workload || 60) - mSubject.workload) <= 15;
+
+      if (similarity >= 0.45 && isChAcceptable) {
+        const score = Math.min(95, Math.round(similarity * 100));
+        const unlocks = unlocksMap.get(mCode) || [];
+        candidates.push({
+          matrixCode: mSubject.code,
+          matrixName: mSubject.name,
+          matrixPeriod: mSubject.period,
+          matrixWorkload: mSubject.workload,
+          transcriptCode: tRecord.code,
+          transcriptName: tRecord.name,
+          transcriptWorkload: tRecord.workload || 60,
+          transcriptGradeRaw: tRecord.gradeRaw,
+          transcriptGrade: tRecord.grade,
+          transcriptPeriodSemester: tRecord.periodSemester,
+          matchScore: score,
+          matchReason: `Similaridade de Conteúdo / Nome (${score}%)`,
+          unlocksCount: unlocks.length,
+          unlocksNames: unlocks,
+        });
+      }
+    }
+  }
+
+  // Deduplicate and sort by matchScore descending, then matrixPeriod ascending
+  return candidates.sort((a, b) => b.matchScore - a.matchScore || a.matrixPeriod - b.matrixPeriod);
+}
 
 /**
  * Aligns student transcript records with a curriculum matrix, applies subject equivalences,
@@ -538,6 +731,13 @@ export function analyzeStudentProgress(
       return (b.unlocksNext.length || 0) - (a.unlocksNext.length || 0);
     });
 
+  // Detect candidates
+  const detectedEquivalenceCandidates = detectEquivalenceCandidates(
+    matrix,
+    transcript,
+    customEquivalences
+  );
+
   return {
     studentName: transcript.studentName,
     registration: transcript.registration,
@@ -586,5 +786,6 @@ export function analyzeStudentProgress(
 
     activeEquivalences,
     availableCompletedTranscriptRecords,
+    detectedEquivalenceCandidates,
   };
 }
