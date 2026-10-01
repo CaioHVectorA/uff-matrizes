@@ -2,7 +2,8 @@ import { MatrixRawData } from '../scraper/uff-scraper';
 import { ParsedTranscript } from '../parser/transcript-parser';
 import { StudentProgressSummary } from '../analytics/matrix-analyzer';
 
-const STORAGE_KEY = 'uff_matriz_historico_state_v1';
+const STORAGE_KEY = 'uff_matriz_historico_state_v2';
+const LEGACY_STORAGE_KEY_V1 = 'uff_matriz_historico_state_v1';
 
 export interface StoredAppState {
   rawMatrixText?: string;
@@ -32,6 +33,10 @@ export function saveAppStateToStorage(state: StoredAppState): void {
 export function loadAppStateFromStorage(): StoredAppState | null {
   if (typeof window === 'undefined') return null;
   try {
+    // Clean legacy v1 storage if present
+    if (window.localStorage.getItem(LEGACY_STORAGE_KEY_V1)) {
+      window.localStorage.removeItem(LEGACY_STORAGE_KEY_V1);
+    }
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     return JSON.parse(raw) as StoredAppState;
@@ -45,6 +50,7 @@ export function clearAppStateFromStorage(): void {
   if (typeof window === 'undefined') return;
   try {
     window.localStorage.removeItem(STORAGE_KEY);
+    window.localStorage.removeItem(LEGACY_STORAGE_KEY_V1);
   } catch (err) {
     console.error('Failed to clear state from localStorage:', err);
   }
