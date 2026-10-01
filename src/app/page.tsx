@@ -16,7 +16,7 @@ import {
   StudentProgressSummary,
   analyzeStudentProgress
 } from '@/lib/analytics/matrix-analyzer';
-import { extractTextFromPdfFile } from '@/lib/parser/pdf-reader';
+import { extractTextFromPdfFile, extractTextFromPdfBuffer } from '@/lib/parser/pdf-reader';
 import { parseMatrixText } from '@/lib/parser/matrix-parser';
 import { parseTranscriptText, ParsedTranscript } from '@/lib/parser/transcript-parser';
 import {
@@ -112,14 +112,40 @@ export default function Home() {
         throw new Error('Por favor, envie o Histórico Escolar ou a Matriz Curricular (PDF ou Texto).');
       }
 
-      // If matrix text is missing, fallback to default matrix
-      if (!finalMatrixText.trim()) {
-        finalMatrixText = SAMPLE_MATRIX_TEXT;
-      }
-
       // If transcript text is missing, fallback to sample transcript
       if (!finalTranscriptText.trim()) {
         finalTranscriptText = SAMPLE_TRANSCRIPT_TEXT;
+      }
+
+      // If matrix text is missing but transcript is present, attempt to auto-fetch official matrix from IdUFF
+      if (!finalMatrixText.trim() && finalTranscriptText.trim()) {
+        try {
+          const preParsed = parseTranscriptText(finalTranscriptText);
+          if (preParsed.courseName) {
+            const res = await fetch('/api/iduff/download', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                autoMatchCourseName: preParsed.courseName,
+                curriculumCode: preParsed.curriculumCode,
+              }),
+            });
+            if (res.ok) {
+              const arrayBuf = await res.arrayBuffer();
+              const extracted = await extractTextFromPdfBuffer(arrayBuf);
+              if (extracted && extracted.trim()) {
+                finalMatrixText = extracted;
+              }
+            }
+          }
+        } catch (autoErr) {
+          console.warn('Auto-fetch matrix from IdUFF failed, using fallback sample:', autoErr);
+        }
+      }
+
+      // If matrix text is still missing, fallback to default matrix
+      if (!finalMatrixText.trim()) {
+        finalMatrixText = SAMPLE_MATRIX_TEXT;
       }
 
       const matrixData = parseMatrixText(finalMatrixText);

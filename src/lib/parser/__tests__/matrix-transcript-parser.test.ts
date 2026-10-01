@@ -123,3 +123,26 @@ test('detectEquivalenceCandidates discovers potential equivalences with score an
   assert.strictEqual(mecCandidate?.matchScore, 98);
   assert.ok(mecCandidate?.unlocksCount && mecCandidate.unlocksCount > 0, 'Should identify downstream unlocks');
 });
+
+test('iduff-matrix-service helpers decode entities and match course names accurately', () => {
+  const { decodeHtmlEntities, findCourseByTranscript } = require('../../scraper/iduff-matrix-service');
+
+  assert.strictEqual(decodeHtmlEntities('ADMINISTRA&Ccedil;&Atilde;O'), 'ADMINISTRAÇÃO');
+  assert.strictEqual(decodeHtmlEntities('CI&Ecirc;NCIA'), 'CIÊNCIA');
+
+  const mockCourses = [
+    { value: '23 - ADMINISTRAÇÃO', label: '23 - ADMINISTRAÇÃO' },
+    { value: '38 - ENGENHARIA ELÉTRICA', label: '38 - ENGENHARIA ELÉTRICA' },
+    { value: '31 - CIÊNCIA DA COMPUTAÇÃO', label: '31 - CIÊNCIA DA COMPUTAÇÃO' },
+    { value: '07 - DIREITO', label: '07 - DIREITO' },
+  ];
+
+  const matchedEletrica = findCourseByTranscript('ENGENHARIA ELÉTRICA', mockCourses);
+  assert.strictEqual(matchedEletrica?.value, '38 - ENGENHARIA ELÉTRICA');
+
+  const matchedComp = findCourseByTranscript('Ciência da Computação', mockCourses);
+  assert.strictEqual(matchedComp?.value, '31 - CIÊNCIA DA COMPUTAÇÃO');
+
+  const matchedDireito = findCourseByTranscript('Direito', mockCourses);
+  assert.strictEqual(matchedDireito?.value, '07 - DIREITO');
+});
