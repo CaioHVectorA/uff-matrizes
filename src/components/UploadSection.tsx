@@ -328,7 +328,7 @@ export default function UploadSection({
             Carregar Histórico & Matriz Curricular
           </h2>
           <p className="text-xs text-slate-400 mt-1">
-            Envie seu <strong>Histórico Escolar</strong> e obtenha a <strong>Matriz Curricular</strong> automaticamente direto do IdUFF (sem precisar baixá-la manualmente)!
+            Explore a <strong>Matriz Curricular</strong> de qualquer curso da UFF ou envie seu <strong>Histórico Escolar</strong> (opcional) para preenchimento e desbloqueio automático de matérias!
           </p>
         </div>
 
@@ -372,8 +372,8 @@ export default function UploadSection({
                     Arquivo Pronto
                   </span>
                 ) : (
-                  <span className="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
-                    Obrigatório
+                  <span className="text-[10px] font-mono text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700/60">
+                    Opcional
                   </span>
                 )}
               </div>
@@ -707,7 +707,18 @@ export default function UploadSection({
 
           <button
             type="submit"
-            disabled={loading || loadingIdUFF || (!transcriptFile && !rawTranscriptText && !hasExistingData)}
+            disabled={
+              loading ||
+              loadingIdUFF ||
+              (!matrixFile &&
+                !rawMatrixText.trim() &&
+                !(matrixSourceMode === 'iduff' && selectedIdUFFCourse) &&
+                !(matrixSourceMode === 'iduff' && detectedFromTranscript?.courseName) &&
+                matrixSourceMode !== 'preset' &&
+                !transcriptFile &&
+                !rawTranscriptText.trim() &&
+                !hasExistingData)
+            }
             className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-sm rounded-xl shadow-xl shadow-indigo-600/30 transition-all flex items-center justify-center gap-2"
           >
             {loading || loadingIdUFF ? (
@@ -715,10 +726,16 @@ export default function UploadSection({
                 <RefreshCw className="w-4 h-4 animate-spin" />
                 Processando & Consultando IdUFF...
               </>
-            ) : (
+            ) : transcriptFile || rawTranscriptText ? (
               <>
                 <Sparkles className="w-4 h-4 text-amber-300" />
                 Carregar Meu Fluxograma no Canvas
+                <ArrowRight className="w-4 h-4" />
+              </>
+            ) : (
+              <>
+                <Sparkles className="w-4 h-4 text-amber-300" />
+                Visualizar Matriz no Canvas (Seleção Manual)
                 <ArrowRight className="w-4 h-4" />
               </>
             )}

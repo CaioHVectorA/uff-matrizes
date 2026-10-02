@@ -1,0 +1,5978 @@
+{
+  "courseCode": "98.01.004",
+  "courseName": "SOCIOLOGIA",
+  "matrixCode": "1",
+  "matrixName": "Matriz Curricular SOCIOLOGIA",
+  "qualification": "-   Enfâse: -",
+  "totalHours": 2400,
+  "mandatoryHours": 1580,
+  "electiveHours": 660,
+  "hoursBreakdown": {
+    "mandatory": 1580,
+    "choice": 3304,
+    "elective": 660,
+    "emphasis": 0,
+    "freeChoice": 0,
+    "complementary": 100,
+    "total": 2400
+  },
+  "subjects": [
+    {
+      "code": "GAP00149",
+      "name": "TEORIA ANTROPOLÓGICA CLÁSSICA",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00136",
+      "name": "POLÍTICA CLÁSSICA",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00613",
+      "name": "Disciplina GHT00613",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GLC00187",
+      "name": "OFICINA DE TEXTOS",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00115",
+      "name": "SOCIOLOGIA CLÁSSICA I",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00208",
+      "name": "Disciplina GAP00208",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00137",
+      "name": "POLÍTICA CONTEMPORÂNEA",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GGE00119",
+      "name": "ECOLOGIA",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 20
+    },
+    {
+      "code": "GHT00614",
+      "name": "HISTÓRIA DO BRASIL IV",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00157",
+      "name": "SOCIOLOGIA CLÁSSICA II",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00168",
+      "name": "PSICOLOGIA",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00158",
+      "name": "SOCIOLOGIA CONTEMPORÂNEA I",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00160",
+      "name": "Disciplina GSO00160",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00162",
+      "name": "ESTADO",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00164",
+      "name": "SOCIOLOGIA",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GET00170",
+      "name": "ESTATÍSTICA GERAL",
+      "period": 4,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00159",
+      "name": "SOCIOLOGIA CONTEMPORÂNEA II",
+      "period": 4,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GSO00158"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00161",
+      "name": "PENSAMENTO SOCIAL BRASILEIRO",
+      "period": 4,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00163",
+      "name": "SOCIABILIDADE",
+      "period": 4,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00165",
+      "name": "METODOLOGIA DAS CIÊNCIAS SOCIAIS",
+      "period": 4,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00166",
+      "name": "Disciplina GSO00166",
+      "period": 5,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00167",
+      "name": "Disciplina GSO00167",
+      "period": 6,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSC00002",
+      "name": "MONOGRAFIA",
+      "period": 7,
+      "workload": 200,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 200,
+      "extensionHours": 0
+    },
+    {
+      "code": "DGP00005",
+      "name": "INTRODUÇÃ À CIÊNCIA POLÍTICA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00114",
+      "name": "ANTROPOLOGIA VISUAL",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00120",
+      "name": "Disciplina GAP00120",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00123",
+      "name": "SABER",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00124",
+      "name": "ANTROPOLOGIA DO CONHECIMENTO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00125",
+      "name": "INDIVÍDUO",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00132",
+      "name": "Disciplina GAP00132",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00134",
+      "name": "ANTROPOLOGIA III",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00143",
+      "name": "ANTROPOLOGIA URBANA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00152",
+      "name": "INTRODUÇÃ À",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00155",
+      "name": "ANTROPOLOGIA DA RELIGIÃ",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00156",
+      "name": "RITUAL",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00158",
+      "name": "ANTROPOLOGIA",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00161",
+      "name": "Disciplina GAP00161",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00164",
+      "name": "ETNOGRAFIA NO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00165",
+      "name": "ETNOGRAFIA URBANA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00198",
+      "name": "ETNOLOGIA SUL-AMERICANA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00202",
+      "name": "ANTROPOLOGIA DOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00203",
+      "name": "ANTROPOLOGIA DAS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00205",
+      "name": "Disciplina GAP00205",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00213",
+      "name": "TEORIAS ANTROPOLÓGICAS DO PODER",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00215",
+      "name": "Disciplina GAP00215",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00216",
+      "name": "Disciplina GAP00216",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00217",
+      "name": "Disciplina GAP00217",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00219",
+      "name": "Disciplina GAP00219",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00223",
+      "name": "Disciplina GAP00223",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00224",
+      "name": "TEORIAS DE ANTROPOLOGIA JURÍDICA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00225",
+      "name": "Disciplina GAP00225",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00227",
+      "name": "ETNOGRAFIA DO GÊNERO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00229",
+      "name": "ANTROPOLOGIA DA MÚSICA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00230",
+      "name": "ETNOGRAFIA DOS CONFLITOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP00235",
+      "name": "ENCONTRO DE SABERES",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 60
+    },
+    {
+      "code": "GAP00237",
+      "name": "Disciplina GAP00237",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 60
+    },
+    {
+      "code": "GAP00238",
+      "name": "ANTROPOLOGIA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 60
+    },
+    {
+      "code": "GAP00239",
+      "name": "ANTROPOLOGIA DA AÇÃ",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 60
+    },
+    {
+      "code": "GAP00240",
+      "name": "DIREITOS HUMANOS",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 60
+    },
+    {
+      "code": "GAP00241",
+      "name": "ECOLOGIA POLÍTICA",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 60
+    },
+    {
+      "code": "GAP00242",
+      "name": "Disciplina GAP00242",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 60
+    },
+    {
+      "code": "GAP00243",
+      "name": "Disciplina GAP00243",
+      "period": 0,
+      "workload": 120,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 60,
+      "extensionHours": 120
+    },
+    {
+      "code": "GAP00244",
+      "name": "Disciplina GAP00244",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 60
+    },
+    {
+      "code": "GAP00245",
+      "name": "Disciplina GAP00245",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 60
+    },
+    {
+      "code": "GAP04008",
+      "name": "RELAÇÕES INTERÉTNICAS (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04009",
+      "name": "ANTROPOLOGIA APLICADA (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04012",
+      "name": "CULTURA BRASILEIRA I (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04013",
+      "name": "CULTURA BRASILEIRA II (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04015",
+      "name": "ANTROPOLOGIA COMPARADA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04020",
+      "name": "ORGANIZAÇÃ SOCIAL (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04021",
+      "name": "Disciplina GAP04021",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04023",
+      "name": "SISTEMAS DE CRENÇAS (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04024",
+      "name": "Disciplina GAP04024",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04025",
+      "name": "Disciplina GAP04025",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04027",
+      "name": "ANTROPOLOGIA CLÁSSICA (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04033",
+      "name": "INDIVÍDUO",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04035",
+      "name": "ANTROPOLOGIA URBANA (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04038",
+      "name": "ETNOGRAFIA REGIONAL (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04039",
+      "name": "POLÍTICA INDIGENISTA (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04041",
+      "name": "CAMPESINATO BRASILEIRO (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04044",
+      "name": "Disciplina GAP04044",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04058",
+      "name": "ETNOLOGIA BRASILEIRA (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04059",
+      "name": "Disciplina GAP04059",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04060",
+      "name": "Disciplina GAP04060",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04061",
+      "name": "Disciplina GAP04061",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04062",
+      "name": "Disciplina GAP04062",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04063",
+      "name": "Disciplina GAP04063",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04064",
+      "name": "Disciplina GAP04064",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04065",
+      "name": "Disciplina GAP04065",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04066",
+      "name": "Disciplina GAP04066",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04067",
+      "name": "Disciplina GAP04067",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04068",
+      "name": "ETNOLOGIA FRANCESA (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04069",
+      "name": "Disciplina GAP04069",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04070",
+      "name": "Disciplina GAP04070",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04071",
+      "name": "Disciplina GAP04071",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04072",
+      "name": "ANTROPOLOGIA VISUAL (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04073",
+      "name": "Disciplina GAP04073",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04074",
+      "name": "TRABALHO DE CAMPO I (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04075",
+      "name": "Disciplina GAP04075",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04076",
+      "name": "PRÁTICA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04077",
+      "name": "Disciplina GAP04077",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04078",
+      "name": "Disciplina GAP04078",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04079",
+      "name": "Disciplina GAP04079",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04080",
+      "name": "Disciplina GAP04080",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04081",
+      "name": "Disciplina GAP04081",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04082",
+      "name": "Disciplina GAP04082",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04083",
+      "name": "Disciplina GAP04083",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04084",
+      "name": "Disciplina GAP04084",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04085",
+      "name": "FAMÍLIA",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04086",
+      "name": "Disciplina GAP04086",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04087",
+      "name": "Disciplina GAP04087",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04088",
+      "name": "REGIÃ",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04089",
+      "name": "Disciplina GAP04089",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04090",
+      "name": "Disciplina GAP04090",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04091",
+      "name": "Disciplina GAP04091",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04092",
+      "name": "ANTROPOLOGIA DA ARTE (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04093",
+      "name": "Disciplina GAP04093",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04094",
+      "name": "TEORIAS DO PARENTESCO (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04095",
+      "name": "ANTROPOLOGIA POLÍTICA I (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04096",
+      "name": "Disciplina GAP04096",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04097",
+      "name": "Disciplina GAP04097",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04098",
+      "name": "Disciplina GAP04098",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04099",
+      "name": "Disciplina GAP04099",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04100",
+      "name": "Disciplina GAP04100",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04101",
+      "name": "Disciplina GAP04101",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04102",
+      "name": "Disciplina GAP04102",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04103",
+      "name": "Disciplina GAP04103",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04105",
+      "name": "TRABALHO DE CAMPO II (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04106",
+      "name": "Disciplina GAP04106",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04107",
+      "name": "Disciplina GAP04107",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04108",
+      "name": "RITUAIS",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04109",
+      "name": "Disciplina GAP04109",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04110",
+      "name": "Disciplina GAP04110",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GAP04111",
+      "name": "Disciplina GAP04111",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00054",
+      "name": "Disciplina GCP00054",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00058",
+      "name": "TEORIA DO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00068",
+      "name": "POLÍTICA I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00070",
+      "name": "POLÍTICA III",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00071",
+      "name": "POLÍTICA IV",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00073",
+      "name": "POLÍTICA SOCIAL DA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00076",
+      "name": "POLÍTICA SOCIAL DA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00085",
+      "name": "TEORIAS POLÍTICAS CLÁSSICAS XIV",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00090",
+      "name": "Disciplina GCP00090",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00092",
+      "name": "Disciplina GCP00092",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00093",
+      "name": "Disciplina GCP00093",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00144",
+      "name": "PSICANÁLISE",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00149",
+      "name": "ESTUDOS SOBRE VIOLÊNCIAS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP00154",
+      "name": "LITERATURA",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04003",
+      "name": "POLÍTICA III",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04004",
+      "name": "POLÍTICA IV",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04006",
+      "name": "TEORIAS POLÍTICAS CLÁSSICAS I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04007",
+      "name": "TEORIAS POLÍTICAS CLÁSSICAS II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04008",
+      "name": "TEORIAS POLÍTICAS CLÁSSICAS III",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04009",
+      "name": "TEORIAS POLÍTICAS CLÁSSICAS IV",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04010",
+      "name": "TEORIAS POLÍTICAS CLÁSSICAS V",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04011",
+      "name": "TEORIAS POLÍTICAS CLÁSSICAS VI",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04012",
+      "name": "TEORIAS POLÍTICAS CLÁSSICAS VII",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04013",
+      "name": "TEORIAS POLÍTICAS CLÁSSICAS VIII",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04014",
+      "name": "TEORIAS POLÍTICAS CLÁSSICAS IX",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04015",
+      "name": "TEORIAS POLÍTICAS CLÁSSICAS X",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04016",
+      "name": "TEORIAS POLÍTICAS CLÁSSICAS XI",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04017",
+      "name": "TEORIA DAS IDEOLOGIAS I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04018",
+      "name": "TEORIA DAS IDEOLOGIAS II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04019",
+      "name": "TEORIA DO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04020",
+      "name": "TEORIA DO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00136"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04021",
+      "name": "TEORIA DO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04022",
+      "name": "TEORIA DO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04023",
+      "name": "TEORIA DO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04024",
+      "name": "Disciplina GCP04024",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04025",
+      "name": "RELAÇÕES INTERNACIONAIS I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04026",
+      "name": "RELAÇÕES INTERNACIONAIS II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04027",
+      "name": "RELAÇÕES INTERNACIONAIS III",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04028",
+      "name": "Disciplina GCP04028",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04029",
+      "name": "Disciplina GCP04029",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04030",
+      "name": "Disciplina GCP04030",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04031",
+      "name": "Disciplina GCP04031",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04032",
+      "name": "Disciplina GCP04032",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04033",
+      "name": "Disciplina GCP04033",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04034",
+      "name": "Disciplina GCP04034",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04035",
+      "name": "PODER",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GCP00136"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04036",
+      "name": "PARTIDOS POLÍTICOS NO BRASIL-",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04037",
+      "name": "Disciplina GCP04037",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04038",
+      "name": "Disciplina GCP04038",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04039",
+      "name": "Disciplina GCP04039",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04040",
+      "name": "Disciplina GCP04040",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04041",
+      "name": "Disciplina GCP04041",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04042",
+      "name": "PODER LOCAL NO BRASIL",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04043",
+      "name": "PODER",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04044",
+      "name": "PROPAGANDA POLÍTICA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04045",
+      "name": "Disciplina GCP04045",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04046",
+      "name": "Disciplina GCP04046",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04047",
+      "name": "RELAÇÕES INTERNACIONAIS IV",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04048",
+      "name": "RELAÇÕES INTERNACIONAIS V",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04049",
+      "name": "POLÍTICA VI",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04050",
+      "name": "POLÍTICA VII",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00136"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04051",
+      "name": "POLÍTICA VIII",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GCP04052",
+      "name": "POLÍTICA IX",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCP00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GET04002",
+      "name": "ESTATISTICA II (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL00024",
+      "name": "INTRODUÇÃ À FILOSOFIA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL00026",
+      "name": "HISTORIA DA FILOSOFIA III",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL00035",
+      "name": "FILOSOFIA POLÍTICA I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 7
+    },
+    {
+      "code": "GFL00039",
+      "name": "EPISTEMOLOGIA I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 40,
+      "practicalHours": 20,
+      "extensionHours": 7
+    },
+    {
+      "code": "GFL00051",
+      "name": "HISTORIA DA FILOSOFIA MODERNA II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL00060",
+      "name": "ÉTICA II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL00066",
+      "name": "FILOSOFIA POLÍTICA II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL00076",
+      "name": "TEORIA DO CONHECIMENTO III",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL00087",
+      "name": "FILOSOFIA DA RELIGIÃ",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL00088",
+      "name": "FILOSOFIA",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL00093",
+      "name": "TÓPICOS DE FILOSOFIA V",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL00094",
+      "name": "TÓPICOS DE FILOSOFIA POLÍTICA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL00113",
+      "name": "FILOSOFIA DA NATUREZA IV",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL02004",
+      "name": "HISTORIA DA FILOSOFIA (Desativada)",
+      "period": 0,
+      "workload": 30,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL04005",
+      "name": "HISTORIA DA FILOSOFIA I (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL04007",
+      "name": "ETICA (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL04008",
+      "name": "FILOSOFIA DA ARTE (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL04009",
+      "name": "FILOSOFIA GERAL II (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL04010",
+      "name": "FILOSOFIA GERAL III (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL04011",
+      "name": "Disciplina GFL04011",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL04012",
+      "name": "LOGICA INSTRUMENTAL (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFL04013",
+      "name": "Disciplina GFL04013",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GGS00009",
+      "name": "Disciplina GGS00009",
+      "period": 0,
+      "workload": 100,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 50,
+      "practicalHours": 50,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00373",
+      "name": "HISTÓRIA MEDIEVAL (Desativada)",
+      "period": 0,
+      "workload": 70,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 43,
+      "practicalHours": 27,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00383",
+      "name": "HISTÓRIA DA ÁFRICA (Desativada)",
+      "period": 0,
+      "workload": 70,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 43,
+      "practicalHours": 27,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00429",
+      "name": "Disciplina GHT00429",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00438",
+      "name": "Disciplina GHT00438",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00477",
+      "name": "Disciplina GHT00477",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00482",
+      "name": "Disciplina GHT00482",
+      "period": 0,
+      "workload": 68,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00502",
+      "name": "Disciplina GHT00502",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00520",
+      "name": "DAS REVOLUÇÕES NA ÉPOCA",
+      "period": 0,
+      "workload": 68,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00538",
+      "name": "Disciplina GHT00538",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00547",
+      "name": "PRÉ",
+      "period": 0,
+      "workload": 68,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00560",
+      "name": "Disciplina GHT00560",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00569",
+      "name": "XVIII - TEMA MONOGRÁFICO (Desativada)",
+      "period": 0,
+      "workload": 68,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00572",
+      "name": "POLÍTICA I - TEMA MONOGRÁFICO",
+      "period": 0,
+      "workload": 68,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GHT00588",
+      "name": "POLÍTICA XVII - TEMA MONOGRÁFICO",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GLC00292",
+      "name": "LIBRAS I",
+      "period": 0,
+      "workload": 30,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 10,
+      "practicalHours": 20,
+      "extensionHours": 30
+    },
+    {
+      "code": "GLC00294",
+      "name": "PORTUGUÊS I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GLE00514",
+      "name": "ESPANHOL INSTRUMENTAL",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GLE00515",
+      "name": "FRANCÊS INSTRUMENTAL",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GLE00516",
+      "name": "INGLÊS INSTRUMENTAL (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GLE00517",
+      "name": "Disciplina GLE00517",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GNE00020",
+      "name": "NEUROCIÊNCIAS",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 34,
+      "practicalHours": 34,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSC00003",
+      "name": "PRÁTICA DE PESQUISA",
+      "period": 0,
+      "workload": 60,
+      "type": "COMPLEMENTAR",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSC00004",
+      "name": "INICIAÇÃ CIENTÍFICA I",
+      "period": 0,
+      "workload": 30,
+      "type": "COMPLEMENTAR",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSC00005",
+      "name": "INICIAÇÃ CIENTÍFICA II",
+      "period": 0,
+      "workload": 30,
+      "type": "COMPLEMENTAR",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSC00006",
+      "name": "MONITORIA I",
+      "period": 0,
+      "workload": 30,
+      "type": "COMPLEMENTAR",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSC00007",
+      "name": "MONITORIA II",
+      "period": 0,
+      "workload": 30,
+      "type": "COMPLEMENTAR",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSC00008",
+      "name": "PRÁTICA DE",
+      "period": 0,
+      "workload": 30,
+      "type": "COMPLEMENTAR",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSC00009",
+      "name": "PRÁTICA DE",
+      "period": 0,
+      "workload": 30,
+      "type": "COMPLEMENTAR",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSC00010",
+      "name": "ATIVIDADES COMPLEMENTARES",
+      "period": 0,
+      "workload": 100,
+      "type": "COMPLEMENTAR",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 100,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSC00011",
+      "name": "Disciplina GSC00011",
+      "period": 0,
+      "workload": 15,
+      "type": "COMPLEMENTAR",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 15,
+      "extensionHours": 15
+    },
+    {
+      "code": "GSI00188",
+      "name": "CRIMINOLOGIA",
+      "period": 0,
+      "workload": 68,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00189",
+      "name": "Disciplina GSI00189",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00195",
+      "name": "ESTUDOS",
+      "period": 0,
+      "workload": 34,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 34,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00299",
+      "name": "PSICOLOGIA",
+      "period": 0,
+      "workload": 30,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00320",
+      "name": "INTRODUÇÃ À PSICOLOGIA CLÍNICA",
+      "period": 0,
+      "workload": 34,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 34,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00321",
+      "name": "PSICOLOGIA",
+      "period": 0,
+      "workload": 34,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 34,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00322",
+      "name": "TEORIAS",
+      "period": 0,
+      "workload": 68,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00323",
+      "name": "TEORIAS",
+      "period": 0,
+      "workload": 68,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00334",
+      "name": "Disciplina GSI00334",
+      "period": 0,
+      "workload": 34,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 34,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00335",
+      "name": "LINGUAGEM I",
+      "period": 0,
+      "workload": 34,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 34,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00374",
+      "name": "HISTÓRIA DA FILOSOFIA I (Desativada)",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00434",
+      "name": "GÊNERO",
+      "period": 0,
+      "workload": 34,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 34,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00468",
+      "name": "Disciplina GSI00468",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00469",
+      "name": "Disciplina GSI00469",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00470",
+      "name": "GRUPOS, COLETIVOS",
+      "period": 0,
+      "workload": 68,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00476",
+      "name": "Disciplina GSI00476",
+      "period": 0,
+      "workload": 34,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 34,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00479",
+      "name": "Disciplina GSI00479",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSI00500",
+      "name": "TÓPICOS",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00092",
+      "name": "TURISMO",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00096",
+      "name": "SOCIOLOGIA DA COMUNICAÇÃ",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00097",
+      "name": "SOCIOLOGIA DA ARTE",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00100",
+      "name": "Disciplina GSO00100",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00101",
+      "name": "SOCIOLOGIA DAS RELACOES RACIAIS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00102",
+      "name": "RELIGIAO",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00104",
+      "name": "SOCIOLOGIA URBANA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00105",
+      "name": "SOCIOLOGIA DA VIDA COTIDIANA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00106",
+      "name": "SOCIOLOGIA DA FOME NO BRASIL",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00107",
+      "name": "SOCIOLOGIA DA LITERATURA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00108",
+      "name": "SOCIOLOGIA DO CONHECIMENTO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00109",
+      "name": "SOCIOLOGIA DO TRABALHO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00110",
+      "name": "IDEOLOGIA",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00111",
+      "name": "SOCIOLOGIA DA PÓS-MODERNIDADE",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00118",
+      "name": "SOCIOLOGIA III",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00120",
+      "name": "SOCIOLOGIA V",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00122",
+      "name": "Disciplina GSO00122",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00123",
+      "name": "SOCIOLOGIA INDUSTRIAL",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00124",
+      "name": "SOCIOLOGIA RURAL",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00125",
+      "name": "TEORIA SOCIAL BRASILEIRA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00128",
+      "name": "SOCIOLOGIA DO DESENVOLVIMENTO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00129",
+      "name": "SOCIOLOGIA DA BUROCRACIA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00130",
+      "name": "SOCIOLOGIA DE KARL MARX",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00131",
+      "name": "Disciplina GSO00131",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00132",
+      "name": "Disciplina GSO00132",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 40,
+      "practicalHours": 20,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00133",
+      "name": "AMBIENTE",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00134",
+      "name": "DESENVOLVIMENTO",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GSO00115"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 40,
+      "practicalHours": 20,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00135",
+      "name": "SOCIOLOGIA DE MARCEL MAUSS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00137",
+      "name": "Disciplina GSO00137",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00138",
+      "name": "PENSAMENTO MARXISTA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00139",
+      "name": "SOCIOLOGIA DE NORBERT",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00140",
+      "name": "Disciplina GSO00140",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00141",
+      "name": "Disciplina GSO00141",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00142",
+      "name": "MOVIMENTOS SOCIAIS NO MUNDO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00143",
+      "name": "SOCIOLOGIA DO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00144",
+      "name": "A SOCIOLOGIA DE NIKLAS LUHMANN",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00145",
+      "name": "SOCIOLOGIA DAS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00146",
+      "name": "TEORIA DOS SISTEMAS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00147",
+      "name": "SOCIOLOGIA DO DIREITO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00148",
+      "name": "Disciplina GSO00148",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00149",
+      "name": "SOCIOLOGIA POLÍTICA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00150",
+      "name": "GENEALOGIA DO PENSAMENTO",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GSO00115"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00152",
+      "name": "A SOCIOLOGIA DE TALCOTT PARSONS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00153",
+      "name": "SOCIOLOGIA VI",
+      "period": 0,
+      "workload": 68,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 68,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00172",
+      "name": "SOCIOLOGIA DA CULTURA I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00173",
+      "name": "SOCIOLOGIA DA CULTURA II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00174",
+      "name": "HIERARQUIA",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00175",
+      "name": "SOCIOLOGIA DO MEIO AMBIENTE",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00176",
+      "name": "Disciplina GSO00176",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00177",
+      "name": "CURSO DE LEITURA DE \" CAPITAL\"",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00178",
+      "name": "SOCIOLOGIA DE MAX WEBER",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00179",
+      "name": "Disciplina GSO00179",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00180",
+      "name": "Disciplina GSO00180",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00181",
+      "name": "Disciplina GSO00181",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00182",
+      "name": "Disciplina GSO00182",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00183",
+      "name": "Disciplina GSO00183",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00184",
+      "name": "SOCIOLOGIA DA ARTE I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00185",
+      "name": "SOCIOLOGIA DA LITERATURA I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00115"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00186",
+      "name": "SOCIOLOGIA DA RELIGIÃ",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00187",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00188",
+      "name": "RELIGIÃ",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00189",
+      "name": "SOCIOLOGIA DAS PROFISSÕES",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00190",
+      "name": "SOCIOLOGIA DA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00191",
+      "name": "TEORIA DAS CLASSES SOCIAIS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00192",
+      "name": "Disciplina GSO00192",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00193",
+      "name": "ANÁLISE TEÓRICA DA IDEOLOGIA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00195",
+      "name": "Disciplina GSO00195",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00196",
+      "name": "SOCIOLOGIA DE GRAMSCI",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00197",
+      "name": "SOCIOLOGIA DE ALTHUSSER",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00198",
+      "name": "SOCIOLOGIA DE PIERRE BOURDIEU",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00199",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00200",
+      "name": "Disciplina GSO00200",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00201",
+      "name": "SOCIOLOGIA PENITENCIÁRIA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00202",
+      "name": "METODOLOGIA DE KARL MARX",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00203",
+      "name": "METODOLOGIA DE ÉMILE DURKHEIM",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00204",
+      "name": "METODOLOGIA DE MAX WEBER",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00205",
+      "name": "SOCIOLOGIA DE ÉMILE DURKHEIM",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00206",
+      "name": "(TRABALHO",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00207",
+      "name": "SOCIAL DA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00208",
+      "name": "Disciplina GSO00208",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00209",
+      "name": "Disciplina GSO00209",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00210",
+      "name": "Disciplina GSO00210",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00211",
+      "name": "MARXISMO ANALÍTICO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00212",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00213",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00214",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00215",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00219",
+      "name": "COMMUNICAÇÃ NÃ-VIOLENTA",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00220",
+      "name": "Disciplina GSO00220",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00221",
+      "name": "Disciplina GSO00221",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00222",
+      "name": "PESQUISAS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00223",
+      "name": "SOCIOLOGIA DA MÚSICA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00224",
+      "name": "SOMATERAPIA I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00225",
+      "name": "SOMATERAPIA II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00226",
+      "name": "Disciplina GSO00226",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00227",
+      "name": "Disciplina GSO00227",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00228",
+      "name": "TEORIA DA MEMÓRIA",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00230",
+      "name": "Disciplina GSO00230",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00231",
+      "name": "SOCIOLOGIA DIGITAL",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00232",
+      "name": "TÉCNICAS DE PESQUISA I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00233",
+      "name": "TÉCNICAS DE PESQUISA II",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO00234",
+      "name": "Disciplina GSO00234",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 60
+    },
+    {
+      "code": "GSO00235",
+      "name": "Disciplina GSO00235",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 60
+    },
+    {
+      "code": "GSO00236",
+      "name": "Disciplina GSO00236",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 60
+    },
+    {
+      "code": "GSO00237",
+      "name": "RELIGIÃ & SOCIEDADE II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 60
+    },
+    {
+      "code": "GSO00238",
+      "name": "SOCIOLOGIA DA MÚSICA II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 60
+    },
+    {
+      "code": "GSO00239",
+      "name": "SOCIOLOGIA DO MEIO AMBIENTE II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 60
+    },
+    {
+      "code": "GSO00240",
+      "name": "SOCIOLOGIA URBANA II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 60
+    },
+    {
+      "code": "GSO00241",
+      "name": "PRÁTICAS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 60
+    },
+    {
+      "code": "GSO00242",
+      "name": "PRÁTICAS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 60
+    },
+    {
+      "code": "GSO00243",
+      "name": "PRÁTICAS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 60
+    },
+    {
+      "code": "GSO00244",
+      "name": "PRÁTICAS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 60
+    },
+    {
+      "code": "GSO00245",
+      "name": "PRÁTICAS",
+      "period": 0,
+      "workload": 120,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 60,
+      "extensionHours": 120
+    },
+    {
+      "code": "GSO00246",
+      "name": "PRÁTICAS",
+      "period": 0,
+      "workload": 120,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 60,
+      "extensionHours": 120
+    },
+    {
+      "code": "GSO04010",
+      "name": "Disciplina GSO04010",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04011",
+      "name": "TEORIA SOCIOLOGICA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04012",
+      "name": "SOCIOLOGIA INDUSTRIAL",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04013",
+      "name": "SOCIOLOGIA RURAL",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04014",
+      "name": "SOCIOLOGIA DA BUROCRACIA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04015",
+      "name": "SOCIOLOGIA DO CONHECIMENTO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04016",
+      "name": "SOCIOLOGIA URBANA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04017",
+      "name": "SOCIOLOGIA DE",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04018",
+      "name": "Disciplina GSO04018",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04019",
+      "name": "SOCIOLOGIA DE KARL MARX",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04020",
+      "name": "SOCIOLOGIA DE KARL MARX I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00115"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04021",
+      "name": "SOCIOLOGIA DE KARL MARX II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04022",
+      "name": "Disciplina GSO04022",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04023",
+      "name": "Disciplina GSO04023",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04024",
+      "name": "Disciplina GSO04024",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04025",
+      "name": "MARXISMO ANALITICO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04026",
+      "name": "CURSO DE LEITURA DE",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04027",
+      "name": "SOCIOLOGIA DE MAX WEBER",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04028",
+      "name": "SOCIOLOGIA DE MAX WEBER I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04029",
+      "name": "Disciplina GSO04029",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04030",
+      "name": "TEORIA SOCIAL BRASILEIRA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04031",
+      "name": "Disciplina GSO04031",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04032",
+      "name": "Disciplina GSO04032",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04033",
+      "name": "Disciplina GSO04033",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04034",
+      "name": "Disciplina GSO04034",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04035",
+      "name": "SOCIOLOGIA DO DESENVOLVIMENTO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00115"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04036",
+      "name": "SOCIOLOGIA DA COMUNICACAO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04037",
+      "name": "SOCIOLOGIA DA VIDA COTIDIANA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04038",
+      "name": "SOCIOLOGIA DA ARTE",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04039",
+      "name": "SOCIOLOGIA DA ARTE I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04040",
+      "name": "SOCIOLOGIA DA LITERATURA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04041",
+      "name": "SOCIOLOGIA DA LITERATURA I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04042",
+      "name": "SOCIOLOGIA DA RELIGIAO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04043",
+      "name": "RELIGIAO",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04044",
+      "name": "RELIGIAO",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04046",
+      "name": "SOCIOLOGIA DO TRABALHO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04047",
+      "name": "SOCIOLOGIA DAS PROFISSOES",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04048",
+      "name": "SOCIOLOGIA DA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04049",
+      "name": "Disciplina GSO04049",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04051",
+      "name": "TEORIA DAS CLASSES SOCIAIS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04052",
+      "name": "CLASSES SOC NO CAPITALISMO",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00115"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04053",
+      "name": "ANALISE TEORICA DA IDEOLOGIA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04054",
+      "name": "IDEOLOGIA",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04055",
+      "name": "Disciplina GSO04055",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04056",
+      "name": "SOCIOLOGIA DE GRAMSCI",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04057",
+      "name": "SOCIOLOGIA DE ALTHUSSER",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04058",
+      "name": "SOCIOLOGIA DE PIERRE BOURDIEU",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04059",
+      "name": "Disciplina GSO04059",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04060",
+      "name": "SOCIOLOGIA DAS RELACOES RACIAIS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04061",
+      "name": "SOCIOLOGIA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04062",
+      "name": "SOCIOLOGIA DA POS-MODERNIDADE",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04063",
+      "name": "SOCIOLOGIA DA FOME NO BRASIL",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04064",
+      "name": "Disciplina GSO04064",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04065",
+      "name": "SOCIOLOGIA PENITENCIARIA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04066",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04067",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00115"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04068",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04069",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04070",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04071",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04072",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04073",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04074",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04075",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04076",
+      "name": "METODOLOGIA DE KARL MARX",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04077",
+      "name": "METODOLOGIA DE",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04078",
+      "name": "METODOLOGIA DE MAX WEBER",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04079",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04080",
+      "name": "Disciplina GSO04080",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04081",
+      "name": "Disciplina GSO04081",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04082",
+      "name": "TOPICOS",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00115"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04083",
+      "name": "Disciplina GSO04083",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04084",
+      "name": "Disciplina GSO04084",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04085",
+      "name": "Disciplina GSO04085",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04086",
+      "name": "Disciplina GSO04086",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04087",
+      "name": "Disciplina GSO04087",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04088",
+      "name": "Disciplina GSO04088",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04089",
+      "name": "PRATICA DE PESQUISA SOCIOLOGICA I",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GSO04090",
+      "name": "PRATICA DE PESQUISA SOCIOLOGICA II",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GSO00157"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "SFP00087",
+      "name": "PSICOLOGIA DA",
+      "period": 0,
+      "workload": 60,
+      "type": "ESCOLHA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "SFP00110",
+      "name": "0 0",
+      "period": 0,
+      "workload": 30,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "SFP00116",
+      "name": "PSICOLOGIA DA",
+      "period": 0,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    }
+  ],
+  "curriculumCode": "98.01.004"
+}

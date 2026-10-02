@@ -146,6 +146,14 @@ export default function TableView({
                           </span>
                         </div>
                       )}
+
+                      {subject.isManualOverride && (
+                        <div className="mb-2">
+                          <span className="text-[10px] font-bold text-amber-300 bg-amber-950/80 border border-amber-500/30 px-1.5 py-0.5 rounded flex items-center gap-1 w-fit">
+                            Manual
+                          </span>
+                        </div>
+                      )}
                     </div>
 
                     <div className="pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-xs">

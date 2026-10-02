@@ -31,6 +31,7 @@ export interface MatrixRawData {
   courseName: string;
   matrixCode: string;
   matrixName: string;
+  curriculumCode?: string;
   campus?: string;
   degree?: string; // Titulação (ex: Bacharel em Engenharia Elétrica)
   qualification?: string; // Habilitação

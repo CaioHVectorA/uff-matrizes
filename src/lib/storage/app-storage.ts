@@ -14,6 +14,7 @@ export interface StoredAppState {
   transcriptData?: ParsedTranscript;
   analysisResult?: StudentProgressSummary;
   customEquivalences?: Record<string, string>;
+  manualStatusMap?: Record<string, 'COMPLETED' | 'IN_PROGRESS' | 'PENDING'>;
   updatedAt?: string;
 }
 

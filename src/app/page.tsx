@@ -44,6 +44,7 @@ export default function Home() {
   const [rawMatrixTextCache, setRawMatrixTextCache] = useState<string>('');
   const [rawTranscriptTextCache, setRawTranscriptTextCache] = useState<string>('');
   const [customEquivalences, setCustomEquivalences] = useState<Record<string, string>>({});
+  const [manualStatusMap, setManualStatusMap] = useState<Record<string, 'COMPLETED' | 'IN_PROGRESS' | 'PENDING'>>({});
 
   // Analysis result state
   const [analysisResult, setAnalysisResult] = useState<{
@@ -64,15 +65,22 @@ export default function Home() {
   // Restore state from localStorage on initial load (if previously uploaded by user)
   useEffect(() => {
     const saved = loadAppStateFromStorage();
-    if (saved && saved.matrixData && saved.transcriptData) {
+    if (saved && saved.matrixData) {
       const eqMap = saved.customEquivalences || {};
+      const manMap = saved.manualStatusMap || {};
       setCustomEquivalences(eqMap);
+      setManualStatusMap(manMap);
       setCurrentMatrixData(saved.matrixData);
-      setCurrentTranscriptData(saved.transcriptData);
+      setCurrentTranscriptData(saved.transcriptData || null);
       setRawMatrixTextCache(saved.rawMatrixText || '');
       setRawTranscriptTextCache(saved.rawTranscriptText || '');
 
-      const summary = analyzeStudentProgress(saved.matrixData, saved.transcriptData, eqMap);
+      const summary = analyzeStudentProgress(
+        saved.matrixData,
+        saved.transcriptData || null,
+        eqMap,
+        manMap
+      );
       setAnalysisResult({
         summary,
         matrix: saved.matrixData,
@@ -109,12 +117,7 @@ export default function Home() {
       }
 
       if (!finalMatrixText.trim() && !finalTranscriptText.trim()) {
-        throw new Error('Por favor, envie o Histórico Escolar ou a Matriz Curricular (PDF ou Texto).');
-      }
-
-      // If transcript text is missing, fallback to sample transcript
-      if (!finalTranscriptText.trim()) {
-        finalTranscriptText = SAMPLE_TRANSCRIPT_TEXT;
+        throw new Error('Por favor, selecione um curso da UFF ou envie a Matriz Curricular (PDF). O Histórico Escolar é opcional.');
       }
 
       // If matrix text is missing but transcript is present, attempt to auto-fetch official matrix from IdUFF
@@ -149,13 +152,13 @@ export default function Home() {
       }
 
       const matrixData = parseMatrixText(finalMatrixText);
-      const transcriptData = parseTranscriptText(finalTranscriptText);
+      const transcriptData = finalTranscriptText.trim() ? parseTranscriptText(finalTranscriptText) : null;
 
       if (matrixData.subjects.length === 0) {
         throw new Error('Não foi possível identificar disciplinas na Matriz Curricular. Verifique se o arquivo enviado é uma Matriz válida do IdUFF.');
       }
 
-      const summary = analyzeStudentProgress(matrixData, transcriptData, customEquivalences);
+      const summary = analyzeStudentProgress(matrixData, transcriptData, customEquivalences, manualStatusMap);
 
       setCurrentMatrixData(matrixData);
       setCurrentTranscriptData(transcriptData);
@@ -175,8 +178,9 @@ export default function Home() {
       saveAppStateToStorage({
         analysisResult: summary,
         matrixData,
-        transcriptData,
+        transcriptData: transcriptData || undefined,
         customEquivalences,
+        manualStatusMap,
         rawMatrixText: finalMatrixText,
         rawTranscriptText: finalTranscriptText,
       });
@@ -197,11 +201,12 @@ export default function Home() {
   const handleConfirmCandidateEquivalences = useCallback((selectedMappings: Record<string, string>) => {
     setCustomEquivalences(selectedMappings);
 
-    if (currentMatrixData && currentTranscriptData) {
+    if (currentMatrixData) {
       const updatedSummary = analyzeStudentProgress(
         currentMatrixData,
         currentTranscriptData,
-        selectedMappings
+        selectedMappings,
+        manualStatusMap
       );
 
       setAnalysisResult({
@@ -213,13 +218,14 @@ export default function Home() {
       saveAppStateToStorage({
         analysisResult: updatedSummary,
         matrixData: currentMatrixData,
-        transcriptData: currentTranscriptData,
+        transcriptData: currentTranscriptData || undefined,
         customEquivalences: selectedMappings,
+        manualStatusMap,
         rawMatrixText: rawMatrixTextCache,
         rawTranscriptText: rawTranscriptTextCache,
       });
     }
-  }, [currentMatrixData, currentTranscriptData, rawMatrixTextCache, rawTranscriptTextCache]);
+  }, [currentMatrixData, currentTranscriptData, manualStatusMap, rawMatrixTextCache, rawTranscriptTextCache]);
 
   // Handle Single Subject Equivalence Assignment or Removal
   const handleSetEquivalence = useCallback((matrixCode: string, transcriptCode: string | null) => {
@@ -234,11 +240,12 @@ export default function Home() {
 
     setCustomEquivalences(newEquivalences);
 
-    if (currentMatrixData && currentTranscriptData) {
+    if (currentMatrixData) {
       const updatedSummary = analyzeStudentProgress(
         currentMatrixData,
         currentTranscriptData,
-        newEquivalences
+        newEquivalences,
+        manualStatusMap
       );
 
       setAnalysisResult({
@@ -261,23 +268,66 @@ export default function Home() {
       saveAppStateToStorage({
         analysisResult: updatedSummary,
         matrixData: currentMatrixData,
-        transcriptData: currentTranscriptData,
+        transcriptData: currentTranscriptData || undefined,
         customEquivalences: newEquivalences,
+        manualStatusMap,
         rawMatrixText: rawMatrixTextCache,
         rawTranscriptText: rawTranscriptTextCache,
       });
     }
-  }, [customEquivalences, currentMatrixData, currentTranscriptData, selectedSubject, rawMatrixTextCache, rawTranscriptTextCache]);
+  }, [customEquivalences, currentMatrixData, currentTranscriptData, manualStatusMap, selectedSubject, rawMatrixTextCache, rawTranscriptTextCache]);
+
+  // Handle Manual Subject Status Toggles (Concluída / Cursando / Pendente)
+  const handleUpdateSubjectStatus = useCallback((code: string, newStatus: 'COMPLETED' | 'IN_PROGRESS' | 'PENDING') => {
+    const upperCode = code.toUpperCase().trim();
+    const updatedMap = { ...manualStatusMap, [upperCode]: newStatus };
+    setManualStatusMap(updatedMap);
+
+    if (currentMatrixData) {
+      const updatedSummary = analyzeStudentProgress(
+        currentMatrixData,
+        currentTranscriptData,
+        customEquivalences,
+        updatedMap
+      );
+
+      setAnalysisResult({
+        summary: updatedSummary,
+        matrix: currentMatrixData,
+      });
+
+      // Update modal view immediately if open
+      if (selectedSubject && selectedSubject.code.toUpperCase().trim() === upperCode) {
+        const matchingAnalyzed = updatedSummary.periodGroups
+          .flatMap(g => g.subjects)
+          .find(s => s.code.toUpperCase().trim() === upperCode);
+        if (matchingAnalyzed) {
+          setSelectedSubject(matchingAnalyzed);
+        }
+      }
+
+      saveAppStateToStorage({
+        analysisResult: updatedSummary,
+        matrixData: currentMatrixData,
+        transcriptData: currentTranscriptData || undefined,
+        customEquivalences,
+        manualStatusMap: updatedMap,
+        rawMatrixText: rawMatrixTextCache,
+        rawTranscriptText: rawTranscriptTextCache,
+      });
+    }
+  }, [currentMatrixData, currentTranscriptData, customEquivalences, manualStatusMap, rawMatrixTextCache, rawTranscriptTextCache, selectedSubject]);
 
   const handleClearData = () => {
     clearAppStateFromStorage();
     setAnalysisResult(null);
-    setSelectedSubject(null);
     setCurrentMatrixData(null);
     setCurrentTranscriptData(null);
     setRawMatrixTextCache('');
     setRawTranscriptTextCache('');
     setCustomEquivalences({});
+    setManualStatusMap({});
+    setSelectedSubject(null);
     setIsEquivalenceModalOpen(false);
     setError(null);
   };
@@ -458,6 +508,7 @@ export default function Home() {
         onSelectRelated={subj => setSelectedSubject(subj)}
         availableTranscriptRecords={analysisResult?.summary.availableCompletedTranscriptRecords}
         onSetEquivalence={handleSetEquivalence}
+        onUpdateSubjectStatus={handleUpdateSubjectStatus}
       />
 
       {/* Batch Equivalence Confirmation Popup Modal */}

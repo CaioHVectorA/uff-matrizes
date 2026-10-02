@@ -1,0 +1,810 @@
+{
+  "courseCode": "28.01.004",
+  "courseName": "QUÍMICA",
+  "matrixCode": "1",
+  "matrixName": "Matriz Curricular QUÍMICA",
+  "qualification": "-   Enfâse: -",
+  "totalHours": 2629,
+  "mandatoryHours": 2325,
+  "electiveHours": 90,
+  "hoursBreakdown": {
+    "mandatory": 2325,
+    "choice": 0,
+    "elective": 90,
+    "emphasis": 0,
+    "freeChoice": 0,
+    "complementary": 214,
+    "total": 2629
+  },
+  "subjects": [
+    {
+      "code": "GGQ00038",
+      "name": "Disciplina GGQ00038",
+      "period": 1,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 10
+    },
+    {
+      "code": "GMA00159",
+      "name": "FUNÇÕES BÁSICAS",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQI00061",
+      "name": "INTRODUÇÃ AOS LABORATÓRIOS DE",
+      "period": 1,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": []
+    },
+    {
+      "code": "GQI00050",
+      "name": "QUÍMICA GERAL II",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQI00051",
+      "name": "QUÍMICA GERAL III",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQO00068",
+      "name": "Disciplina GQO00068",
+      "period": 1,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GGM00125",
+      "name": "GEOMETRIA ANALITICA BÁSICA",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GMA00154",
+      "name": "CÁLCULO 1",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQA00019",
+      "name": "QUÍMICA ANALITICA I",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQA00055",
+      "name": "QUÍMICA ANALITICA I",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 60,
+      "extensionHours": 8
+    },
+    {
+      "code": "GQO00069",
+      "name": "QUÍMICA",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GQI00051"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GMA00155",
+      "name": "CÁLCULO 2",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQI00052",
+      "name": "QUÍMICA INORGÂNICA I",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GQI00051"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQI00053",
+      "name": "QUÍMICA INORGÂNICA I",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 60,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQO00028",
+      "name": "QUÍMICA",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 60,
+      "extensionHours": 20
+    },
+    {
+      "code": "GQO00070",
+      "name": "QUÍMICA",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFI00135",
+      "name": "FISICA I",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GMA00154"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQA00021",
+      "name": "QUÍMICA ANALITICA II",
+      "period": 1,
+      "workload": 45,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GQA00019"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 45,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQA00022",
+      "name": "QUÍMICA ANALITICA II",
+      "period": 1,
+      "workload": 45,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 45,
+      "extensionHours": 6
+    },
+    {
+      "code": "GQI00056",
+      "name": "QUÍMICA INORGÂNICA II-B",
+      "period": 1,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQO00030",
+      "name": "QUÍMICA",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 60,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQO00032",
+      "name": "Disciplina GQO00032",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFI00137",
+      "name": "FISICA II",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GMA00155"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFQ00038",
+      "name": "TEORIA CINÉTICA DOS GASES",
+      "period": 2,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GMA00155"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFQ00042",
+      "name": "FÍSICO-QUÍMICA IV A",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GMA00155"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQA00018",
+      "name": "Disciplina GQA00018",
+      "period": 2,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 4
+    },
+    {
+      "code": "GQA00056",
+      "name": "ANÁLISE INSTRUMENTAL I",
+      "period": 2,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQI00057",
+      "name": "Disciplina GQI00057",
+      "period": 2,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFI00205",
+      "name": "FÍSICA IV-Q",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFI00162",
+      "name": "FÍSICA EXPERIMENTAL II",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": []
+    },
+    {
+      "code": "GFQ00022",
+      "name": "INTRODUÇÃ À QUÍMICA QUANTICA",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00137"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFQ00036",
+      "name": "Disciplina GFQ00036",
+      "period": 3,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 10,
+      "practicalHours": 20,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFQ00043",
+      "name": "FÍSICO-QUÍMICA IV B",
+      "period": 3,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GFI00135"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GGQ00035",
+      "name": "Disciplina GGQ00035",
+      "period": 2,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 30
+    },
+    {
+      "code": "GQA00057",
+      "name": "ANÁLISE INSTRUMENTAL II",
+      "period": 3,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQI00054",
+      "name": "QUÍMICA INORGÂNICA II-A",
+      "period": 2,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQO00071",
+      "name": "QUÍMICA",
+      "period": 3,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [
+        "GQO00032"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFI00155",
+      "name": "FÍSICA",
+      "period": 4,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFQ00019",
+      "name": "FISICO-QUÍMICA V",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFQ00023",
+      "name": "QUÍMICA QUANTICA APLICADA",
+      "period": 4,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GEO00004",
+      "name": "MINERALOGIA",
+      "period": 3,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 6
+    },
+    {
+      "code": "GFQ00021",
+      "name": "INTRODUÇÃ À QUÍMICA AMBIENTAL",
+      "period": 3,
+      "workload": 30,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 5
+    },
+    {
+      "code": "GGQ00008",
+      "name": "TUTORIA V- MONOGRAFIA DE FINAL DE CURSO I",
+      "period": 5,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": []
+    },
+    {
+      "code": "GQI00055",
+      "name": "QUÍMICA INORGÂNICA II-A EXPERIMENTAL",
+      "period": 5,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": []
+    },
+    {
+      "code": "GQO00033",
+      "name": "ANALISE",
+      "period": 1,
+      "workload": 60,
+      "type": "OBRIGATORIA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 60,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFQ00026",
+      "name": "QUÍMICA AMBIENTAL II (Desativada)",
+      "period": 2,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFQ00033",
+      "name": "DIFERENTES ÁREAS DA CIÊNCIA",
+      "period": 2,
+      "workload": 45,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 45,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFQ00035",
+      "name": "ESPECTROSCOPIA",
+      "period": 2,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GFQ00048",
+      "name": "SIMULAÇÃ MOLECULAR DE LÍQUIDOS",
+      "period": 2,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 30,
+      "extensionHours": 5
+    },
+    {
+      "code": "GGQ00023",
+      "name": "SEMINÁRIOS DE QUÍMICA I",
+      "period": 2,
+      "workload": 30,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GGQ00039",
+      "name": "Disciplina GGQ00039",
+      "period": 0,
+      "workload": 127,
+      "type": "COMPLEMENTAR",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 0,
+      "practicalHours": 127,
+      "extensionHours": 127
+    },
+    {
+      "code": "GGQ00041",
+      "name": "BIOSSEGURANÇA",
+      "period": 2,
+      "workload": 30,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 3
+    },
+    {
+      "code": "GMA00101",
+      "name": "Disciplina GMA00101",
+      "period": 2,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GAN00140"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GMA00102",
+      "name": "Disciplina GMA00102",
+      "period": 2,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GAN00140"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GMA00103",
+      "name": "Disciplina GMA00103",
+      "period": 2,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GAN00140"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQA00023",
+      "name": "MÉTODOS DE SEPARAÇÃ (Desativada)",
+      "period": 2,
+      "workload": 45,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GQO00068"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 15,
+      "practicalHours": 30,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQA00035",
+      "name": "Disciplina GQA00035",
+      "period": 2,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQA00038",
+      "name": "Disciplina GQA00038",
+      "period": 2,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQA00049",
+      "name": "QUÍMICA DO PETRÓLEO (Desativada)",
+      "period": 2,
+      "workload": 30,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQA00050",
+      "name": "Disciplina GQA00050",
+      "period": 2,
+      "workload": 30,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQA00052",
+      "name": "Disciplina GQA00052",
+      "period": 2,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 40,
+      "practicalHours": 20,
+      "extensionHours": 0
+    },
+    {
+      "code": "GQI00059",
+      "name": "CATÁLISE HETEROGÊNEA",
+      "period": 1,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    },
+    {
+      "code": "MTC00018",
+      "name": "Disciplina MTC00018",
+      "period": 2,
+      "workload": 90,
+      "type": "OPTATIVA",
+      "prerequisites": [
+        "GCM00015"
+      ],
+      "corequisites": [],
+      "theoreticalHours": 30,
+      "practicalHours": 60,
+      "extensionHours": 5
+    },
+    {
+      "code": "SSE04133",
+      "name": "Disciplina SSE04133",
+      "period": 2,
+      "workload": 60,
+      "type": "OPTATIVA",
+      "prerequisites": [],
+      "corequisites": [],
+      "theoreticalHours": 60,
+      "practicalHours": 0,
+      "extensionHours": 0
+    }
+  ],
+  "curriculumCode": "28.01.004"
+}

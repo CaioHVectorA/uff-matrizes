@@ -39,6 +39,8 @@ export interface SubjectAnalysisItem {
   emphasis?: string; // e.g. "Sistemas de Potência"
   isEquivalent?: boolean;
   equivalenceInfo?: SubjectEquivalenceInfo;
+  isManualOverride?: boolean;
+  manualStatus?: 'COMPLETED' | 'IN_PROGRESS' | 'PENDING';
 }
 
 export interface MatrixPeriodGroup {
@@ -345,29 +347,32 @@ export function detectEquivalenceCandidates(
  */
 export function analyzeStudentProgress(
   matrix: MatrixRawData,
-  transcript: ParsedTranscript,
-  customEquivalences?: Record<string, string> // matrixCode -> transcriptCode
+  transcript?: ParsedTranscript | null,
+  customEquivalences?: Record<string, string>, // matrixCode -> transcriptCode
+  manualStatusMap?: Record<string, 'COMPLETED' | 'IN_PROGRESS' | 'PENDING'>
 ): StudentProgressSummary {
   const completedCodes = new Set<string>();
   const inProgressCodes = new Set<string>();
   const recordMap = new Map<string, TranscriptRecord>();
 
-  // Map student records
-  for (const record of transcript.records) {
-    const upperCode = record.code.toUpperCase().trim();
-    recordMap.set(upperCode, record);
+  // Map student records if transcript is present
+  if (transcript?.records) {
+    for (const record of transcript.records) {
+      const upperCode = record.code.toUpperCase().trim();
+      recordMap.set(upperCode, record);
 
-    if (record.status === 'APROVADO' || record.status === 'DISPENSA') {
-      completedCodes.add(upperCode);
-    } else if (record.status === 'EM_ANDAMENTO') {
-      inProgressCodes.add(upperCode);
+      if (record.status === 'APROVADO' || record.status === 'DISPENSA') {
+        completedCodes.add(upperCode);
+      } else if (record.status === 'EM_ANDAMENTO') {
+        inProgressCodes.add(upperCode);
+      }
     }
   }
 
   // All completed records available for manual equivalence selection
-  const availableCompletedTranscriptRecords: TranscriptRecord[] = transcript.records.filter(
-    r => r.status === 'APROVADO' || r.status === 'DISPENSA'
-  );
+  const availableCompletedTranscriptRecords: TranscriptRecord[] = transcript?.records
+    ? transcript.records.filter(r => r.status === 'APROVADO' || r.status === 'DISPENSA')
+    : [];
 
   // Set of matrix codes
   const matrixCodes = new Set(matrix.subjects.map(s => s.code.toUpperCase().trim()));
@@ -475,14 +480,38 @@ export function analyzeStudentProgress(
     }
   }
 
+  // 3. Apply manual status overrides (user explicitly checked/selected)
+  if (manualStatusMap) {
+    for (const [code, status] of Object.entries(manualStatusMap)) {
+      const upper = code.toUpperCase().trim();
+      if (status === 'COMPLETED') {
+        completedCodes.add(upper);
+        inProgressCodes.delete(upper);
+      } else if (status === 'IN_PROGRESS') {
+        inProgressCodes.add(upper);
+        completedCodes.delete(upper);
+      } else if (status === 'PENDING') {
+        completedCodes.delete(upper);
+        inProgressCodes.delete(upper);
+      }
+    }
+  }
+
   // Calculate current completed hours for CHPre-Req check
   let currentCompletedHours = 0;
-  for (const record of transcript.records) {
+  for (const record of transcript?.records || []) {
     if (record.status === 'APROVADO' || record.status === 'DISPENSA') {
       currentCompletedHours += record.workload || 60;
     }
   }
-  if (transcript.completedHours && transcript.completedHours > currentCompletedHours) {
+  // Also sum workload from any matrix subjects completed that weren't in transcript records (manual selections or equivalents)
+  for (const subject of matrix.subjects) {
+    const code = subject.code.toUpperCase().trim();
+    if (completedCodes.has(code) && !recordMap.has(code)) {
+      currentCompletedHours += subject.workload || 60;
+    }
+  }
+  if (transcript?.completedHours && transcript.completedHours > currentCompletedHours) {
     currentCompletedHours = transcript.completedHours;
   }
 
@@ -565,6 +594,9 @@ export function analyzeStudentProgress(
     const gradeRaw = eqInfo ? eqInfo.gradeRaw : directRecord?.gradeRaw;
     const periodSemester = eqInfo ? eqInfo.periodSemester : directRecord?.periodSemester;
 
+    const isManual = Boolean(manualStatusMap && manualStatusMap[code]);
+    const manualStatusVal = manualStatusMap ? manualStatusMap[code] : undefined;
+
     analyzedSubjects.push({
       code: subject.code,
       name: subject.name,
@@ -586,12 +618,14 @@ export function analyzeStudentProgress(
       emphasis: subject.emphasis,
       isEquivalent: !!eqInfo,
       equivalenceInfo: eqInfo,
+      isManualOverride: isManual,
+      manualStatus: manualStatusVal,
     });
   }
 
   // Account for extra completed subjects from transcript that might not be in the matrix
   // (excluding those that have been consumed as equivalences)
-  for (const record of transcript.records) {
+  for (const record of transcript?.records || []) {
     const upperCode = record.code.toUpperCase().trim();
     if (
       !matrixCodes.has(upperCode) &&
@@ -731,26 +765,24 @@ export function analyzeStudentProgress(
       return (b.unlocksNext.length || 0) - (a.unlocksNext.length || 0);
     });
 
-  // Detect candidates
-  const detectedEquivalenceCandidates = detectEquivalenceCandidates(
-    matrix,
-    transcript,
-    customEquivalences
-  );
+  // Detect candidates only when transcript is present
+  const detectedEquivalenceCandidates = transcript
+    ? detectEquivalenceCandidates(matrix, transcript, customEquivalences)
+    : [];
 
   return {
-    studentName: transcript.studentName,
-    registration: transcript.registration,
-    cpf: transcript.cpf,
-    courseName: transcript.courseName || matrix.courseName,
-    curriculumCode: transcript.curriculumCode || matrix.courseCode,
-    admissionPeriod: transcript.admissionPeriod,
+    studentName: transcript?.studentName || 'Estudante (Seleção Manual)',
+    registration: transcript?.registration,
+    cpf: transcript?.cpf,
+    courseName: transcript?.courseName || matrix.courseName || 'Curso UFF',
+    curriculumCode: transcript?.curriculumCode || matrix.curriculumCode || matrix.courseCode,
+    admissionPeriod: transcript?.admissionPeriod,
     degree: matrix.degree,
-    qualification: transcript.qualification || matrix.qualification,
-    emphasis: transcript.emphasis || matrix.emphasis,
-    trainingLine: transcript.trainingLine || matrix.trainingLine,
+    qualification: transcript?.qualification || matrix.qualification,
+    emphasis: transcript?.emphasis || matrix.emphasis,
+    trainingLine: transcript?.trainingLine || matrix.trainingLine,
     availableEmphases: matrix.availableEmphases,
-    cr: transcript.cr,
+    cr: transcript?.cr,
 
     totalMatrixHours,
     totalCompletedHours: completedHours,

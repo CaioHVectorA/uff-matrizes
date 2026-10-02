@@ -672,6 +672,14 @@ export default function FlowchartCanvas({
                           </div>
                         )}
 
+                        {subject.isManualOverride && (
+                          <div className="mb-1.5 flex items-center gap-1">
+                            <span className="text-[9px] font-bold text-amber-300 bg-amber-950/90 border border-amber-500/40 px-1.5 py-0.5 rounded flex items-center gap-1">
+                              Manual
+                            </span>
+                          </div>
+                        )}
+
                         {/* Status Footer Pill */}
                         <div className="flex items-center justify-between pt-2 border-t border-slate-800/60 mt-auto">
                           <div className="flex items-center gap-1.5">

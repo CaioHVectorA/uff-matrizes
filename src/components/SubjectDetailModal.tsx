@@ -32,6 +32,7 @@ interface SubjectDetailModalProps {
   onSelectRelated: (subject: SubjectAnalysisItem) => void;
   availableTranscriptRecords?: TranscriptRecord[];
   onSetEquivalence?: (matrixCode: string, transcriptCode: string | null) => void;
+  onUpdateSubjectStatus?: (code: string, status: 'COMPLETED' | 'IN_PROGRESS' | 'PENDING') => void;
 }
 
 export default function SubjectDetailModal({
@@ -41,6 +42,7 @@ export default function SubjectDetailModal({
   onSelectRelated,
   availableTranscriptRecords = [],
   onSetEquivalence,
+  onUpdateSubjectStatus,
 }: SubjectDetailModalProps) {
   const [selectedEquivCode, setSelectedEquivCode] = useState<string>('');
   const [isEquivSaved, setIsEquivSaved] = useState(false);
@@ -183,6 +185,62 @@ export default function SubjectDetailModal({
                   </span>
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Interactive Manual Status Selection */}
+          <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-indigo-400" />
+                Alterar Status Desta Disciplina
+              </span>
+              {subject.isManualOverride && (
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                  Definido Manualmente
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-slate-400">
+              Selecione o status real ou simule cenários (desbloqueia automaticamente os pré-requisitos seguintes):
+            </p>
+            <div className="grid grid-cols-3 gap-2">
+              <button
+                type="button"
+                onClick={() => onUpdateSubjectStatus?.(subject.code, 'COMPLETED')}
+                className={`px-3 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all border ${
+                  subject.status === 'COMPLETED'
+                    ? 'bg-emerald-500/25 border-emerald-500 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.2)]'
+                    : 'bg-slate-900 border-slate-800 hover:bg-emerald-950/40 text-slate-300 hover:text-emerald-300'
+                }`}
+              >
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                Concluída
+              </button>
+              <button
+                type="button"
+                onClick={() => onUpdateSubjectStatus?.(subject.code, 'IN_PROGRESS')}
+                className={`px-3 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all border ${
+                  subject.status === 'IN_PROGRESS'
+                    ? 'bg-sky-500/25 border-sky-500 text-sky-200 shadow-[0_0_12px_rgba(14,165,233,0.2)]'
+                    : 'bg-slate-900 border-slate-800 hover:bg-sky-950/40 text-slate-300 hover:text-sky-300'
+                }`}
+              >
+                <Clock className="w-4 h-4 text-sky-400" />
+                Cursando
+              </button>
+              <button
+                type="button"
+                onClick={() => onUpdateSubjectStatus?.(subject.code, 'PENDING')}
+                className={`px-3 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all border ${
+                  subject.status !== 'COMPLETED' && subject.status !== 'IN_PROGRESS'
+                    ? 'bg-slate-800 border-slate-600 text-slate-200 shadow-sm'
+                    : 'bg-slate-900 border-slate-800 hover:bg-slate-800 text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                <AlertCircle className="w-4 h-4 text-slate-400" />
+                Pendente
+              </button>
             </div>
           </div>
 
