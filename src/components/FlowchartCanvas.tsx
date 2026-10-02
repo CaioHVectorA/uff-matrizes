@@ -13,13 +13,15 @@ import {
   AlertCircle,
   Info,
   Layers,
-  ArrowLeftRight
+  ArrowLeftRight,
+  Building2
 } from 'lucide-react';
 import {
   SubjectAnalysisItem,
   StudentProgressSummary,
   DisplaySubjectStatus
 } from '@/lib/analytics/matrix-analyzer';
+import { getDepartmentName } from '@/lib/data/departments';
 
 interface FlowchartCanvasProps {
   summary: StudentProgressSummary;
@@ -29,6 +31,8 @@ interface FlowchartCanvasProps {
   statusFilter: string;
   selectedEmphasis?: string;
   onSelectEmphasis?: (emphasis: string) => void;
+  selectedDepartment?: string;
+  onSelectDepartment?: (department: string) => void;
 }
 
 const STATUS_THEMES: Record<
@@ -104,7 +108,12 @@ export default function FlowchartCanvas({
   statusFilter,
   selectedEmphasis = 'ALL',
   onSelectEmphasis,
+  selectedDepartment,
+  onSelectDepartment,
 }: FlowchartCanvasProps) {
+  const [internalDepartment, setInternalDepartment] = useState<string>('ALL');
+  const effectiveDepartment = selectedDepartment ?? internalDepartment;
+  const handleSelectDepartment = onSelectDepartment ?? setInternalDepartment;
 
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
@@ -373,7 +382,27 @@ export default function FlowchartCanvas({
             </button>
           ))}
 
-          {/* Ênfase Filter Dropdown if course has emphases */}
+          {/* Departamento Filter Dropdown */}
+          {summary.availableDepartments && summary.availableDepartments.length > 0 && (
+            <div className="flex items-center gap-1.5 pl-2 border-l border-slate-700">
+              <span className="text-[11px] font-semibold text-sky-300">Depto:</span>
+              <select
+                value={effectiveDepartment}
+                onChange={e => handleSelectDepartment(e.target.value)}
+                className="bg-slate-800 text-slate-200 text-xs font-semibold px-2 py-1 rounded-lg border border-slate-700 focus:outline-none focus:border-sky-500 max-w-[170px] truncate"
+                title="Filtrar por Departamento Ofertante Oficial da UFF"
+              >
+                <option value="ALL">Todos os Deptos ({summary.availableDepartments.length})</option>
+                {summary.availableDepartments.map(dept => (
+                  <option key={dept} value={dept}>
+                    {dept} - {getDepartmentName(dept)}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* Ênfase Filter Dropdown if course has formal emphases */}
           {summary.availableEmphases && summary.availableEmphases.length > 0 && onSelectEmphasis && (
             <div className="flex items-center gap-1.5 pl-2 border-l border-slate-700">
               <span className="text-[11px] font-semibold text-indigo-300">Ênfase:</span>
@@ -586,6 +615,10 @@ export default function FlowchartCanvas({
                       selectedEmphasis === 'ALL' ||
                       !subject.emphasis ||
                       subject.emphasis === selectedEmphasis;
+                    const deptCode = subject.department || (subject.code.match(/^[A-Z]{3}/i)?.[0].toUpperCase());
+                    const matchesDepartment =
+                      effectiveDepartment === 'ALL' ||
+                      deptCode === effectiveDepartment;
 
                     const isDimmed =
                       (activeCode &&
@@ -594,7 +627,8 @@ export default function FlowchartCanvas({
                         !highlightedChain.downstream.has(upperCode)) ||
                       !matchesSearch ||
                       !matchesStatus ||
-                      !matchesEmphasis;
+                      !matchesEmphasis ||
+                      !matchesDepartment;
 
                     return (
                       <div
@@ -654,14 +688,33 @@ export default function FlowchartCanvas({
                           {subject.name}
                         </h4>
 
-                        {/* Emphasis or Equivalence pill if available */}
-                        {subject.emphasis && (
-                          <div className="mb-2">
-                            <span className="text-[9px] font-semibold text-indigo-300 bg-indigo-950/80 border border-indigo-500/20 px-1.5 py-0.5 rounded">
-                              Trilha: {subject.emphasis}
+                        {/* Department and Type Badges */}
+                        <div className="mb-2 flex flex-wrap items-center gap-1">
+                          {deptCode && (
+                            <span
+                              className="text-[9px] font-mono font-medium text-slate-300 bg-slate-800/80 border border-slate-700/60 px-1.5 py-0.5 rounded flex items-center gap-1"
+                              title={getDepartmentName(deptCode)}
+                            >
+                              <Building2 className="w-2.5 h-2.5 text-slate-400" />
+                              {deptCode}
                             </span>
-                          </div>
-                        )}
+                          )}
+                          {subject.type === 'OPTATIVA_ENFASE' && (
+                            <span className="text-[9px] font-bold text-amber-300 bg-amber-950/80 border border-amber-500/30 px-1.5 py-0.5 rounded">
+                              Opt. Ênfase (ON)
+                            </span>
+                          )}
+                          {subject.type === 'ESCOLHA' && (
+                            <span className="text-[9px] font-bold text-violet-300 bg-violet-950/80 border border-violet-500/30 px-1.5 py-0.5 rounded">
+                              Escolha (E)
+                            </span>
+                          )}
+                          {subject.emphasis && (
+                            <span className="text-[9px] font-semibold text-indigo-300 bg-indigo-950/80 border border-indigo-500/20 px-1.5 py-0.5 rounded">
+                              {subject.emphasis}
+                            </span>
+                          )}
+                        </div>
 
                         {subject.isEquivalent && (
                           <div className="mb-1.5 flex items-center gap-1">

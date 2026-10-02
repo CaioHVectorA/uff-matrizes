@@ -38,6 +38,7 @@ export interface MatrixRawData {
   emphasis?: string; // Ênfase
   trainingLine?: string; // Linha de Formação
   availableEmphases?: string[]; // Detected emphases/tracks in course
+  availableDepartments?: string[]; // Detected departments (3-letter codes) in course
   totalHours: number;
   mandatoryHours: number;
   electiveHours: number;

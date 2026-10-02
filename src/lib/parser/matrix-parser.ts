@@ -43,13 +43,13 @@ export function parseMatrixText(text: string): MatrixRawData {
   const versionMatch = text.match(/Vers[aã]o:\s*([^\s\n\r]+)/i);
   if (versionMatch) matrixCode = versionMatch[1].trim();
 
-  const titMatch = text.match(/Titula[çc][ãa]o:\s*([^H\n\r]+?)(?=Habilita|Ênfase|Linha|$)/i);
+  const titMatch = text.match(/Titula[çc][ãa]o:\s*([^\n\r]+?)(?=Habilita|Enf[âaãeé]se|Linha|Turno|$)/i);
   if (titMatch && titMatch[1].trim() !== '-') degree = titMatch[1].trim();
 
-  const habMatch = text.match(/Habilita[çc][ãa]o:\s*([^Ê\n\r]+?)(?=Ênfase|Linha|Turno|$)/i);
+  const habMatch = text.match(/Habilita[çc][ãa]o:\s*([^\n\r]+?)(?=Enf[âaãeé]se|Linha|Turno|$)/i);
   if (habMatch && habMatch[1].trim() !== '-') qualification = habMatch[1].trim();
 
-  const enfMatch = text.match(/Ênfase:\s*([^L\n\r]+?)(?=Linha|Turno|$)/i);
+  const enfMatch = text.match(/Enf[âaãeé]se:\s*([^\n\r]+?)(?=Linha|Turno|Curr[íi]culo|$)/i);
   if (enfMatch && enfMatch[1].trim() !== '-') emphasis = enfMatch[1].trim();
 
   const linMatch = text.match(/Linha de Forma[çc][ãa]o:\s*([^\n\r]+?)(?=Turno|Curr[íi]culo|$)/i);
@@ -197,20 +197,9 @@ export function parseMatrixText(text: string): MatrixRawData {
         name = `Disciplina ${code}`;
       }
 
-      // Infer subject track/emphasis
-      let subjectEmphasis: string | undefined;
-      const lowerName = name.toLowerCase();
-      if (lowerName.includes('potência') || lowerName.includes('potencia') || lowerName.includes('transformador') || lowerName.includes('subestaç') || lowerName.includes('transmissão') || lowerName.includes('distribuição') || lowerName.includes('geração') || lowerName.includes('transitórios') || lowerName.includes('alta tensão')) {
-        subjectEmphasis = 'Sistemas de Potência';
-      } else if (lowerName.includes('eletrônic') || lowerName.includes('eletronic') || lowerName.includes('microcontrolador') || lowerName.includes('semicondutor') || lowerName.includes('circuitos digitais') || lowerName.includes('hardware') || lowerName.includes('ieds')) {
-        subjectEmphasis = 'Eletrônica & Hardware';
-      } else if (lowerName.includes('controle') || lowerName.includes('automação') || lowerName.includes('automacao') || lowerName.includes('robót') || lowerName.includes('sensores') || lowerName.includes('instrumentação') || lowerName.includes('acionamento')) {
-        subjectEmphasis = 'Controle & Automação';
-      } else if (lowerName.includes('telecomunica') || lowerName.includes('redes') || lowerName.includes('antena') || lowerName.includes('propagação') || lowerName.includes('sinais') || lowerName.includes('comunicação')) {
-        subjectEmphasis = 'Telecomunicações & Redes';
-      } else if (lowerName.includes('software') || lowerName.includes('computador') || lowerName.includes('algoritmo') || lowerName.includes('dados') || lowerName.includes('inteligência artificial') || lowerName.includes('aprendizado') || lowerName.includes('banco de dados') || code.startsWith('TCC')) {
-        subjectEmphasis = 'Computação & Software';
-      }
+      // Extract official UFF department from 3-letter subject code prefix (e.g. TEE, TCC, GMA, GFI)
+      const deptMatch = code.match(/^([A-Z]{3})/i);
+      const department = deptMatch ? deptMatch[1].toUpperCase() : undefined;
 
       // Prerequisites extraction: extract codes found in brackets or prerequisite text, excluding subject's own code
       const allCodesInEntry = extractPrerequisiteCodes(combinedText).filter(c => c !== code);
@@ -237,7 +226,7 @@ export function parseMatrixText(text: string): MatrixRawData {
           theoreticalHours,
           practicalHours,
           extensionHours,
-          emphasis: subjectEmphasis,
+          department,
         });
       }
     }
@@ -273,10 +262,10 @@ export function parseMatrixText(text: string): MatrixRawData {
     total: totalHours,
   };
 
-  // Find all distinct emphases across subjects
-  const detectedEmphases = Array.from(
-    new Set(subjects.map(s => s.emphasis).filter(Boolean) as string[])
-  );
+  // Find all distinct departments across subjects
+  const availableDepartments = Array.from(
+    new Set(subjects.map(s => s.department).filter(Boolean) as string[])
+  ).sort();
 
   return {
     courseCode,
@@ -287,7 +276,7 @@ export function parseMatrixText(text: string): MatrixRawData {
     qualification,
     emphasis,
     trainingLine,
-    availableEmphases: detectedEmphases.length > 0 ? detectedEmphases : undefined,
+    availableDepartments: availableDepartments.length > 0 ? availableDepartments : undefined,
     totalHours,
     mandatoryHours,
     electiveHours,

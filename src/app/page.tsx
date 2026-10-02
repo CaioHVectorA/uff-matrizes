@@ -59,6 +59,7 @@ export default function Home() {
   const [selectedSubject, setSelectedSubject] = useState<SubjectAnalysisItem | null>(null);
   const [statusFilter, setStatusFilter] = useState<string>('ALL');
   const [selectedEmphasis, setSelectedEmphasis] = useState<string>('ALL');
+  const [selectedDepartment, setSelectedDepartment] = useState<string>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
   const [isEquivalenceModalOpen, setIsEquivalenceModalOpen] = useState(false);
 
@@ -172,6 +173,7 @@ export default function Home() {
 
       // Reset filters
       setSelectedEmphasis('ALL');
+      setSelectedDepartment('ALL');
       setStatusFilter('ALL');
 
       // Save state to localStorage
@@ -485,6 +487,8 @@ export default function Home() {
                   statusFilter={statusFilter}
                   selectedEmphasis={selectedEmphasis}
                   onSelectEmphasis={setSelectedEmphasis}
+                  selectedDepartment={selectedDepartment}
+                  onSelectDepartment={setSelectedDepartment}
                 />
               ) : (
                 <TableView

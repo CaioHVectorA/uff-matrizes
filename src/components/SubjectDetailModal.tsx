@@ -17,12 +17,14 @@ import {
   ArrowLeftRight,
   Sparkles,
   Trash2,
-  Check
+  Check,
+  Building2
 } from 'lucide-react';
 import {
   SubjectAnalysisItem,
   DisplaySubjectStatus,
 } from '@/lib/analytics/matrix-analyzer';
+import { getDepartmentName } from '@/lib/data/departments';
 import { TranscriptRecord } from '@/lib/parser/transcript-parser';
 
 interface SubjectDetailModalProps {
@@ -98,9 +100,15 @@ export default function SubjectDetailModal({
               >
                 {subject.type}
               </span>
+              {(subject.department || subject.code.match(/^[A-Z]{3}/i)) && (
+                <span className="text-xs font-semibold px-2 py-0.5 rounded-lg bg-slate-800 text-slate-300 border border-slate-700 flex items-center gap-1.5">
+                  <Building2 className="w-3 h-3 text-sky-400" />
+                  {subject.department || subject.code.slice(0, 3)} - {getDepartmentName(subject.department || subject.code.slice(0, 3))}
+                </span>
+              )}
               {subject.emphasis && (
                 <span className="text-xs font-semibold px-2 py-0.5 rounded-lg bg-indigo-950/80 text-indigo-300 border border-indigo-500/30">
-                  Trilha / Ênfase: {subject.emphasis}
+                  Ênfase: {subject.emphasis}
                 </span>
               )}
               {subject.isEquivalent && (

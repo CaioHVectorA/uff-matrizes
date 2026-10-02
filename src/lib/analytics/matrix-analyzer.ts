@@ -37,6 +37,7 @@ export interface SubjectAnalysisItem {
   isChPreReqMissing: boolean;
   unlocksNext: string[]; // Codes of subjects that depend on this one
   emphasis?: string; // e.g. "Sistemas de Potência"
+  department?: string; // e.g. "TEE", "TCC", "GMA"
   isEquivalent?: boolean;
   equivalenceInfo?: SubjectEquivalenceInfo;
   isManualOverride?: boolean;
@@ -90,6 +91,7 @@ export interface StudentProgressSummary {
   emphasis?: string;
   trainingLine?: string;
   availableEmphases?: string[];
+  availableDepartments?: string[];
   cr?: number;
 
   // Hours tracking
@@ -616,6 +618,7 @@ export function analyzeStudentProgress(
       isChPreReqMissing,
       unlocksNext: unlocksNextMap.get(code) || [],
       emphasis: subject.emphasis,
+      department: subject.department || (code.match(/^[A-Z]{3}/i)?.[0].toUpperCase()),
       isEquivalent: !!eqInfo,
       equivalenceInfo: eqInfo,
       isManualOverride: isManual,
@@ -729,12 +732,12 @@ export function analyzeStudentProgress(
     }
   }
 
-  const mandatoryTotalHours = matrix.hoursBreakdown?.mandatory || matrix.mandatoryHours || 3069;
-  const choiceTotalHours = matrix.hoursBreakdown?.choice || 510;
-  const electiveTotalHours = matrix.hoursBreakdown?.elective || matrix.electiveHours || 120;
-  const emphasisTotalHours = matrix.hoursBreakdown?.emphasis || 0;
-  const complementaryTotalHours = matrix.hoursBreakdown?.complementary || 280;
-  const totalMatrixHours = matrix.totalHours || (mandatoryTotalHours + choiceTotalHours + electiveTotalHours + complementaryTotalHours);
+  const mandatoryTotalHours = matrix.hoursBreakdown?.mandatory ?? matrix.mandatoryHours ?? 0;
+  const choiceTotalHours = matrix.hoursBreakdown?.choice ?? 0;
+  const electiveTotalHours = matrix.hoursBreakdown?.elective ?? matrix.electiveHours ?? 0;
+  const emphasisTotalHours = matrix.hoursBreakdown?.emphasis ?? 0;
+  const complementaryTotalHours = matrix.hoursBreakdown?.complementary ?? 0;
+  const totalMatrixHours = matrix.totalHours || (mandatoryTotalHours + choiceTotalHours + electiveTotalHours + emphasisTotalHours + complementaryTotalHours);
 
   const overallCompletionPercentage = Math.min(100, Math.round((completedHours / totalMatrixHours) * 100));
   const mandatoryCompletionPercentage = Math.min(100, Math.round((mandatoryCompletedHours / mandatoryTotalHours) * 100));
@@ -782,6 +785,7 @@ export function analyzeStudentProgress(
     emphasis: transcript?.emphasis || matrix.emphasis,
     trainingLine: transcript?.trainingLine || matrix.trainingLine,
     availableEmphases: matrix.availableEmphases,
+    availableDepartments: matrix.availableDepartments || Array.from(new Set(analyzedSubjects.map(s => s.department).filter(Boolean) as string[])).sort(),
     cr: transcript?.cr,
 
     totalMatrixHours,
